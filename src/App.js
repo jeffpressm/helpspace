@@ -1,5 +1,4 @@
 import React from 'react';
-import './App.scss';
 import Home from './Home';
 import NeedHelp from './NeedHelp';
 import User from './User';

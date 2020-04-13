@@ -16,8 +16,10 @@
     "react-dom": "^16.13.1",
     "react-router-dom": "^5.1.2",
     "react-scripts": "3.4.1",
-    "tabletop": "^1.6.2",
-    "react-typeform-embed": "^0.2.1"
+    "react-typeform-embed": "^0.2.1",
+    "stylelint": "^13.3.2",
+    "stylelint-config-sass-guidelines": "^7.0.0",
+    "tabletop": "^1.6.2"
   },
   "scripts": {
     "start": "react-scripts start",
@@ -55,8 +57,12 @@
     }
   },
   "lint-staged": {
-    "src/**/*.{js,jsx,ts,tsx,json,css,scss,md}": [
+    "src/**/*.{js,jsx,json}": [
       "eslint --fix"
+    ],
+    "src/**/*.{scss}": [
+      "stylelint --fix",
+      "prettier --write"
     ]
   }
 }

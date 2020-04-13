@@ -1,0 +1,161 @@
+@font-face {
+  font-family: 'Graphik';
+  src: local('Graphik Thin'), local('Graphik-Thin'),
+    url('fonts/Graphik-Thin.woff2') format('woff2'),
+    url('fonts/Graphik-Thin.woff') format('woff');
+  font-weight: 100;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Graphik';
+  src: local('Graphik Thin Italic'), local('Graphik-ThinItalic'),
+    url('fonts/Graphik-ThinItalic.woff2') format('woff2'),
+    url('fonts/Graphik-ThinItalic.woff') format('woff');
+  font-weight: 100;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: 'Graphik Super';
+  src: local('Graphik Super Italic'), local('Graphik-SuperItalic'),
+    url('fonts/Graphik-SuperItalic.woff2') format('woff2'),
+    url('fonts/Graphik-SuperItalic.woff') format('woff');
+  font-weight: 900;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: 'Graphik';
+  src: local('Graphik Medium'), local('Graphik-Medium'),
+    url('fonts/Graphik-Medium.woff2') format('woff2'),
+    url('fonts/Graphik-Medium.woff') format('woff');
+  font-weight: 500;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Graphik';
+  src: local('Graphik Black'), local('Graphik-Black'),
+    url('fonts/Graphik-Black.woff2') format('woff2'),
+    url('fonts/Graphik-Black.woff') format('woff');
+  font-weight: 900;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Graphik';
+  src: local('Graphik Semibold'), local('Graphik-Semibold'),
+    url('fonts/Graphik-Semibold.woff2') format('woff2'),
+    url('fonts/Graphik-Semibold.woff') format('woff');
+  font-weight: 600;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Graphik Super';
+  src: local('Graphik Super'), local('Graphik-Super'),
+    url('fonts/Graphik-Super.woff2') format('woff2'),
+    url('fonts/Graphik-Super.woff') format('woff');
+  font-weight: 900;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Graphik';
+  src: local('Graphik Extralight Italic'), local('Graphik-ExtralightItalic'),
+    url('fonts/Graphik-ExtralightItalic.woff2') format('woff2'),
+    url('fonts/Graphik-ExtralightItalic.woff') format('woff');
+  font-weight: 200;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: 'Graphik';
+  src: local('Graphik Black Italic'), local('Graphik-BlackItalic'), ,
+    url('fonts/Graphik-BlackItalic.woff2') format('woff2'),
+    url('fonts/Graphik-BlackItalic.woff') format('woff');
+  font-weight: 900;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: 'Graphik';
+  src: local('Graphik Regular Italic'), local('Graphik-RegularItalic'),
+    url('fonts/Graphik-RegularItalic.woff2') format('woff2'),
+    url('fonts/Graphik-RegularItalic.woff') format('woff');
+  font-weight: normal;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: 'Graphik';
+  src: local('Graphik Light'), local('Graphik-Light'),
+    url('fonts/Graphik-Light.woff2') format('woff2'),
+    url('fonts/Graphik-Light.woff') format('woff');
+  font-weight: 300;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Graphik';
+  src: local('Graphik Bold'), local('Graphik-Bold'),
+    url('fonts/Graphik-Bold.woff2') format('woff2'),
+    url('fonts/Graphik-Bold.woff') format('woff');
+  font-weight: bold;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Graphik';
+  src: local('Graphik Regular'), local('Graphik-Regular'),
+    url('fonts/Graphik-Regular.woff2') format('woff2'),
+    url('fonts/Graphik-Regular.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Graphik';
+  src: local('Graphik Bold Italic'), local('Graphik-BoldItalic'),
+    url('fonts/Graphik-BoldItalic.woff2') format('woff2'),
+    url('fonts/Graphik-BoldItalic.woff') format('woff');
+  font-weight: bold;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: 'Graphik';
+  src: local('Graphik Semibold Italic'), local('Graphik-SemiboldItalic'),
+    url('fonts/Graphik-SemiboldItalic.woff2') format('woff2'),
+    url('fonts/Graphik-SemiboldItalic.woff') format('woff');
+  font-weight: 600;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: 'Graphik';
+  src: local('Graphik Light Italic'), local('Graphik-LightItalic'),
+    url('fonts/Graphik-LightItalic.woff2') format('woff2'),
+    url('fonts/Graphik-LightItalic.woff') format('woff');
+  font-weight: 300;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: 'Graphik';
+  src: local('Graphik Extralight'), local('Graphik-Extralight'),
+    url('fonts/Graphik-Extralight.woff2') format('woff2'),
+    url('fonts/Graphik-Extralight.woff') format('woff');
+  font-weight: 200;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Graphik';
+  src: local('Graphik Medium Italic'), local('Graphik-MediumItalic'),
+    url('fonts/Graphik-MediumItalic.woff2') format('woff2'),
+    url('fonts/Graphik-MediumItalic.woff') format('woff');
+  font-weight: 500;
+  font-style: italic;
+}
