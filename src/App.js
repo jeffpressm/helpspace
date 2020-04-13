@@ -1,8 +1,13 @@
 import React from 'react';
 import logo from './logo.svg';
 import './App.scss';
+import useTabletop from './utils/hooks/useTabletop';
 
 function App() {
+  const tData = useTabletop('1d0YOkDB61twU6LWST53gtRfwvDVjze4hUAWXJOvgiyg');
+
+  console.log(tData);
+
   return (
     <div className="App">
       <header className="App-header">
