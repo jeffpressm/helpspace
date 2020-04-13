@@ -1,18 +1,15 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { ReactTypeformEmbed } from 'react-typeform-embed';
+import { UserContext } from '../utils/context/UserContextProvider';
 
 const NeedHelp = () => {
-  // Here we generate a unique user ID (just a timestamp for now) and pass that to the typeform
-  // We can also set that in a cookie to identify returning users
+  const userData = useContext(UserContext);
 
-  const userId = Date.now();
+  if (!userData.id) return null;
 
   return (
     <ReactTypeformEmbed
-      url={`${process.env.REACT_APP_TYPEFORM_URL}?userid=${userId}`}
-      onSubmit={(args) => {
-        console.log('submitted:', args);
-      }}
+      url={`${process.env.REACT_APP_TYPEFORM_URL}?userid=${userData.id}`}
     />
   );
 };

@@ -1,24 +1,31 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useContext } from 'react';
 import { useParams } from 'react-router-dom';
-import useTabletop from '../utils/hooks/useTabletop';
+import { SpreadsheetContext } from '../utils/context/SpreadsheetContextProvider';
 
 const User = () => {
-  const tData = useTabletop('1SMus2rG-kjfy2SXASC-V8trxB4BFF7ITx-QvaoBOags');
+  const spreadsheetData = useContext(SpreadsheetContext);
   const [userData, setUserData] = useState();
+  const [isLoading, setIsLoading] = useState(false);
   const { userId } = useParams();
 
   useEffect(() => {
-    if (!tData) {
-      return;
+    const newUserData = spreadsheetData.find((c) => c['ID'] === userId);
+
+    if (!newUserData) {
+      setIsLoading(true);
+      setTimeout(() => {
+        window.location.reload();
+      }, 5000);
     }
 
-    const newUserData = tData.find((c) => c['ID'] === userId);
-
     setUserData(newUserData);
-  }, [tData, setUserData, userId]);
+  }, [spreadsheetData, setUserData, userId]);
+
+  if (isLoading) {
+    return <div>Please wait while we register you...</div>;
+  }
 
   if (!userData) {
-    // TODO: loading indicator
     return null;
   }
 
