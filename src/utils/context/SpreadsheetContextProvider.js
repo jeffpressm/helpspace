@@ -5,7 +5,7 @@ export const SpreadsheetContext = createContext();
 
 const SpreadsheetContextProvider = ({ children }) => {
   const [spreadsheetData, setSpreadsheetData] = useState();
-  const entries = useTabletop('1SMus2rG-kjfy2SXASC-V8trxB4BFF7ITx-QvaoBOags');
+  const entries = useTabletop(process.env.REACT_APP_RESPONSES_SPREADSHEET_ID);
 
   useEffect(() => {
     if (!entries) {
