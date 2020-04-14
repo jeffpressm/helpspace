@@ -1,5 +1,6 @@
 import React, { createContext, useState, useEffect, useContext } from 'react';
 import { SpreadsheetContext } from './SpreadsheetContextProvider';
+import { generateUuid } from '../strings';
 
 export const UserContext = createContext({
   userData: {},
@@ -12,7 +13,7 @@ const UserContextProvider = ({ children }) => {
 
   useEffect(() => {
     const existingUserId = window.localStorage.getItem('userId');
-    const userId = existingUserId || Date.now();
+    const userId = existingUserId || generateUuid();
 
     if (existingUserId) {
       const userInfo = spreadsheetData.find((c) => c['ID'] === userId);
