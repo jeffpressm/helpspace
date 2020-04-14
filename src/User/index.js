@@ -3,13 +3,16 @@ import { useParams } from 'react-router-dom';
 import { SpreadsheetContext } from '../utils/context/SpreadsheetContextProvider';
 
 const User = () => {
-  const spreadsheetData = useContext(SpreadsheetContext);
+  const entries = useContext(SpreadsheetContext);
   const [userData, setUserData] = useState();
   const [isLoading, setIsLoading] = useState(false);
   const { userId } = useParams();
 
   useEffect(() => {
-    const newUserData = spreadsheetData.find((c) => c['ID'] === userId);
+    if (!entries || !entries['Users']) {
+      return;
+    }
+    const newUserData = entries['Users'].find((c) => c['ID'] === userId);
 
     if (!newUserData) {
       setIsLoading(true);
@@ -19,7 +22,7 @@ const User = () => {
     }
 
     setUserData(newUserData);
-  }, [spreadsheetData, setUserData, userId]);
+  }, [entries, setUserData, userId]);
 
   if (isLoading) {
     return <div>Please wait while we register you...</div>;

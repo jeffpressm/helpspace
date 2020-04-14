@@ -5,15 +5,15 @@ export const SpreadsheetContext = createContext();
 
 const SpreadsheetContextProvider = ({ children }) => {
   const [spreadsheetData, setSpreadsheetData] = useState();
-  const tData = useTabletop('1SMus2rG-kjfy2SXASC-V8trxB4BFF7ITx-QvaoBOags');
+  const entries = useTabletop('1SMus2rG-kjfy2SXASC-V8trxB4BFF7ITx-QvaoBOags');
 
   useEffect(() => {
-    if (!tData) {
+    if (!entries) {
       return;
     }
 
-    setSpreadsheetData(tData);
-  }, [tData, setSpreadsheetData]);
+    setSpreadsheetData(entries);
+  }, [entries, setSpreadsheetData]);
 
   if (!spreadsheetData) {
     return null;

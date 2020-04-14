@@ -9,20 +9,24 @@ export const UserContext = createContext({
 
 const UserContextProvider = ({ children }) => {
   const [userData, setUserData] = useState({});
-  const spreadsheetData = useContext(SpreadsheetContext);
+  const entries = useContext(SpreadsheetContext);
 
   useEffect(() => {
+    if (!entries || !entries['Users']) {
+      return;
+    }
     const existingUserId = window.localStorage.getItem('userId');
+
     const userId = existingUserId || generateUuid();
 
     if (existingUserId) {
-      const userInfo = spreadsheetData.find((c) => c['ID'] === userId);
+      const userInfo = entries['Users'].find((c) => c['ID'] === userId);
       setUserData({ id: userId, ...userInfo });
     } else {
       window.localStorage.setItem('userId', userId);
       setUserData((data) => ({ ...data, id: userId }));
     }
-  }, [userData.id, spreadsheetData]);
+  }, [userData.id, entries]);
 
   return (
     <UserContext.Provider value={userData}>{children}</UserContext.Provider>

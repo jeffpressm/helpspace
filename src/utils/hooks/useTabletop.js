@@ -3,21 +3,23 @@ import Tabletop from 'tabletop';
 
 function getSheetData(id) {
   return Tabletop.init({
-    key: `https://docs.google.com/spreadsheets/d/${id}/pubhtml`,
-    simpleSheet: true,
+    key: id,
   });
 }
 
 function useTabletop(id) {
-  const [data, setData] = useState();
+  const [entries, setEntries] = useState();
 
   useEffect(() => {
     getSheetData(id).then((data) => {
-      setData(data);
-    });
-  }, [id]);
+      const entries = {};
+      Object.keys(data).forEach((k) => (entries[k] = data[k].elements));
 
-  return data;
+      setEntries(entries);
+    });
+  }, [id, setEntries]);
+
+  return entries;
 }
 
 export default useTabletop;
