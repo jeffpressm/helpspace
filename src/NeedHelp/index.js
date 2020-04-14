@@ -3,13 +3,20 @@ import { ReactTypeformEmbed } from 'react-typeform-embed';
 import { UserContext } from '../utils/context/UserContextProvider';
 
 const NeedHelp = () => {
-  const userData = useContext(UserContext);
+  const { id, Name: name } = useContext(UserContext);
 
-  if (!userData.id) return null;
+  if (!id) return null;
+
+  const params = {
+    userid: id,
+    ...(name && { name, existing: 'true' }),
+  };
+
+  const paramString = new URLSearchParams(params);
 
   return (
     <ReactTypeformEmbed
-      url={`${process.env.REACT_APP_TYPEFORM_URL}?userid=${userData.id}`}
+      url={`${process.env.REACT_APP_TYPEFORM_URL}?${paramString.toString()}`}
     />
   );
 };
