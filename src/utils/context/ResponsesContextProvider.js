@@ -1,9 +1,9 @@
 import React, { createContext, useState, useEffect } from 'react';
 import useTabletop from '../hooks/useTabletop';
 
-export const SpreadsheetContext = createContext();
+export const ResponsesContext = createContext();
 
-const SpreadsheetContextProvider = ({ children }) => {
+const ResponsesContextProvider = ({ children }) => {
   const [spreadsheetData, setSpreadsheetData] = useState();
   const entries = useTabletop(process.env.REACT_APP_RESPONSES_SPREADSHEET_ID);
 
@@ -20,10 +20,10 @@ const SpreadsheetContextProvider = ({ children }) => {
   }
 
   return (
-    <SpreadsheetContext.Provider value={spreadsheetData}>
+    <ResponsesContext.Provider value={spreadsheetData}>
       {children}
-    </SpreadsheetContext.Provider>
+    </ResponsesContext.Provider>
   );
 };
 
-export default SpreadsheetContextProvider;
+export default ResponsesContextProvider;

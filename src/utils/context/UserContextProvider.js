@@ -1,5 +1,5 @@
 import React, { createContext, useState, useEffect, useContext } from 'react';
-import { SpreadsheetContext } from './SpreadsheetContextProvider';
+import { ResponsesContext } from './ResponsesContextProvider';
 import { generateUuid } from '../strings';
 
 export const UserContext = createContext({
@@ -9,7 +9,7 @@ export const UserContext = createContext({
 
 const UserContextProvider = ({ children }) => {
   const [userData, setUserData] = useState({});
-  const entries = useContext(SpreadsheetContext);
+  const entries = useContext(ResponsesContext);
 
   useEffect(() => {
     if (!entries || !entries['Users']) {

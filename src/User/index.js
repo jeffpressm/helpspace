@@ -1,9 +1,9 @@
 import React, { useEffect, useState, useContext } from 'react';
 import { useParams } from 'react-router-dom';
-import { SpreadsheetContext } from '../utils/context/SpreadsheetContextProvider';
+import { ResponsesContext } from '../utils/context/ResponsesContextProvider';
 
 const User = () => {
-  const entries = useContext(SpreadsheetContext);
+  const entries = useContext(ResponsesContext);
   const [userData, setUserData] = useState();
   const [isLoading, setIsLoading] = useState(false);
   const { userId } = useParams();
