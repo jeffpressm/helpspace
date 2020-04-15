@@ -1,5 +1,6 @@
 [build.environment]
-  REACT_APP_TYPEFORM_URL = "https://guildhq.typeform.com/to/uaDAuC"
+  REACT_APP_CLIENT_TYPEFORM_URL = "https://guildhq.typeform.com/to/uaDAuC"
+  REACT_APP_EXPERT_TYPEFORM_URL = "https://guildhq.typeform.com/to/aa2L2C"
   REACT_APP_RESPONSES_SPREADSHEET_ID = "1SMus2rG-kjfy2SXASC-V8trxB4BFF7ITx-QvaoBOags"
   REACT_APP_CMS_SPREADSHEET_ID= "1SMus2rG-kjfy2SXASC-V8trxB4BFF7ITx-QvaoBOags"
 

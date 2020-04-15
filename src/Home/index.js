@@ -12,9 +12,9 @@ function Home() {
       <br />
       <ul>
         <li>
-          <Link to="/need-help">I need support</Link>
+          <Link to="/get-help">Get help</Link>
         </li>
-        <li>I can help (coming soon)</li>
+        <Link to="/give-help">Give help</Link>
       </ul>
     </div>
   );

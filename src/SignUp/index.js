@@ -2,7 +2,7 @@ import React, { useContext } from 'react';
 import { ReactTypeformEmbed } from 'react-typeform-embed';
 import { UserContext } from '../utils/context/UserContextProvider';
 
-const NeedHelp = () => {
+const SignUp = ({ formUrl }) => {
   const { id, Name: name } = useContext(UserContext);
 
   if (!id) return null;
@@ -14,11 +14,7 @@ const NeedHelp = () => {
 
   const paramString = new URLSearchParams(params);
 
-  return (
-    <ReactTypeformEmbed
-      url={`${process.env.REACT_APP_TYPEFORM_URL}?${paramString.toString()}`}
-    />
-  );
+  return <ReactTypeformEmbed url={`${formUrl}?${paramString.toString()}`} />;
 };
 
-export default NeedHelp;
+export default SignUp;

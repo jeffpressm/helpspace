@@ -2,9 +2,9 @@ import React from 'react';
 import { useParams } from 'react-router-dom';
 import useUserData from '../utils/hooks/useUserData';
 
-const User = () => {
+const Expert = () => {
   const { userId } = useParams();
-  const { data, isLoading } = useUserData(userId, 'Users');
+  const { data, isLoading } = useUserData(userId, 'Experts');
 
   if (isLoading) {
     return <div>Please wait while we register you...</div>;
@@ -27,4 +27,4 @@ const User = () => {
   );
 };
 
-export default User;
+export default Expert;
