@@ -32,12 +32,15 @@ const User = () => {
     return null;
   }
 
-  const { Name: name, Topic: topic, Email: email } = userData;
-
   return (
     <div>
-      Thanks for Guilding, {name}. We'll email you at {email} when we've found
-      an {topic} expert to help you.
+      <ul>
+        {Object.keys(userData).map((key) => (
+          <li>
+            {key}: {userData[key]}
+          </li>
+        ))}
+      </ul>
     </div>
   );
 };
