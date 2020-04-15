@@ -13,6 +13,7 @@ function getTheme(pathname) {
   switch (pathname) {
     case RouteList.home:
     case RouteList.get:
+    case RouteList.give:
       return 'red';
     default:
       return 'white';

@@ -14,7 +14,12 @@ const SignUp = ({ formUrl }) => {
 
   const paramString = new URLSearchParams(params);
 
-  return <ReactTypeformEmbed url={`${formUrl}?${paramString.toString()}`} />;
+  return (
+    <ReactTypeformEmbed
+      hideHeaders
+      url={`${formUrl}?${paramString.toString()}`}
+    />
+  );
 };
 
 export default SignUp;
