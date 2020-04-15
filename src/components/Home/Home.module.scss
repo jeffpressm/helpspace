@@ -1,0 +1,45 @@
+.root {
+  display: flex;
+  height: 100vh;
+  width: 100%;
+}
+
+.section {
+  color: var(--text-light);
+  display: flex;
+  flex: 1 0 50%;
+
+  &.get {
+    background-color: #e63835;
+  }
+
+  &.give {
+    background-color: #ff3e3a;
+  }
+}
+
+.link {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  justify-content: center;
+  padding: 0 var(--global-offset-x);
+  width: 100%;
+}
+
+.title {
+  font: bold 60px/1.1 var(--brand-font);
+  letter-spacing: -0.02;
+}
+
+.copy {
+  font-size: 18px;
+  line-height: 1.4;
+  margin-top: 20px;
+}
+
+.cta {
+  fill: currentColor;
+  margin-top: 100px;
+  width: 40px;
+}

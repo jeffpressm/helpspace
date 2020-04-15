@@ -11,8 +11,8 @@ const GlobalContainer = ({ children }) => {
   // TODO change theme based on route
   return (
     <div className={cx('root')}>
-      <header>
-        <GlobalNav theme="white" />
+      <header className={cx('header')}>
+        <GlobalNav theme="red" />
       </header>
       <main>{children}</main>
     </div>

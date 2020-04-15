@@ -1,6 +1,7 @@
 import React from 'react';
-import Home from './Home';
 import SignUp from './SignUp';
+import Home from './components/Home';
+import Give from './components/Give';
 import User from './User';
 import Faq from './Faq';
 import Expert from './Expert';
@@ -21,11 +22,14 @@ function App() {
               <Route exact path="/">
                 <Home />
               </Route>
-              <Route path="/get-help">
+              <Route path="/get">
                 <SignUp formUrl={process.env.REACT_APP_CLIENT_TYPEFORM_URL} />
               </Route>
-              <Route path="/give-help">
+              <Route path="/give">
                 <SignUp formUrl={process.env.REACT_APP_EXPERT_TYPEFORM_URL} />
+              </Route>
+              <Route path="/give">
+                <Give />
               </Route>
               <Route path="/user/:userId">
                 <User />
