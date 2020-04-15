@@ -1,10 +1,9 @@
-import React, { useEffect, useState, useContext } from 'react';
-import { useParams } from 'react-router-dom';
-import useTabletop from '../utils/hooks/useTabletop';
-import { CmsContext } from '../utils/context/CmsContextProvider';
+import React, { useContext } from 'react';
+import { SpreadsheetContext } from '../utils/context/SpreadsheetContextProvider';
 
 const Faq = () => {
-  const { FAQ } = useContext(CmsContext);
+  const { content } = useContext(SpreadsheetContext);
+  const { FAQ } = content;
   return (
     <div>
       <h1>FAQ</h1>

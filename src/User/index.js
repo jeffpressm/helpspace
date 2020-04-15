@@ -1,18 +1,18 @@
 import React, { useEffect, useState, useContext } from 'react';
 import { useParams } from 'react-router-dom';
-import { ResponsesContext } from '../utils/context/ResponsesContextProvider';
+import { SpreadsheetContext } from '../utils/context/SpreadsheetContextProvider';
 
 const User = () => {
-  const entries = useContext(ResponsesContext);
+  const { responses } = useContext(SpreadsheetContext);
   const [userData, setUserData] = useState();
   const [isLoading, setIsLoading] = useState(false);
   const { userId } = useParams();
 
   useEffect(() => {
-    if (!entries || !entries['Users']) {
+    if (!responses || !responses['Users']) {
       return;
     }
-    const newUserData = entries['Users'].find((c) => c['ID'] === userId);
+    const newUserData = responses['Users'].find((c) => c['ID'] === userId);
 
     if (!newUserData) {
       setIsLoading(true);
@@ -22,7 +22,7 @@ const User = () => {
     }
 
     setUserData(newUserData);
-  }, [entries, setUserData, userId]);
+  }, [responses, setUserData, userId]);
 
   if (isLoading) {
     return <div>Please wait while we register you...</div>;

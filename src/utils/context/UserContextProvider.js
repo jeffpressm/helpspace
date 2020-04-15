@@ -1,5 +1,5 @@
 import React, { createContext, useState, useEffect, useContext } from 'react';
-import { ResponsesContext } from './ResponsesContextProvider';
+import { SpreadsheetContext } from './SpreadsheetContextProvider';
 import { generateUuid } from '../strings';
 
 export const UserContext = createContext({
@@ -9,10 +9,10 @@ export const UserContext = createContext({
 
 const UserContextProvider = ({ children }) => {
   const [userData, setUserData] = useState({});
-  const entries = useContext(ResponsesContext);
+  const { responses } = useContext(SpreadsheetContext);
 
   useEffect(() => {
-    if (!entries || !entries['Users']) {
+    if (!responses || !responses['Users']) {
       return;
     }
     const existingUserId = window.localStorage.getItem('userId');
@@ -20,13 +20,13 @@ const UserContextProvider = ({ children }) => {
     const userId = existingUserId || generateUuid();
 
     if (existingUserId) {
-      const userInfo = entries['Users'].find((c) => c['ID'] === userId);
+      const userInfo = responses['Users'].find((c) => c['ID'] === userId);
       setUserData({ id: userId, ...userInfo });
     } else {
       window.localStorage.setItem('userId', userId);
       setUserData((data) => ({ ...data, id: userId }));
     }
-  }, [userData.id, entries]);
+  }, [userData.id, responses]);
 
   return (
     <UserContext.Provider value={userData}>{children}</UserContext.Provider>
