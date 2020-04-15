@@ -1,7 +1,6 @@
 import React from 'react';
 import SignUp from './SignUp';
 import Home from './components/Home';
-import Give from './components/Give';
 import User from './User';
 import Faq from './Faq';
 import Expert from './Expert';
@@ -9,6 +8,7 @@ import Login from './components/Login';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import UserContextProvider from './utils/context/UserContextProvider';
 import SpreadsheetContextProvider from './utils/context/SpreadsheetContextProvider';
+import { RouteList } from './lib/routes';
 
 import GlobalContainer from './components/GlobalContainer';
 
@@ -19,28 +19,25 @@ function App() {
         <UserContextProvider>
           <GlobalContainer>
             <Switch>
-              <Route exact path="/">
+              <Route exact path={RouteList.home}>
                 <Home />
               </Route>
-              <Route path="/get">
+              <Route path={RouteList.get}>
                 <SignUp formUrl={process.env.REACT_APP_CLIENT_TYPEFORM_URL} />
               </Route>
-              <Route path="/give">
+              <Route path={RouteList.give}>
                 <SignUp formUrl={process.env.REACT_APP_EXPERT_TYPEFORM_URL} />
               </Route>
-              <Route path="/give">
-                <Give />
-              </Route>
-              <Route path="/user/:userId">
+              <Route path={RouteList.user}>
                 <User />
               </Route>
-              <Route path="/expert/:userId">
+              <Route path={RouteList.expert}>
                 <Expert />
               </Route>
-              <Route path="/faq">
+              <Route path={RouteList.faq}>
                 <Faq />
               </Route>
-              <Route path="/login">
+              <Route path={RouteList.login}>
                 <Login />
               </Route>
             </Switch>

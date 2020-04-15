@@ -1,18 +1,32 @@
 import React from 'react';
+import { useLocation } from 'react-router-dom';
 import classNames from 'classnames/bind';
 
+import { RouteList } from '../../lib/routes';
 import GlobalNav from '../GlobalNav';
 
 import styles from './GlobalContainer.module.scss';
 
 const cx = classNames.bind(styles);
 
+function getTheme(pathname) {
+  switch (pathname) {
+    case RouteList.home:
+    case RouteList.get:
+      return 'red';
+    default:
+      return 'white';
+  }
+}
+
 const GlobalContainer = ({ children }) => {
-  // TODO change theme based on route
+  const location = useLocation();
+  const theme = getTheme(location.pathname);
+
   return (
     <div className={cx('root')}>
       <header className={cx('header')}>
-        <GlobalNav theme="red" />
+        <GlobalNav theme={theme} />
       </header>
       <main>{children}</main>
     </div>

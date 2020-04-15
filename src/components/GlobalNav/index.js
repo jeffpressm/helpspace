@@ -2,6 +2,8 @@ import React from 'react';
 import { Link, NavLink } from 'react-router-dom';
 import classNames from 'classnames/bind';
 
+import { RouteList } from '../../lib/routes';
+
 import styles from './GlobalNav.module.scss';
 
 const cx = classNames.bind(styles);
@@ -25,11 +27,11 @@ const GlobalNavLinks = ({ links }) => (
 const GlobalNav = ({ theme }) => {
   const links = [
     {
-      to: '/faq',
+      to: RouteList.faq,
       label: 'FAQ',
     },
     {
-      to: 'login',
+      to: RouteList.login,
       label: 'Login',
     },
   ];
