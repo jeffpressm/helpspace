@@ -1,3 +1,5 @@
+@import 'utils/styles/type';
+
 .root {
   display: flex;
   height: 100vh;
@@ -10,11 +12,11 @@
   flex: 1 0 50%;
 
   &.get {
-    background-color: #e63835;
+    background-color: var(--color-red-2);
   }
 
   &.give {
-    background-color: #ff3e3a;
+    background-color: var(--color-red-1);
   }
 }
 
@@ -28,13 +30,11 @@
 }
 
 .title {
-  font: bold 60px/1.1 var(--font-headline);
-  letter-spacing: -0.02;
+  @include headline-2;
 }
 
 .copy {
-  font-size: 18px;
-  line-height: 1.4;
+  @include copy-1;
   margin-top: 20px;
 }
 

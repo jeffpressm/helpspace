@@ -1,8 +1,23 @@
-:root {
-  --brand-color: #ff3e3a;
-  --text-light: #fff;
-  --text-dark: #111;
+@mixin headline-1 {
+  font: 800 100px/1 var(--font-headline);
+}
 
-  --font-headline: 'Montserrat';
-  --font-copy: 'Work Sans';
+@mixin headline-2 {
+  font: 800 60px/1.2 var(--font-headline);
+}
+
+@mixin headline-3 {
+  font: 700 60px/1.3 var(--font-headline);
+}
+
+@mixin copy-1 {
+  font: 500 18px/1.4 var(--font-copy);
+}
+
+@mixin copy-2 {
+  font: 400 14px/1.6 var(--font-copy);
+}
+
+@mixin copy-3 {
+  font: 500 14px/1.3 var(--font-copy);
 }

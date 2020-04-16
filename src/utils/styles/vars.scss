@@ -1,0 +1,18 @@
+:root {
+  // Colors
+  --color-white: #fff;
+  --color-gray-1: #f3f3f3;
+  --color-gray-2: #414141;
+  --color-gray-3: #111;
+  --color-red-1: #ff4148;
+  --color-red-2: #e6393f;
+
+  // Type
+  --text-light: var(--color-white);
+  --text-dark: var(--color-gray-3);
+  --font-headline: 'Montserrat';
+  --font-copy: 'Work Sans';
+
+  // Space
+  --global-offset-x: 12.5vw;
+}
