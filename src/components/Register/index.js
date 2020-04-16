@@ -13,10 +13,17 @@ const Register = () => {
   const { data } = useResponseData(responseId, responseSheets[userType]);
 
   useEffect(() => {
-    window.localStorage.setItem('email', userEmail);
+    const existingEmail = window.localStorage.getItem('email');
+
+    // Typeform returns email as  _____ for existing user flow
+    const requestEmail = userEmail === '_____' ? existingEmail : userEmail;
+
+    if (!existingEmail) {
+      window.localStorage.setItem('email', requestEmail);
+    }
 
     if (data) {
-      history.push(`/${userType}/${responseId}`);
+      history.push(`/${userType}?email=${requestEmail}`);
     }
   }, [userEmail, userType, responseId, history, data]);
 

@@ -1,11 +1,11 @@
 export const RouteList = {
   home: '/',
-  expert: '/expert/:responseId',
+  expert: '/expert',
   faq: '/faq',
   get: '/get',
   give: '/give',
   login: '/login',
   user: '/user',
-  register: '/regiser',
+  register: '/register',
   listing: '/listing',
 };
