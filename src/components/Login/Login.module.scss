@@ -1,0 +1,46 @@
+@import 'utils/styles/type';
+
+.root {
+  height: 100vh;
+  padding: 240px var(--global-offset-x) 0;
+}
+
+.title {
+  @include headline-2;
+}
+
+.field {
+  border-bottom: 2px solid rgba(#000, 0.2);
+  margin-top: 80px;
+  position: relative;
+  width: 420px;
+}
+
+.input {
+  @include copy-1;
+  background: transparent;
+  border: 0;
+  padding: 15px 10px;
+  width: 100%;
+
+  &::placeholder {
+    color: var(--color-gray-3);
+  }
+}
+
+.button {
+  background: none;
+  border: 0;
+  fill: var(--color-gray-3);
+  padding: 0;
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 16px;
+}
+
+.error {
+  @include copy-1;
+  color: var(--color-red-1);
+}

@@ -1,7 +1,65 @@
-import React from 'react';
+import React, { useState, useContext } from 'react';
+import { ReactComponent as ArrowIcon } from 'assets/icons/arrow.svg';
+import classNames from 'classnames/bind';
+import styles from './Login.module.scss';
+import { useHistory } from 'react-router-dom';
+import { UserContext } from 'utils/context/UserContextProvider';
+import { SpreadsheetContext } from 'utils/context/SpreadsheetContextProvider';
+import getUserInfo from 'utils/getUserInfo';
+import { RouteList } from 'lib/routes';
+
+const cx = classNames.bind(styles);
 
 const Login = () => {
-  return <div>Login Page</div>;
+  const { setUserData } = useContext(UserContext);
+  const { responses } = useContext(SpreadsheetContext);
+  const history = useHistory();
+  const [email, setEmail] = useState();
+  const [error, setError] = useState();
+
+  const handleEmailChange = (e) => {
+    setEmail(e.target.value);
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+
+    const userInfo = getUserInfo(responses, email);
+
+    if (!userInfo.name) {
+      setError('This user does not exist');
+      return;
+    }
+
+    if (userInfo.clientResponses[0]) {
+      history.push(`/user/${userInfo.clientResponses[0]['ID']}`);
+    } else {
+      history.push(`/expert/${userInfo.expertResponses[0]['ID']}`);
+    }
+
+    localStorage.setItem('email', email);
+    setUserData(userInfo);
+  };
+
+  return (
+    <form className={cx('root')}>
+      <label className={cx('title')}>
+        Enter your email to view your helpspace
+      </label>
+      <div className={cx('field')}>
+        <input
+          className={cx('input')}
+          type="email"
+          placeholder="Email address"
+          onChange={handleEmailChange}
+        />
+        <button className={cx('button')} onClick={handleSubmit}>
+          <ArrowIcon />
+        </button>
+      </div>
+      {error && <p className={cx('error')}>{error}</p>}
+    </form>
+  );
 };
 
 export default Login;
