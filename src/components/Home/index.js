@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import classNames from 'classnames/bind';
 
 import { ReactComponent as ArrowIcon } from 'assets/icons/arrow.svg';
+import About from 'components/About';
 import Footer from 'components/Footer';
 import { RouteList } from 'lib/routes';
 import { SpreadsheetContext } from 'utils/context/SpreadsheetContextProvider';
@@ -37,6 +38,8 @@ const Home = () => {
           </Link>
         </section>
       </article>
+      ]
+      <About />
       <Footer />
     </>
   );
