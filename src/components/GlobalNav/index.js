@@ -40,7 +40,7 @@ const GlobalNav = ({ theme }) => {
     <div className={cx('root', [theme])}>
       <div className={cx('logoContainer')}>
         <Link to="/">
-          <span className={cx('logo')}>help supply</span>
+          <span className={cx('logo')}>helpspace</span>
         </Link>
       </div>
       <div className={cx('linkContainer')}>
