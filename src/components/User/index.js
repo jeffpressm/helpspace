@@ -1,16 +1,13 @@
 import React from 'react';
 import { useParams } from 'react-router-dom';
-import useUserData from 'utils/hooks/useUserData';
+import useResponseData from 'utils/hooks/useResponseData';
+import { responseSheets } from 'lib/sheets';
 
 const User = () => {
-  const { userId } = useParams();
-  const { data, isLoading } = useUserData(userId, 'Users');
+  const { responseId } = useParams();
+  const { data, isLoading } = useResponseData(responseId, responseSheets.user);
 
-  if (isLoading) {
-    return <div>Please wait while we register you...</div>;
-  }
-
-  if (!data) {
+  if (!data || isLoading) {
     return null;
   }
 

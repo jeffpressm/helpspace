@@ -1,28 +1,30 @@
 import { useState, useEffect, useContext } from 'react';
 import { SpreadsheetContext } from '../context/SpreadsheetContextProvider';
 
-function useUserData(userId, sheetId) {
+function useResponseData(responseId, sheetId) {
   const { responses } = useContext(SpreadsheetContext);
-  const [userData, setUserData] = useState();
+  const [responseData, setResponseData] = useState();
   const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
     if (!responses || !responses[sheetId]) {
       return;
     }
-    const newUserData = responses[sheetId].find((c) => c['ID'] === userId);
+    const newresponseData = responses[sheetId].find(
+      (c) => c['ID'] === responseId
+    );
 
-    if (!newUserData) {
+    if (!newresponseData) {
       setIsLoading(true);
       setTimeout(() => {
         window.location.reload();
       }, 5000);
     }
 
-    setUserData(newUserData);
-  }, [responses, setUserData, userId, sheetId]);
+    setResponseData(newresponseData);
+  }, [responses, setResponseData, responseId, sheetId]);
 
-  return { data: userData, isLoading };
+  return { data: responseData, isLoading };
 }
 
-export default useUserData;
+export default useResponseData;

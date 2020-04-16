@@ -8,6 +8,8 @@ import Login from 'components/Login';
 import Home from 'components/Home';
 import SignUp from 'components/SignUp';
 import User from 'components/User';
+import Listing from 'components/Listing';
+import Register from 'components/Register';
 import { RouteList } from 'lib/routes';
 import UserContextProvider from 'utils/context/UserContextProvider';
 import SpreadsheetContextProvider from 'utils/context/SpreadsheetContextProvider';
@@ -39,6 +41,12 @@ function App() {
               </Route>
               <Route path={RouteList.login}>
                 <Login />
+              </Route>
+              <Route path={RouteList.listing}>
+                <Listing />
+              </Route>
+              <Route path={RouteList.register}>
+                <Register />
               </Route>
             </Switch>
           </GlobalContainer>

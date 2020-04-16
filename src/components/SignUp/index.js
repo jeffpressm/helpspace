@@ -1,15 +1,14 @@
 import React, { useContext } from 'react';
 import { ReactTypeformEmbed } from 'react-typeform-embed';
-
 import { UserContext } from 'utils/context/UserContextProvider';
+import { generateUuid } from 'utils/strings';
 
 const SignUp = ({ formUrl }) => {
-  const { id, Name: name } = useContext(UserContext);
-
-  if (!id) return null;
+  const { name } = useContext(UserContext);
+  const id = generateUuid();
 
   const params = {
-    userid: id,
+    responseId: id,
     ...(name && { name, existing: 'true' }),
   };
 
