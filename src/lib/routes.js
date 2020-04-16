@@ -5,7 +5,7 @@ export const RouteList = {
   get: '/get',
   give: '/give',
   login: '/login',
-  user: '/user/:responseId',
+  user: '/user',
   register: '/regiser',
   listing: '/listing',
 };

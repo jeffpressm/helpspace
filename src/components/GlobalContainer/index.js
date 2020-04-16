@@ -20,14 +20,25 @@ function getTheme(pathname) {
   }
 }
 
+function getNavMode(pathname) {
+  switch (pathname) {
+    case RouteList.user:
+    case RouteList.expert:
+      return 'dashboard';
+    default:
+      return 'standard';
+  }
+}
+
 const GlobalContainer = ({ children }) => {
   const location = useLocation();
   const theme = getTheme(location.pathname);
+  const mode = getNavMode(location.pathname);
 
   return (
     <div className={cx('root')}>
       <header className={cx('header')}>
-        <GlobalNav theme={theme} />
+        <GlobalNav theme={theme} mode={mode} />
       </header>
       <main>{children}</main>
     </div>

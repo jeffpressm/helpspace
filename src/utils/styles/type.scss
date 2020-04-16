@@ -3,7 +3,7 @@
 }
 
 @mixin headline-2($weight: 800) {
-  font: $weight 60px/1.2 var(--font-headline);
+  font: $weight 50px/1.2 var(--font-headline);
 }
 
 @mixin headline-3($weight: 700) {

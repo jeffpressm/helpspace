@@ -6,7 +6,6 @@ import { useHistory } from 'react-router-dom';
 import { UserContext } from 'utils/context/UserContextProvider';
 import { SpreadsheetContext } from 'utils/context/SpreadsheetContextProvider';
 import getUserInfo from 'utils/getUserInfo';
-import { RouteList } from 'lib/routes';
 
 const cx = classNames.bind(styles);
 
@@ -32,9 +31,9 @@ const Login = () => {
     }
 
     if (userInfo.clientResponses[0]) {
-      history.push(`/user/${userInfo.clientResponses[0]['ID']}`);
+      history.push(`/user?email=${email}`);
     } else {
-      history.push(`/expert/${userInfo.expertResponses[0]['ID']}`);
+      history.push(`/expert?email=${email}`);
     }
 
     localStorage.setItem('email', email);

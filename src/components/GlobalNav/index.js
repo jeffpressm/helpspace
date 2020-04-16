@@ -24,17 +24,29 @@ const GlobalNavLinks = ({ links }) => (
   </ul>
 );
 
-const GlobalNav = ({ theme }) => {
-  const links = [
-    {
-      to: RouteList.faq,
-      label: 'FAQ',
-    },
-    {
-      to: RouteList.login,
-      label: 'Login',
-    },
-  ];
+const GlobalNav = ({ theme, mode }) => {
+  const links = {
+    standard: [
+      {
+        to: RouteList.faq,
+        label: 'FAQ',
+      },
+      {
+        to: RouteList.login,
+        label: 'Login',
+      },
+    ],
+    dashboard: [
+      {
+        to: RouteList.give,
+        label: 'Give',
+      },
+      {
+        to: RouteList.get,
+        label: 'Get',
+      },
+    ],
+  };
 
   return (
     <div className={cx('root', [theme])}>
@@ -43,8 +55,8 @@ const GlobalNav = ({ theme }) => {
           <span className={cx('logo')}>helpspace</span>
         </Link>
       </div>
-      <div className={cx('linkContainer')}>
-        <GlobalNavLinks links={links} />
+      <div className={cx(mode === 'standard' && 'linkContainer')}>
+        <GlobalNavLinks links={links[mode]} />
       </div>
     </div>
   );
