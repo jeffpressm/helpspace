@@ -1,0 +1,62 @@
+@import 'utils/styles/mixins';
+@import 'utils/styles/type';
+
+.root {
+  background-color: var(--color-white);
+  max-width: calc(50vw + var(--global-offset-x));
+  padding: 100px var(--global-offset-x);
+}
+
+.headline {
+  @include headline-3;
+
+  > .line1 {
+    color: var(--text-dark);
+  }
+
+  > .line2 {
+    color: var(--text-red);
+  }
+}
+
+.form {
+  margin-top: 60px;
+  width: 60%;
+}
+
+.label {
+  border-bottom: 1px solid;
+  color: var(--color-gray-1);
+  display: flex;
+  padding-bottom: 10px;
+
+  &:focus-within {
+    color: var(--color-gray-2);
+  }
+
+  > input {
+    @include reset-input;
+    color: var(--text-dark);
+  }
+
+  > button {
+    @include reset-button;
+    fill: currentColor;
+    margin-left: 10px;
+    width: 16px;
+  }
+}
+
+.error {
+  color: var(--text-red);
+  margin-top: 10px;
+}
+
+.copy {
+  @include copy-1(400);
+  margin-top: 80px;
+}
+
+.social {
+  margin-top: 40px;
+}
