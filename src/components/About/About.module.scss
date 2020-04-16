@@ -1,0 +1,91 @@
+@import 'utils/styles/type';
+
+.root {
+  background-color: var(--color-gray-1);
+  padding: 160px var(--global-offset-x);
+}
+
+.headline {
+  @include headline-2;
+  color: var(--color-gray-3);
+  width: 50%;
+}
+
+.toc {
+  display: flex;
+  margin-top: 80px;
+  width: 100%;
+}
+
+.toc-item {
+  @include headline-3;
+
+  &:not(.active) {
+    opacity: 0.3;
+  }
+
+  & + & {
+    margin-left: 40px;
+  }
+}
+
+.section-container {
+  margin-top: 40px;
+}
+
+.section {
+  display: grid;
+  grid-gap: 19px;
+  grid-template-columns: repeat(4, 1fr);
+
+  &:not(.active) {
+    display: none;
+  }
+}
+
+.challenge {
+  @include copy-1;
+  background-color: var(--color-white);
+  border-radius: 6px;
+  display: flex;
+  flex-direction: column;
+  height: 320px;
+  justify-content: space-between;
+  padding: 32px;
+}
+
+.challenge-title {
+  .challenge:not(:hover) & {
+    opacity: 0.8;
+  }
+}
+
+.challenge-ctas {
+  .challenge:not(:hover) & {
+    display: none;
+  }
+}
+
+.challenge-cta {
+  & + & {
+    margin-top: 15px;
+  }
+
+  > a:hover {
+    color: var(--text-red);
+  }
+}
+
+.arrow {
+  display: inline-block;
+  margin-left: 10px;
+  width: 12px;
+
+  a:hover & {
+    fill: var(--text-red);
+  }
+
+  a:not(:hover) & {
+    display: none;
+  }
+}
