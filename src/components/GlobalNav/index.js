@@ -2,7 +2,7 @@ import React from 'react';
 import { Link, NavLink } from 'react-router-dom';
 import classNames from 'classnames/bind';
 
-import { RouteList } from '../../lib/routes';
+import { RouteList } from 'lib/routes';
 
 import styles from './GlobalNav.module.scss';
 

@@ -1,5 +1,6 @@
 import React, { useContext } from 'react';
-import { SpreadsheetContext } from '../utils/context/SpreadsheetContextProvider';
+
+import { SpreadsheetContext } from 'utils/context/SpreadsheetContextProvider';
 
 const Faq = () => {
   const { content } = useContext(SpreadsheetContext);

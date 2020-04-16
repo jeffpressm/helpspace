@@ -2,8 +2,8 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import classNames from 'classnames/bind';
 
-import { ReactComponent as ArrowIcon } from '../../assets/icons/arrow.svg';
-import { RouteList } from '../../lib/routes';
+import { ReactComponent as ArrowIcon } from 'assets/icons/arrow.svg';
+import { RouteList } from 'lib/routes';
 
 import styles from './Home.module.scss';
 

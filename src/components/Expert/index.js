@@ -1,6 +1,7 @@
 import React from 'react';
 import { useParams } from 'react-router-dom';
-import useUserData from '../utils/hooks/useUserData';
+
+import useUserData from 'utils/hooks/useUserData';
 
 const Expert = () => {
   const { userId } = useParams();

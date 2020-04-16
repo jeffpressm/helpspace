@@ -1,6 +1,7 @@
 import React, { useContext } from 'react';
 import { ReactTypeformEmbed } from 'react-typeform-embed';
-import { UserContext } from '../utils/context/UserContextProvider';
+
+import { UserContext } from 'utils/context/UserContextProvider';
 
 const SignUp = ({ formUrl }) => {
   const { id, Name: name } = useContext(UserContext);

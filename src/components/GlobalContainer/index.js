@@ -2,8 +2,8 @@ import React from 'react';
 import { useLocation } from 'react-router-dom';
 import classNames from 'classnames/bind';
 
-import { RouteList } from '../../lib/routes';
-import GlobalNav from '../GlobalNav';
+import GlobalNav from 'components/GlobalNav';
+import { RouteList } from 'lib/routes';
 
 import styles from './GlobalContainer.module.scss';
 
