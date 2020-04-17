@@ -19,37 +19,9 @@
   }
 }
 
-.form {
+.form-container {
   margin-top: 60px;
   width: 60%;
-}
-
-.label {
-  border-bottom: 1px solid;
-  color: var(--color-gray-1);
-  display: flex;
-  padding-bottom: 10px;
-
-  &:focus-within {
-    color: var(--color-gray-2);
-  }
-
-  > input {
-    @include reset-input;
-    color: var(--text-dark);
-  }
-
-  > button {
-    @include reset-button;
-    fill: currentColor;
-    margin-left: 10px;
-    width: 16px;
-  }
-}
-
-.error {
-  color: var(--text-red);
-  margin-top: 10px;
 }
 
 .copy {

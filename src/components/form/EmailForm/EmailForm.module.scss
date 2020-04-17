@@ -1,0 +1,40 @@
+@import 'utils/styles/mixins';
+@import 'utils/styles/type';
+
+.label {
+  @include copy-1;
+  border-bottom: 2px solid;
+  color: var(--color-gray-1);
+  display: flex;
+  padding-bottom: 10px;
+
+  &:focus-within {
+    color: var(--color-gray-2);
+  }
+
+  > input {
+    @include reset-input;
+    color: var(--text-dark);
+  }
+}
+
+.submit {
+  @include reset-button;
+  fill: currentColor;
+  margin-left: 10px;
+  width: 16px;
+
+  .touched:invalid & {
+    fill: var(--text-red);
+  }
+}
+
+.error {
+  color: var(--text-red);
+  margin-top: 20px;
+  visibility: hidden;
+
+  .touched:invalid & {
+    visibility: unset;
+  }
+}
