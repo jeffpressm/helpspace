@@ -39,7 +39,9 @@ const User = () => {
         <section className={cx('item')}>
           <h2 className={cx('title')}>{response['Challenge']}</h2>
           <Tile
-            url={response['Doc Url']}
+            href={response['Doc Url']}
+            target="_blank"
+            rel="noopener noreferrer"
             title="Start here: Introduction and background"
           />
           <div className={cx('footer')}>

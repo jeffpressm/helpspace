@@ -6,9 +6,9 @@ import docIcon from 'assets/icons/doc.png';
 
 const cx = classNames.bind(styles);
 
-const Tile = ({ url, title }) => {
+const Tile = ({ title, ...rest }) => {
   return (
-    <a href={url} className={cx('root')}>
+    <a className={cx('root')} {...rest}>
       <div>
         <img src={docIcon} alt="Google Doc symbol" />
       </div>
