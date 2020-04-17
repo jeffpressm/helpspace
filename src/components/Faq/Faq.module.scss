@@ -1,0 +1,44 @@
+@import 'utils/styles/type';
+
+.root {
+  padding: var(--global-offset-y) var(--global-offset-x);
+}
+
+.hero-headline {
+  @include headline-2;
+  color: var(--text-dark);
+}
+
+.hero-body {
+  @include copy-2;
+  color: var(--text-dark);
+  margin-top: 50px;
+}
+
+.faq-container {
+  margin-top: 50px;
+}
+
+.faq-item {
+  padding: 80px 0;
+
+  & + & {
+    border-top: 1px solid var(--text-dark);
+  }
+}
+
+.faq-headline {
+  @include headline-3;
+  color: var(--text-dark);
+}
+
+.faq-answer {
+  @include copy-1;
+  color: var(--text-dark);
+}
+
+.faq-description {
+  @include copy-2;
+  color: var(--text-dark);
+  margin-top: 15px;
+}
