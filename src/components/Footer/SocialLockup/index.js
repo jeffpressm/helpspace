@@ -3,6 +3,11 @@ import classNames from 'classnames/bind';
 
 import { ReactComponent as AtIcon } from 'assets/icons/at.svg';
 
+import { ReactComponent as InstagramIcon } from 'assets/icons/instagram.svg';
+import { ReactComponent as LinkedInIcon } from 'assets/icons/linkedin.svg';
+
+import { ReactComponent as TwitterIcon } from 'assets/icons/twitter.svg';
+
 import styles from './SocialLockup.module.scss';
 
 const cx = classNames.bind(styles);
@@ -30,7 +35,7 @@ const SocialLockup = ({ email, linkedin, instagram, twitter }) => {
             target="_blank"
             rel="noopener noreferrer"
           >
-            LI
+            <LinkedInIcon className={cx('icon')} />
           </a>
         </li>
       )}
@@ -42,7 +47,7 @@ const SocialLockup = ({ email, linkedin, instagram, twitter }) => {
             target="_blank"
             rel="noopener noreferrer"
           >
-            IG
+            <InstagramIcon className={cx('icon')} />
           </a>
         </li>
       )}
@@ -54,7 +59,7 @@ const SocialLockup = ({ email, linkedin, instagram, twitter }) => {
             target="_blank"
             rel="noopener noreferrer"
           >
-            TW
+            <TwitterIcon className={cx('icon')} />
           </a>
         </li>
       )}
