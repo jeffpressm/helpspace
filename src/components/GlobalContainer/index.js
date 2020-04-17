@@ -36,7 +36,6 @@ function getNavTarget(pathname) {
     case RouteList.give:
       return '_blank';
     default:
-      return 'self';
       return '_self';
   }
 }
