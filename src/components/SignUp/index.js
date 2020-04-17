@@ -4,12 +4,12 @@ import { UserContext } from 'utils/context/UserContextProvider';
 import { generateUuid } from 'utils/strings';
 
 const SignUp = ({ formUrl }) => {
-  const { name } = useContext(UserContext);
+  const { name, email } = useContext(UserContext);
   const id = generateUuid();
 
   const params = {
     responseId: id,
-    ...(name && { name, existing: 'true' }),
+    ...(name && { name, existing: 'true', email }),
   };
 
   const paramString = new URLSearchParams(params);

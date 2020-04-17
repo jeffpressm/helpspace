@@ -15,6 +15,7 @@ const getUserInfo = (responses, email) => {
 
   return {
     name: userInfo['Name'],
+    email: email,
     clientResponses,
     expertResponses,
   };
