@@ -4,7 +4,7 @@
 .label {
   @include copy-1;
   border-bottom: 2px solid;
-  color: var(--color-gray-1);
+  color: rgba(#111, 0.2);
   display: flex;
   padding-bottom: 10px;
 

@@ -2,7 +2,6 @@
 @import 'utils/styles/type';
 
 .root {
-  background-color: var(--color-white);
   max-width: calc(50vw + var(--global-offset-x));
   padding: 100px var(--global-offset-x);
 }

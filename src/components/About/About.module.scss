@@ -2,7 +2,7 @@
 
 .root {
   background-color: var(--color-gray-1);
-  padding: 160px var(--global-offset-x);
+  padding: var(--global-offset-y) var(--global-offset-x);
 }
 
 .headline {

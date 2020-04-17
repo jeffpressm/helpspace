@@ -39,7 +39,9 @@ const Home = () => {
         </section>
       </article>
       <About />
-      <Footer />
+      <footer className={cx('footer')}>
+        <Footer />
+      </footer>
     </>
   );
 };
