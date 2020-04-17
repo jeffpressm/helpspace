@@ -37,6 +37,7 @@ function getNavTarget(pathname) {
       return '_blank';
     default:
       return 'self';
+      return '_self';
   }
 }
 

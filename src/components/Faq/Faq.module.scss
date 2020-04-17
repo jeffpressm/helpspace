@@ -11,7 +11,7 @@
 
 .hero-body {
   @include copy-2;
-  color: var(--text-dark);
+  color: rgba(#111, 0.8);
   margin-top: 50px;
 }
 
