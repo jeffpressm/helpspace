@@ -11,7 +11,7 @@
 
 .hero-body {
   @include copy-2;
-  color: var(--text-dark);
+  color: rgba(#111, 0.8);
   margin-top: 50px;
 }
 
@@ -23,7 +23,7 @@
   padding: 80px 0;
 
   & + & {
-    border-top: 1px solid var(--text-dark);
+    border-top: 1px solid rgba(#111, 0.1);
   }
 }
 

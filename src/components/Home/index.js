@@ -38,7 +38,6 @@ const Home = () => {
           </Link>
         </section>
       </article>
-      ]
       <About />
       <Footer />
     </>
