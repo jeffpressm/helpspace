@@ -33,7 +33,7 @@ const User = () => {
                   <img src={helpspaceAvatar} alt="Helpspace avatar" />
                 </li>
                 <li className={cx('avatar__item')}>
-                  <Avatar name={name} />
+                  <Avatar />
                 </li>
               </ul>
               <p>Shared with you and Helpspace</p>

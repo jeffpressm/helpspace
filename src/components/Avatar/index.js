@@ -1,12 +1,9 @@
 import React from 'react';
 
-import styles from './Avatar.module.scss';
-import classNames from 'classnames/bind';
+import { ReactComponent as AvatarIcon } from 'assets/icons/avatar.svg';
 
-const cx = classNames.bind(styles);
-
-const Avatar = ({ name }) => {
-  return <div className={cx('root')}>{name.charAt(0)}</div>;
+const Avatar = () => {
+  return <AvatarIcon />;
 };
 
 export default Avatar;

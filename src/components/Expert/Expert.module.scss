@@ -1,0 +1,95 @@
+@import 'utils/styles/type';
+
+.root {
+  background-color: var(--color-red-1);
+}
+
+.inner {
+  margin: 0 auto;
+  max-width: 840px;
+  padding: 180px 0;
+}
+
+.header {
+  align-items: center;
+  display: flex;
+  margin-bottom: 130px;
+}
+
+.title {
+  @include headline-1;
+  margin-bottom: 10px;
+}
+
+.subtitle {
+  @include copy-3;
+}
+
+.avatar {
+  width: 240px;
+}
+
+.heading {
+  @include headline-4;
+  margin-bottom: 35px;
+}
+
+.challenges {
+  display: flex;
+  flex-wrap: wrap;
+  margin-bottom: 145px;
+}
+
+.challenges__item {
+  @include copy-1;
+  background-color: var(--color-white);
+  border-radius: 6px;
+  height: 320px;
+  margin: 0 20px 20px 0;
+  padding: 25px;
+  width: 256px;
+}
+
+.challenges__add {
+  @include headline-2;
+  align-items: center;
+  background-color: var(--color-red-2);
+  border-radius: 6px;
+  color: var(--color-white);
+  display: flex;
+  font-size: 40px;
+  height: 320px;
+  justify-content: center;
+  margin: 0 20px 20px 0;
+  width: 256px;
+}
+
+.quote {
+  @include headline-2;
+  margin-bottom: 50px;
+}
+
+.share {
+  display: flex;
+  flex-direction: row;
+}
+
+.share__button {
+  @include copy-1;
+  align-items: center;
+  background-color: var(--color-red-2);
+  border: 0;
+  border-radius: 6px;
+  color: var(--color-white);
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  height: 140px;
+  justify-content: center;
+  margin-right: 15px;
+  width: 150px;
+}
+
+.share__icon {
+  width: 70px;
+}
