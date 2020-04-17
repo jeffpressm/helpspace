@@ -1,24 +1,40 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState, useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
 import { SpreadsheetContext } from 'utils/context/SpreadsheetContextProvider';
 import getUserInfo from 'utils/getUserInfo';
 import styles from './User.module.scss';
 import classNames from 'classnames/bind';
 import Tile from 'components/Tile';
+import HowTo from 'components/HowTo';
 import helpspaceAvatar from 'assets/icons/helpspace-avatar.png';
 import Avatar from 'components/Avatar';
 
 const cx = classNames.bind(styles);
 
 const User = () => {
+  const [showHowTo, setShowHowTo] = useState(false);
   const { search } = useLocation();
   const { responses } = useContext(SpreadsheetContext);
   const query = new URLSearchParams(search);
   const email = query.get('email');
-  const { clientResponses, name } = getUserInfo(responses, email);
+  const { clientResponses } = getUserInfo(responses, email);
+
+  useEffect(() => {
+    const shouldShowHowTo = !localStorage.getItem('seenHowTo');
+    if (shouldShowHowTo) {
+      setShowHowTo(true);
+    }
+  }, []);
+
+  if (showHowTo) {
+    return <HowTo onClose={() => setShowHowTo(false)} />;
+  }
 
   return (
     <article className={cx('root')}>
+      <button onClick={() => setShowHowTo(true)} className={cx('help-link')}>
+        How to use?
+      </button>
       {clientResponses.map((response) => (
         <section className={cx('item')}>
           <h2 className={cx('title')}>{response['Challenge']}</h2>

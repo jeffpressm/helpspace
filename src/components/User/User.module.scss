@@ -1,9 +1,11 @@
 @import 'utils/styles/type';
+@import 'utils/styles/mixins';
 
 .root {
   margin: 0 auto;
   max-width: 840px;
   padding: 180px 0;
+  position: relative;
 }
 
 .item {
@@ -41,5 +43,18 @@
 
   &:not(:first-child) {
     margin-left: -10px;
+  }
+}
+
+.help-link {
+  @include reset-button;
+  @include copy-2;
+  position: absolute;
+  right: 0;
+  top: 65px;
+  z-index: 2;
+
+  &:hover {
+    color: var(--color-red-2);
   }
 }

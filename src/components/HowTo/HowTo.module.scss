@@ -1,0 +1,85 @@
+@import 'utils/styles/type';
+@import 'utils/styles/mixins';
+
+.root {
+  background-color: var(--color-grey-1);
+}
+
+.header {
+  display: flex;
+  justify-content: flex-end;
+  padding: 60px var(--global-offset-x) 0;
+  position: relative;
+  z-index: 2;
+}
+
+.support {
+  @include copy-2;
+  margin-top: 5px;
+}
+
+.support__link {
+  font-weight: 500;
+}
+
+.close-button {
+  @include reset-button;
+  @include copy-3;
+  display: inline-block;
+  margin-left: 30px;
+
+  &:hover {
+    color: var(--color-red-2);
+  }
+}
+
+
+.title {
+  @include headline-1;
+  margin-bottom: 100px;
+  max-width: 550px;
+}
+
+.inner {
+  margin: 0 auto;
+  max-width: 1080px;
+  padding: 90px 0;
+}
+
+.section {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.block {
+  margin-bottom: 70px;
+  max-width: 720px;
+}
+
+.heading {
+  @include headline-4(600);
+}
+
+.body {
+  @include copy-2;
+
+  p {
+    margin-bottom: 30px;
+  }
+}
+
+.cta {
+  @include reset-button;
+  @include copy-1;
+  background-color: var(--color-gray-3);
+  border-radius: 6px;
+  color: var(--color-white);
+  margin-top: 80px;
+  padding: 30px;
+  text-align: center;
+  width: 100%;
+
+  &:hover {
+    background-color: var(--color-red-2);
+  }
+}

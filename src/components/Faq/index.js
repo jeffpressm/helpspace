@@ -3,7 +3,7 @@ import classNames from 'classnames/bind';
 
 import { SpreadsheetContext } from 'utils/context/SpreadsheetContextProvider';
 
-import TwoUp from './TwoUp';
+import TwoUp from 'components/TwoUp';
 import styles from './Faq.module.scss';
 
 const cx = classNames.bind(styles);
