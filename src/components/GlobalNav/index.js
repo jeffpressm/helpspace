@@ -2,6 +2,7 @@ import React from 'react';
 import { Link, NavLink } from 'react-router-dom';
 import classNames from 'classnames/bind';
 
+import { ReactComponent as Logo } from 'assets/logo.svg';
 import { RouteList } from 'lib/routes';
 
 import styles from './GlobalNav.module.scss';
@@ -52,10 +53,10 @@ const GlobalNav = ({ theme, mode }) => {
     <div className={cx('root', [theme])}>
       <div className={cx('logoContainer')}>
         <Link to="/">
-          <span className={cx('logo')}>helpspace</span>
+          <Logo />
         </Link>
       </div>
-      <div className={cx(mode === 'standard' && 'linkContainer')}>
+      <div className={cx('linkContainer', [mode])}>
         <GlobalNavLinks links={links[mode]} />
       </div>
     </div>
