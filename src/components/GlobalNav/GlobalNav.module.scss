@@ -44,12 +44,14 @@
   }
 
   &.selected {
+    opacity: 1;
+
     .root.red & {
-      --text-color: var(--text-light);
+      color: var(--text-light);
     }
 
     .root.white & {
-      --text-color: var(--color-red-2);
+      color: var(--color-red-2);
     }
   }
 }
