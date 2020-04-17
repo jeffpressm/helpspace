@@ -9,7 +9,7 @@ import styles from './GlobalContainer.module.scss';
 
 const cx = classNames.bind(styles);
 
-function getTheme(pathname) {
+function getNavTheme(pathname) {
   switch (pathname) {
     case RouteList.home:
     case RouteList.get:
@@ -30,15 +30,26 @@ function getNavMode(pathname) {
   }
 }
 
+function getNavTarget(pathname) {
+  switch (pathname) {
+    case RouteList.get:
+    case RouteList.give:
+      return '_blank';
+    default:
+      return 'self';
+  }
+}
+
 const GlobalContainer = ({ children }) => {
   const location = useLocation();
-  const theme = getTheme(location.pathname);
+  const theme = getNavTheme(location.pathname);
   const mode = getNavMode(location.pathname);
+  const target = getNavTarget(location.pathname);
 
   return (
     <div className={cx('root')}>
       <header className={cx('header')}>
-        <GlobalNav theme={theme} mode={mode} />
+        <GlobalNav theme={theme} mode={mode} target={target} />
       </header>
       <main>{children}</main>
     </div>
