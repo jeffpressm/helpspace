@@ -4,6 +4,7 @@ import classNames from 'classnames/bind';
 import { ReactComponent as ArrowIcon } from 'assets/icons/arrow.svg';
 import { SpreadsheetContext } from 'utils/context/SpreadsheetContextProvider';
 
+import SocialLockup from './SocialLockup';
 import styles from './Footer.module.scss';
 
 const cx = classNames.bind(styles);
@@ -30,7 +31,16 @@ const Footer = () => {
         </label>
       </form>
       <p className={cx('copy')}>{FooterContent['Description']}</p>
-      <div className={cx('social')}>TODO</div>
+      <div className={cx('social')}>
+        <SocialLockup
+          {...{
+            email: FooterContent['Email'],
+            linkedin: FooterContent['LinkedIn'],
+            instagram: FooterContent['Instagram'],
+            twitter: FooterContent['Twitter'],
+          }}
+        />
+      </div>
     </footer>
   );
 };
