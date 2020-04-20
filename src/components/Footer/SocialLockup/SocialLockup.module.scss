@@ -3,35 +3,12 @@
 }
 
 .item {
-  background-color: var(--color-red-1);
-  color: var(--color-white);
-  height: 70px;
-  width: 90px;
-
-  &:first-of-type {
-    border-bottom-left-radius: 6px;
-    border-top-left-radius: 6px;
-  }
-
-  &:last-of-type {
-    border-bottom-right-radius: 6px;
-    border-top-right-radius: 6px;
-  }
-
   & + & {
-    margin-left: 1px;
+    margin-left: 35px;
   }
-}
-
-.link {
-  align-items: center;
-  display: flex;
-  height: 100%;
-  justify-content: center;
-  width: 100%;
 }
 
 .icon {
-  fill: var(--color-white);
-  width: 16px;
+  fill: var(--text-red);
+  width: 24px;
 }

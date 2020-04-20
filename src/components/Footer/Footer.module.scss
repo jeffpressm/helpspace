@@ -2,8 +2,17 @@
 @import 'utils/styles/type';
 
 .root {
-  max-width: calc(50vw + var(--global-offset-x));
-  padding: 100px var(--global-offset-x);
+  padding: 60px;
+}
+
+.logo-container {
+  fill: var(--text-dark);
+  opacity: 0.2;
+  width: 160px;
+}
+
+.content-container {
+  max-width: 420px;
 }
 
 .headline {
@@ -20,7 +29,6 @@
 
 .form-container {
   margin-top: 60px;
-  width: 60%;
 }
 
 .copy {
@@ -28,6 +36,17 @@
   margin-top: 80px;
 }
 
-.social {
-  margin-top: 40px;
+.legal-container {
+  margin: 180px auto 60px;
+}
+
+.legal {
+  @include copy-2;
+  color: var(--color-gray-2);
+  display: flex;
+  justify-content: center;
+
+  > li + li {
+    margin-left: 60px;
+  }
 }
