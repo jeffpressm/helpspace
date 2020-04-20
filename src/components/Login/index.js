@@ -1,8 +1,8 @@
 import React, { useState, useContext } from 'react';
-import { ReactComponent as ArrowIcon } from 'assets/icons/arrow.svg';
 import classNames from 'classnames/bind';
 import styles from './Login.module.scss';
 import { useHistory } from 'react-router-dom';
+import EmailForm from 'components/form/EmailForm';
 import { UserContext } from 'utils/context/UserContextProvider';
 import { SpreadsheetContext } from 'utils/context/SpreadsheetContextProvider';
 import getUserInfo from 'utils/getUserInfo';
@@ -41,23 +41,21 @@ const Login = () => {
   };
 
   return (
-    <form className={cx('root')}>
-      <label className={cx('title')}>
+    <div className={cx('root')}>
+      <label className={cx('title')} htmlFor="login">
         Enter your email to view your helpspace
       </label>
-      <div className={cx('field')}>
-        <input
-          className={cx('input')}
-          type="email"
-          placeholder="Email address"
-          onChange={handleEmailChange}
+      <div className={cx('form-container')}>
+        <EmailForm
+          formProps={{
+            onChange: handleEmailChange,
+            onSubmit: handleSubmit,
+          }}
+          inputProps={{ id: 'login' }}
         />
-        <button className={cx('button')} onClick={handleSubmit}>
-          <ArrowIcon />
-        </button>
       </div>
       {error && <p className={cx('error')}>{error}</p>}
-    </form>
+    </div>
   );
 };
 
