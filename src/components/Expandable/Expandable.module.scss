@@ -1,9 +1,11 @@
+@import 'utils/styles/animations';
 @import 'utils/styles/type';
 @import 'utils/styles/mixins';
 
 .title {
   @include headline-4;
   @include reset-button;
+  @include uiTransition(all);
 
   align-items: center;
   border-bottom: 1px solid rgba(#111, 0.1);

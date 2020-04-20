@@ -1,3 +1,4 @@
+@import 'utils/styles/animations';
 @import 'utils/styles/type';
 
 .root {
@@ -24,9 +25,14 @@
 
 .toc-item {
   @include headline-3;
+  @include uiTransition(opacity);
 
   &:not(.active) {
     opacity: 0.3;
+
+    &:hover {
+      opacity: 0.6;
+    }
   }
 
   & + & {

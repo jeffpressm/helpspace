@@ -1,3 +1,4 @@
+@import 'utils/styles/animations';
 @import 'utils/styles/type';
 
 .challenge {
@@ -16,18 +17,24 @@
 }
 
 .challenge-title {
+  @include uiTransition(opacity);
+
   .challenge:not(:hover) & {
     opacity: 0.8;
   }
 }
 
 .challenge-ctas {
+  @include uiTransition(opacity);
+
   .challenge:not(:hover) & {
     opacity: 0;
   }
 }
 
 .challenge-cta {
+  @include uiTransition(color);
+
   & + & {
     margin-top: 15px;
   }
@@ -38,6 +45,7 @@
 }
 
 .arrow {
+  @include uiTransition(all);
   display: inline-block;
   margin-left: 10px;
   width: 12px;
@@ -52,6 +60,7 @@
 }
 
 .challenge-image {
+  @include uiTransition(opacity);
   bottom: 0;
   pointer-events: none;
   position: absolute;

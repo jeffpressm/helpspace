@@ -1,0 +1,3 @@
+@mixin uiTransition($prop: all) {
+  transition: $prop var(--timing-ui);
+}

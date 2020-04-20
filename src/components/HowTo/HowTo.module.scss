@@ -1,3 +1,4 @@
+@import 'utils/styles/animations';
 @import 'utils/styles/type';
 @import 'utils/styles/mixins';
 
@@ -25,6 +26,7 @@
 .close-button {
   @include reset-button;
   @include copy-3;
+  @include uiTransition(color);
   display: inline-block;
   margin-left: 30px;
 
@@ -32,7 +34,6 @@
     color: var(--color-red-2);
   }
 }
-
 
 .title {
   @include headline-1;
@@ -69,6 +70,7 @@
 }
 
 .cta {
+  @include uiTransition(background-color);
   @include reset-button;
   @include copy-1;
   background-color: var(--color-gray-3);

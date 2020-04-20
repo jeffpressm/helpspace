@@ -1,3 +1,4 @@
+@import 'utils/styles/animations';
 @import 'utils/styles/type';
 
 .root {
@@ -50,6 +51,7 @@
 }
 
 .image {
+  @include uiTransition(opacity);
   bottom: 100%;
   position: absolute;
   width: 66%;

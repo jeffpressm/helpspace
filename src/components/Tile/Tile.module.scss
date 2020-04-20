@@ -1,7 +1,9 @@
+@import 'utils/styles/animations';
 @import 'utils/styles/type';
 
 .root {
   @include copy-3;
+  @include uiTransition(border-color);
   border: 5px solid rgba(#111, 0.1);
   border-radius: 6px;
   display: flex;

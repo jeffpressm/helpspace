@@ -1,12 +1,18 @@
+@import 'utils/styles/animations';
 @import 'utils/styles/mixins';
 @import 'utils/styles/type';
 
 .label {
   @include copy-1;
+  @include uiTransition(color);
   border-bottom: 2px solid;
-  color: rgba(#111, 0.2);
+  color: rgba(#111, 0.3);
   display: flex;
   padding-bottom: 10px;
+
+  &:hover {
+    color: rgba(#111, 0.6);
+  }
 
   &:focus-within {
     color: var(--color-gray-2);
@@ -15,6 +21,7 @@
   > input {
     @include reset-input;
     color: var(--text-dark);
+    outline: none;
   }
 }
 
