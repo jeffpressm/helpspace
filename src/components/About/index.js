@@ -49,39 +49,41 @@ const About = () => {
 
   return (
     <article className={cx('root')}>
-      <h2 className={cx('headline')}>{ChallengesContent.title}</h2>
-      <nav>
-        <ul className={cx('toc')}>
-          {Object.keys(ChallengesContent.sections).map((k) => (
-            <li
-              className={cx('toc-item', { active: k === activeSection })}
-              key={k}
-            >
-              <a
-                href={`#${k}`}
-                onClick={(e) => {
-                  e.preventDefault();
-                  setActiveSection(k);
-                }}
+      <div className={cx('content-container')}>
+        <h2 className={cx('headline')}>{ChallengesContent.title}</h2>
+        <nav>
+          <ul className={cx('toc')}>
+            {Object.keys(ChallengesContent.sections).map((k) => (
+              <li
+                className={cx('toc-item', { active: k === activeSection })}
+                key={k}
               >
-                {k}
-              </a>
-            </li>
-          ))}
-        </ul>
-      </nav>
-      <div className={cx('section-container')}>
-        {Object.entries(ChallengesContent.sections).map((e) => (
-          <section
-            className={cx('section', { active: e[0] === activeSection })}
-            key={e[0]}
-            id={e[0]}
-          >
-            {e[1].map((c) => (
-              <Card key={c} title={c} />
+                <a
+                  href={`#${k}`}
+                  onClick={(e) => {
+                    e.preventDefault();
+                    setActiveSection(k);
+                  }}
+                >
+                  {k}
+                </a>
+              </li>
             ))}
-          </section>
-        ))}
+          </ul>
+        </nav>
+        <div className={cx('section-container')}>
+          {Object.entries(ChallengesContent.sections).map((e) => (
+            <section
+              className={cx('section', { active: e[0] === activeSection })}
+              key={e[0]}
+              id={e[0]}
+            >
+              {e[1].map((c) => (
+                <Card key={c} title={c} />
+              ))}
+            </section>
+          ))}
+        </div>
       </div>
     </article>
   );

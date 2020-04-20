@@ -45,6 +45,28 @@
   width: 40px;
 }
 
+.content-container {
+  position: relative;
+}
+
+.image {
+  bottom: 100%;
+  position: absolute;
+  width: 66%;
+
+  .link:not(:hover) & {
+    opacity: 0;
+  }
+
+  &--get {
+    left: -25%;
+  }
+
+  &--give {
+    right: -25%;
+  }
+}
+
 .footer {
   background-color: var(--color-white);
 }

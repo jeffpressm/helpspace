@@ -5,6 +5,11 @@
   padding: var(--global-offset-y) var(--global-offset-x);
 }
 
+.content-container {
+  margin: 0 auto;
+  max-width: 1080px;
+}
+
 .headline {
   @include headline-2;
   color: var(--color-gray-3);
