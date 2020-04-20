@@ -7,6 +7,7 @@ const MailChimpForm = () => (
       action:
         'https://gmail.us19.list-manage.com/subscribe/post?u=39864d7e93b101191538b1a6b&amp;id=6a4a320bb5',
       method: 'post',
+      target: '_blank',
     }}
     inputProps={{ name: 'EMAIL' }}
   >
