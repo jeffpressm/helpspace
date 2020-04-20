@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState, useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
 import classNames from 'classnames/bind';
 import useClipboard from 'react-use-clipboard';
@@ -11,6 +11,7 @@ import getUserInfo from 'utils/getUserInfo';
 import styles from './Expert.module.scss';
 import { RouteList } from 'lib/routes';
 import Avatar from 'components/Avatar';
+import HowTo from 'components/HowTo';
 
 const cx = classNames.bind(styles);
 
@@ -29,6 +30,7 @@ const getCategories = (responses) =>
   }, []);
 
 const Expert = () => {
+  const [showHowTo, setShowHowTo] = useState(false);
   const { search } = useLocation();
   const { responses } = useContext(SpreadsheetContext);
   const query = new URLSearchParams(search);
@@ -46,9 +48,23 @@ const Expert = () => {
 
   const [isCopied, setCopied] = useClipboard(shareString);
 
+  useEffect(() => {
+    const shouldShowHowTo = !localStorage.getItem('seenHowTo');
+    if (shouldShowHowTo) {
+      setShowHowTo(true);
+    }
+  }, []);
+
+  if (showHowTo) {
+    return <HowTo onClose={() => setShowHowTo(false)} type="expert" />;
+  }
+
   return (
     <article className={cx('root')}>
       <div className={cx('inner')}>
+        <button onClick={() => setShowHowTo(true)} className={cx('help-link')}>
+          How to use?
+        </button>
         <header className={cx('header')}>
           <div>
             <h1 className={cx('title')}>{name}</h1>

@@ -27,7 +27,7 @@ const User = () => {
   }, []);
 
   if (showHowTo) {
-    return <HowTo onClose={() => setShowHowTo(false)} />;
+    return <HowTo onClose={() => setShowHowTo(false)} type="client" />;
   }
 
   return (

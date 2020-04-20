@@ -1,4 +1,5 @@
 @import 'utils/styles/type';
+@import 'utils/styles/mixins';
 
 .root {
   background-color: var(--color-red-1);
@@ -8,6 +9,7 @@
   margin: 0 auto;
   max-width: 840px;
   padding: 180px 0;
+  position: relative;
 }
 
 .header {
@@ -93,4 +95,17 @@
 .share__icon {
   margin-bottom: 10px;
   width: 30px;
+}
+
+.help-link {
+  @include reset-button;
+  @include copy-2;
+  position: absolute;
+  right: 0;
+  top: 65px;
+  z-index: 2;
+
+  &:hover {
+    color: var(--color-red-2);
+  }
 }

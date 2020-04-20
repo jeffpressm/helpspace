@@ -7,10 +7,13 @@ import Expandable from 'components/Expandable';
 
 const cx = classNames.bind(styles);
 
-const HowTo = ({ onClose }) => {
+const HowTo = ({ onClose, type }) => {
   const { content } = useContext(SpreadsheetContext);
-  const { Guidelines: pageContent } = content;
+  const clientGuidelines = content['Guidelines'];
+  const expertGuidelines = content['Expert Guidelines'];
   const hasCookie = window.localStorage.getItem('seenHowTo', true) === 'true';
+
+  const pageContent = type === 'client' ? clientGuidelines : expertGuidelines;
 
   const subContents = pageContent.filter((entry) => {
     return entry['Section'] === 'Sub-section';
@@ -45,7 +48,7 @@ const HowTo = ({ onClose }) => {
         <div className={cx('section')}>
           <div>
             {subContents.map(({ Heading: heading, Body: body }) => (
-              <div className={cx('block')}>
+              <div key={heading} className={cx('block')}>
                 <TwoUp
                   slot1={<h3 className={cx('heading')}>{heading}</h3>}
                   slot2={<div className={cx('body')}>{body}</div>}
@@ -58,7 +61,7 @@ const HowTo = ({ onClose }) => {
           <div className={cx('section')}>
             <div>
               {guidelines.map(({ Heading: heading, Body: body }) => (
-                <div className={cx('block')}>
+                <div key={heading} className={cx('block')}>
                   <TwoUp
                     slot1={<h3 className={cx('heading')}>{heading}</h3>}
                     slot2={<div className={cx('body')}>{body}</div>}
@@ -110,7 +113,7 @@ const HowTo = ({ onClose }) => {
         </Expandable>
         {!hasCookie && (
           <button onClick={handleContinue} className={cx('cta')}>
-            Accept &amp; continue
+            Accept and continue
           </button>
         )}
       </div>
