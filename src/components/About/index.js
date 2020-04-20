@@ -1,11 +1,9 @@
 import React, { useEffect, useContext, useState } from 'react';
-import { Link } from 'react-router-dom';
 import classNames from 'classnames/bind';
 
-import { ReactComponent as ArrowIcon } from 'assets/icons/arrow.svg';
-import { RouteList } from 'lib/routes';
 import { SpreadsheetContext } from 'utils/context/SpreadsheetContextProvider';
 
+import Card from './Card';
 import styles from './About.module.scss';
 
 const cx = classNames.bind(styles);
@@ -80,27 +78,7 @@ const About = () => {
             id={e[0]}
           >
             {e[1].map((c) => (
-              <div className={cx('challenge')} key={c}>
-                <h3 className={cx('challenge-title')}>{c}</h3>
-                <ul className={cx('challenge-ctas')}>
-                  <li className={cx('challenge-cta')}>
-                    <Link to={RouteList.get}>
-                      Get help
-                      <span className={cx('arrow')}>
-                        <ArrowIcon />
-                      </span>
-                    </Link>
-                  </li>
-                  <li className={cx('challenge-cta')}>
-                    <Link to={RouteList.give}>
-                      Give help
-                      <span className={cx('arrow')}>
-                        <ArrowIcon />
-                      </span>
-                    </Link>
-                  </li>
-                </ul>
-              </div>
+              <Card key={c} title={c} />
             ))}
           </section>
         ))}
