@@ -4,11 +4,13 @@
 
 .root {
   background-color: var(--color-grey-1);
+  display: flex;
+  flex-direction: column;
 }
 
 .header {
+  align-self: flex-end;
   display: flex;
-  justify-content: flex-end;
   padding: 60px var(--global-offset-x) 0;
   position: relative;
   z-index: 2;
@@ -16,6 +18,7 @@
 
 .support {
   @include copy-2;
+  margin-left: auto;
   margin-top: 5px;
 }
 
