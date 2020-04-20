@@ -36,7 +36,7 @@ const User = () => {
         How to use?
       </button>
       {clientResponses.map((response) => (
-        <section className={cx('item')}>
+        <section key={response['Doc Url']} className={cx('item')}>
           <h2 className={cx('title')}>{response['Challenge']}</h2>
           <Tile
             href={response['Doc Url']}
