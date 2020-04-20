@@ -4,11 +4,13 @@ import useResponseData from '../../utils/hooks/useResponseData';
 import { responseSheets } from '../../lib/sheets';
 import { UserContext } from 'utils/context/UserContextProvider';
 import getUserInfo from 'utils/getUserInfo';
+import { SpreadsheetContext } from 'utils/context/SpreadsheetContextProvider';
 
 const Register = () => {
   const history = useHistory();
   const { search } = useLocation();
   const { setUserData } = useContext(UserContext);
+  const { responses } = useContext(SpreadsheetContext);
   const query = new URLSearchParams(search);
   const userEmail = query.get('email');
   const userType = query.get('type');
@@ -23,14 +25,14 @@ const Register = () => {
 
     if (!existingEmail) {
       window.localStorage.setItem('email', requestEmail);
-      const userInfo = getUserInfo(responseSheets[userType], requestEmail);
+      const userInfo = getUserInfo(responses, requestEmail);
       setUserData(userInfo);
     }
 
     if (data) {
       history.push(`/${userType}?email=${requestEmail}`);
     }
-  }, [userEmail, userType, responseId, history, data, setUserData]);
+  }, [userEmail, userType, responseId, history, data, setUserData, responses]);
 
   return <div>Please wait while we register you...</div>;
 };
