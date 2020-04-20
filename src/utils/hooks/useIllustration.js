@@ -14,11 +14,7 @@ function getRandomInt(min, max) {
   return Math.floor(Math.random() * (max - min + 1) + min);
 }
 
-function useIllustration(x) {
-  if (x) {
-    return illustrations[x];
-  }
-
+function useIllustration() {
   const b = getRandomInt(0, 2);
 
   if (!b) {

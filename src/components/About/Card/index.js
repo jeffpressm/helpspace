@@ -12,7 +12,6 @@ const cx = classNames.bind(styles);
 
 const Card = ({ title }) => {
   const illustration = useIllustration();
-  console.log(illustration);
 
   return (
     <div className={cx('challenge')}>
