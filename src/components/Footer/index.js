@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import classNames from 'classnames/bind';
 
 import { ReactComponent as Logo } from 'assets/logo.svg';
+import { pivotTable } from 'utils/pivotTable';
 import { SpreadsheetContext } from 'utils/context/SpreadsheetContextProvider';
 
 import MailChimpForm from 'components/form/MailChimpForm';
@@ -17,8 +18,7 @@ const Footer = () => {
   const { content } = useContext(SpreadsheetContext);
   const { Footer } = content;
 
-  const FooterContent = {};
-  Footer.forEach((row) => (FooterContent[row['Section']] = row['Body']));
+  const FooterContent = pivotTable(Footer);
 
   return (
     <footer className={cx('root')}>
@@ -56,10 +56,22 @@ const Footer = () => {
         <ul className={cx('legal')}>
           <li>&copy; 2020 all rights reserved</li>
           <li>
-            <Link to="/">Terms &amp; Conditions</Link>
+            <a
+              href={FooterContent['Privacy Policy']}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Privacy Policy
+            </a>
           </li>
           <li>
-            <Link to="/">Privacy Policy</Link>
+            <a
+              href={FooterContent['User Agreement']}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              User Agreement
+            </a>
           </li>
         </ul>
       </div>

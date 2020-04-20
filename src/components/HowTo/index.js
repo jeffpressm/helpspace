@@ -4,6 +4,7 @@ import styles from './HowTo.module.scss';
 import classNames from 'classnames/bind';
 import TwoUp from 'components/TwoUp';
 import Expandable from 'components/Expandable';
+import { pivotTable } from 'utils/pivotTable';
 
 const cx = classNames.bind(styles);
 
@@ -11,6 +12,7 @@ const HowTo = ({ onClose, type }) => {
   const { content } = useContext(SpreadsheetContext);
   const clientGuidelines = content['Guidelines'];
   const expertGuidelines = content['Expert Guidelines'];
+  const FooterContent = pivotTable(content['Footer']);
   const hasCookie = window.localStorage.getItem('seenHowTo', true) === 'true';
 
   const pageContent = type === 'client' ? clientGuidelines : expertGuidelines;
@@ -96,11 +98,19 @@ const HowTo = ({ onClose, type }) => {
                       <p>
                         Don’t break the law using helpspace. All information
                         exchanged in this workspace is subject to our{' '}
-                        <a href="https://docs.google.com/document/d/e/2PACX-1vQmJSCP8Y91DDKXNmWdnWVZFFgf5C5G0dZKMudciZnl-RcecDZI5drM3UTpMY8rWX71OBqQoVM6L7_G/pub">
+                        <a
+                          href={FooterContent['Privacy Policy']}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                        >
                           Privacy Policy
                         </a>{' '}
                         and{' '}
-                        <a href="https://docs.google.com/document/d/e/2PACX-1vRGBZg7KodAwdpdASUTvLJGOGaV0f19mog8IFPpI9FMohdp6jUyNq7z-tsThektailUe_r_Rafd9lwS/pub">
+                        <a
+                          href={FooterContent['User Agreement']}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                        >
                           User Agreement.
                         </a>
                       </p>
