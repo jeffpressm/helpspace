@@ -1,14 +1,25 @@
 @import 'utils/styles/animations';
+@import 'utils/styles/breakpoints';
 
 .root {
   align-items: center;
   display: flex;
+  justify-content: space-between;
   width: 100%;
+  
+  @media (min-width: $bp-medium) {
+    justify-content: start;
+  }
+
 }
 
 .logoContainer {
   fill: var(--text-color);
-  width: 160px;
+  width: 125px;
+
+  @media (min-width: $bp-medium) {
+    width: 160px;
+  }
 }
 
 .linkList {
@@ -18,12 +29,14 @@
 }
 
 .linkContainer {
-  &.standard {
-    margin-left: auto;
-  }
+  @media (min-width: $bp-medium) {
+    &.standard {
+      margin-left: auto;
+    }
 
-  &.dashboard {
-    margin-left: 70px;
+    &.dashboard {
+      margin-left: 70px;
+    }
   }
 }
 
@@ -31,7 +44,10 @@
   list-style-type: none;
 
   & + & {
-    margin-left: 55px;
+    margin-left: 30px;
+    @media (min-width: $bp-medium) {
+      margin-left: 55px;
+    }
   }
 }
 
