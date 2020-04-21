@@ -1,3 +1,5 @@
+@import 'utils/styles/breakpoints';
+
 :root {
   // Colors
   --color-white: #fff;
@@ -15,9 +17,15 @@
   --font-copy: 'Work Sans';
 
   // Space
-  --global-offset-y: 160px;
+  --global-offset-y: 110px;
   --global-offset-x: 12.5vw;
+  --global-offset-small: 8vw;
   --global-content-width: 1080px;
+
+  @media (min-width: $bp-medium) {
+    --global-offset-y: 160px;
+    --global-offset-small: 4.1vw;
+  }
 
   //animation
   --timing-ui: 200ms;
