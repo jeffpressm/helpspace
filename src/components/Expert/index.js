@@ -12,6 +12,7 @@ import styles from './Expert.module.scss';
 import { RouteList } from 'lib/routes';
 import Avatar from 'components/Avatar';
 import HowTo from 'components/HowTo';
+import HelpLink from 'components/HelpLink';
 
 const cx = classNames.bind(styles);
 
@@ -62,9 +63,7 @@ const Expert = () => {
   return (
     <article className={cx('root')}>
       <div className={cx('inner')}>
-        <button onClick={() => setShowHowTo(true)} className={cx('help-link')}>
-          How to use?
-        </button>
+        <HelpLink onClick={() => setShowHowTo(true)} />
         <header className={cx('header')}>
           <div>
             <h1 className={cx('title')}>{name}</h1>

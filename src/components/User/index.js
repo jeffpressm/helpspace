@@ -8,6 +8,8 @@ import Tile from 'components/Tile';
 import HowTo from 'components/HowTo';
 import helpspaceAvatar from 'assets/icons/helpspace-avatar.png';
 import Avatar from 'components/Avatar';
+import { ReactComponent as HelpIcon } from 'assets/icons/help.svg';
+import HelpLink from 'components/HelpLink';
 
 const cx = classNames.bind(styles);
 
@@ -32,9 +34,7 @@ const User = () => {
 
   return (
     <article className={cx('root')}>
-      <button onClick={() => setShowHowTo(true)} className={cx('help-link')}>
-        How to use?
-      </button>
+      <HelpLink onClick={() => setShowHowTo(true)} />
       {clientResponses.map((response) => (
         <section key={response['Doc Url']} className={cx('item')}>
           <h2 className={cx('title')}>{response['Challenge']}</h2>

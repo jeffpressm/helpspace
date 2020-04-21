@@ -1,6 +1,7 @@
 @import 'utils/styles/animations';
 @import 'utils/styles/type';
 @import 'utils/styles/mixins';
+@import 'utils/styles/breakpoints';
 
 .root {
   background-color: var(--color-red-1);
@@ -16,7 +17,13 @@
 .header {
   align-items: center;
   display: flex;
-  margin-bottom: 130px;
+  flex-direction: column;
+  margin-bottom: 75px;
+
+  @media (min-width: $bp-medium) {
+    flex-direction: row;
+    margin-bottom: 130px;
+  }
 }
 
 .title {
@@ -29,7 +36,15 @@
 }
 
 .avatar {
-  width: 240px;
+  margin-bottom: 30px;
+  order: -1;
+  width: 180px;
+  
+  @media (min-width: $bp-medium) {
+    margin-bottom: 0;
+    order: 0;
+    width: 240px;
+  }
 }
 
 .heading {
@@ -39,8 +54,18 @@
 
 .challenges {
   display: flex;
-  flex-wrap: wrap;
-  margin-bottom: 145px;
+  margin-bottom: 75px;
+  margin-left: -30px;
+  margin-right: -30px;
+  overflow-x: scroll;
+
+  @media (min-width: $bp-medium) {
+    flex-wrap: wrap;
+    margin-bottom: 145px;
+    margin-left: 0;
+    margin-right: 0;
+    overflow-x: hidden;
+  }
 }
 
 .challenges__item {
@@ -48,9 +73,14 @@
   background-color: var(--color-white);
   border-radius: 6px;
   height: 320px;
-  margin: 0 20px 20px 0;
+  margin: 0 0 20px 20px;
   padding: 25px;
-  width: 256px;
+  width: 230px;
+
+  @media (max-width: $bp-medium) {
+    height: 220px;
+    min-width: 170px;
+  }
 }
 
 .challenges__add {
@@ -63,8 +93,13 @@
   font-size: 40px;
   height: 320px;
   justify-content: center;
-  margin: 0 20px 20px 0;
-  width: 256px;
+  margin: 0 20px 20px;
+  width: 230px;
+
+  @media (max-width: $bp-medium) {
+    height: 220px;
+    width: 170px;
+  }
 }
 
 .quote {
@@ -75,6 +110,11 @@
 .share {
   display: flex;
   flex-direction: row;
+  flex-wrap: wrap;
+
+  @media (min-width: $bp-medium) {
+    flex-wrap: nowrap;
+  }
 }
 
 .share__button {
@@ -87,16 +127,27 @@
   cursor: pointer;
   display: flex;
   flex-direction: column;
-  height: 140px;
+  height: 70px;
   justify-content: center;
-  margin-right: 15px;
-  width: 150px;
+  margin: 0 15px 15px 0;
+  width: 70px;
+
+  @media (min-width: $bp-medium) {
+    flex-wrap: nowrap;
+    height: 140px;
+    width: 150px;
+  }
 }
 
 .share__icon {
   fill: var(--color-white);
-  margin-bottom: 10px;
-  width: 30px;
+  margin-bottom: 5px;
+  width: 20px;
+
+  @media (min-width: $bp-medium) {
+    margin-bottom: 10px;
+    width: 30px;
+  }
 }
 
 .help-link {

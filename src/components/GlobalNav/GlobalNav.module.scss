@@ -7,7 +7,7 @@
   justify-content: space-between;
   width: 100%;
 
-  @media (min-width: $bp-medium) {
+  @media (min-width: $bp-small) {
     justify-content: start;
   }
 }
@@ -24,7 +24,7 @@
 }
 
 .linkContainer {
-  @media (min-width: $bp-medium) {
+  @media (min-width: $bp-small) {
     &.standard {
       margin-left: auto;
     }

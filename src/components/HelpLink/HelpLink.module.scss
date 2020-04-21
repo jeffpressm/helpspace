@@ -1,0 +1,39 @@
+@import 'utils/styles/animations';
+@import 'utils/styles/breakpoints';
+@import 'utils/styles/mixins';
+@import 'utils/styles/type';
+
+.button {
+  @include reset-button;
+  @include copy-2;
+  @include uiTransition(color);
+  position: absolute;
+  right: 30px;
+  top: 25px;
+  z-index: 2;
+  
+  &:hover {
+    color: var(--color-red-2);
+  }
+  
+  @media (min-width: $bp-small) {
+    top: 65px;
+  }
+}
+
+.icon {
+  display: block;
+  fill: transparent;
+
+  @media (min-width: $bp-small) {
+    display: none;
+  }
+}
+
+.text {
+  display: none;
+
+  @media (min-width: $bp-small) {
+    display: inline;
+  }
+}
