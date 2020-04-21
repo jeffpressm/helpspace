@@ -7,9 +7,14 @@
   border-radius: 6px;
   display: flex;
   flex-direction: column;
-  height: 320px;
+  height: 190px;
   justify-content: space-between;
-  padding: 24px;
+  padding: 16px;
+
+  @media (min-width: $bp-medium) {
+    height: 320px;
+    padding: 24px;
+  }
 }
 
 .challenge-section {

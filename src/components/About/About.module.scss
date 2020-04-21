@@ -3,7 +3,12 @@
 
 .root {
   background-color: var(--color-gray-1);
-  padding: 60px var(--global-offset-x);
+  padding: var(--global-offset-small);
+
+  @media (min-width: $bp-medium) {
+    padding-left: var(--global-offset-x);
+    padding-right: var(--global-offset-x);
+  }
 }
 
 .content-container {
@@ -14,18 +19,23 @@
 .headline {
   @include headline-2;
   color: var(--color-gray-3);
-  width: 50%;
+
+  @media (min-width: $bp-medium) {
+    width: 50%;
+  }
 }
 
 .toc {
   display: flex;
-  margin-top: 80px;
+  margin-top: var(--global-offset-small);
+  overflow-x: auto;
   width: 100%;
 }
 
 .toc-item {
   @include headline-3;
   @include uiTransition(opacity);
+  white-space: nowrap;
 
   &:not(.active) {
     opacity: 0.3;
@@ -36,7 +46,11 @@
   }
 
   & + & {
-    margin-left: 40px;
+    margin-left: 25px;
+
+    @media (min-width: $bp-medium) {
+      margin-left: 40px;
+    }
   }
 }
 
@@ -46,8 +60,13 @@
 
 .section {
   display: grid;
-  grid-gap: 19px;
-  grid-template-columns: repeat(4, 1fr);
+  grid-gap: 10px;
+  grid-template-columns: repeat(2, 1fr);
+
+  @media (min-width: $bp-medium) {
+    grid-gap: 20px;
+    grid-template-columns: repeat(4, 1fr);
+  }
 
   &:not(.active) {
     display: none;
