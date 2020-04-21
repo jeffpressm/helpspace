@@ -6,20 +6,15 @@
   display: flex;
   justify-content: space-between;
   width: 100%;
-  
+
   @media (min-width: $bp-medium) {
     justify-content: start;
   }
-
 }
 
 .logoContainer {
   fill: var(--text-color);
-  width: 125px;
-
-  @media (min-width: $bp-medium) {
-    width: 160px;
-  }
+  width: var(--logo-width);
 }
 
 .linkList {

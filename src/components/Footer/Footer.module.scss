@@ -2,17 +2,19 @@
 @import 'utils/styles/type';
 
 .root {
-  padding: 60px;
+  padding: var(--global-offset-small);
 }
 
 .logo-container {
   fill: var(--text-dark);
   opacity: 0.2;
-  width: 160px;
+  width: var(--logo-width);
 }
 
 .content-container {
-  max-width: 420px;
+  @media (min-width: $bp-medium) {
+    max-width: 420px;
+  }
 }
 
 .headline {
@@ -28,26 +30,31 @@
 }
 
 .form-container {
-  margin-top: 60px;
-}
-
-.copy {
-  @include copy-1(400);
-  margin-top: 80px;
+  margin-top: var(--global-offset-small);
 }
 
 .legal-container {
-  margin: 180px auto 60px;
+  margin: var(--global-offset-y) auto var(--global-offset-small);
 }
 
 .legal {
   @include copy-2;
   color: var(--color-gray-2);
   display: flex;
-  justify-content: center;
+  flex-direction: column;
+
+  @media (min-width: $bp-medium) {
+    flex-direction: row;
+    justify-content: center;
+  }
 
   > li + li {
-    margin-left: 60px;
+    margin-top: var(--global-offset-small);
+
+    @media (min-width: $bp-medium) {
+      margin-left: var(--global-offset-small);
+      margin-top: 0;
+    }
   }
 
   a:hover {

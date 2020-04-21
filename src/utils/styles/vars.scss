@@ -21,12 +21,14 @@
   --global-offset-x: 12.5vw;
   --global-offset-small: 8vw;
   --global-content-width: 1080px;
+  --logo-width: 125px;
 
   @media (min-width: $bp-medium) {
     --global-offset-y: 160px;
     --global-offset-small: 4.1vw;
+    --logo-width: 160px;
   }
 
-  //animation
+  // Animation
   --timing-ui: 200ms;
 }

@@ -7,9 +7,9 @@ const cx = classNames.bind(styles);
 
 const ThreeUp = ({ slot1, slot2, slot3 }) => (
   <div className={cx('root')}>
-    <div>{slot1}</div>
-    <div>{slot2}</div>
-    <div>{slot3}</div>
+    <div className={cx('slot')}>{slot1}</div>
+    <div className={cx('slot')}>{slot2}</div>
+    <div className={cx('slot')}>{slot3}</div>
   </div>
 );
 
