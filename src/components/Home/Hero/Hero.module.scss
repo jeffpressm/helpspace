@@ -1,0 +1,110 @@
+@import 'utils/styles/animations';
+@import 'utils/styles/breakpoints';
+@import 'utils/styles/type';
+
+.root {
+  overflow: hidden;
+  width: 100%;
+
+  @media (min-width: $bp-medium) {
+    display: flex;
+    height: 95vh;
+  }
+}
+
+.section {
+  color: var(--text-dark);
+  padding-bottom: var(--global-offset-small);
+  padding-left: var(--global-offset-small);
+  padding-right: calc(var(--global-offset-small) * 2);
+
+  @media (min-width: $bp-medium) {
+    display: flex;
+    flex: 0 0 50%;
+    min-width: 0;
+
+    &:first-child {
+      padding-left: var(--global-offset-small);
+    }
+
+    &:last-child {
+      padding-right: var(--global-offset-small);
+    }
+  }
+
+  &:first-child {
+    padding-top: calc(var(--global-offset-y) + 80px);
+
+    @media (min-width: $bp-medium) {
+      padding-left: var(--global-offset-small);
+      padding-top: var(--global-offset-y);
+    }
+  }
+
+  &:last-child {
+    padding-top: 80px;
+
+    @media (min-width: $bp-medium) {
+      padding-right: var(--global-offset-small);
+      padding-top: var(--global-offset-y);
+    }
+  }
+
+  &.get {
+    background-color: var(--color-red-2);
+  }
+
+  &.give {
+    background-color: var(--color-red-1);
+  }
+}
+
+.link {
+  display: block;
+
+  @media (min-width: $bp-medium) {
+    display: flex;
+    height: 100%;
+    width: 100%;
+  }
+}
+
+.content-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+
+  @media (min-width: $bp-medium) {
+    flex: 0 0 50%;
+  }
+}
+
+.title {
+  @include headline-2;
+}
+
+.copy {
+  @include copy-2;
+  margin-top: 10px;
+}
+
+.cta {
+  fill: currentColor;
+  margin-top: 48px;
+  width: 24px;
+}
+
+.image-container {
+  @include uiTransition(opacity);
+  display: none;
+  flex: 0 0 50%;
+  width: 66%;
+
+  @media (min-width: $bp-medium) {
+    display: block;
+  }
+
+  .link:not(:hover) & {
+    opacity: 0;
+  }
+}
