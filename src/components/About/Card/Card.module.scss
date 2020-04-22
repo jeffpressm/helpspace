@@ -52,8 +52,8 @@
 .arrow {
   @include uiTransition(all);
   display: inline-block;
-  margin-left: 10px;
-  width: 12px;
+  margin-left: 0.5em;
+  width: 0.66em;
 
   a:hover & {
     fill: var(--text-red);

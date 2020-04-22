@@ -72,3 +72,25 @@
     display: none;
   }
 }
+
+.cta-container {
+  margin-top: var(--global-offset-small);
+
+  @media (min-width: $bp-medium) {
+    display: none;
+  }
+}
+
+.cta {
+  @include headline-2;
+
+  & + & {
+    margin-top: 40px;
+  }
+}
+
+.arrow {
+  display: inline-block;
+  margin-left: 0.5em;
+  width: 0.66em;
+}

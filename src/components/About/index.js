@@ -1,6 +1,9 @@
 import React, { useEffect, useContext, useState } from 'react';
+import { Link } from 'react-router-dom';
 import classNames from 'classnames/bind';
 
+import { ReactComponent as ArrowIcon } from 'assets/icons/arrow.svg';
+import { RouteList } from 'lib/routes';
 import { SpreadsheetContext } from 'utils/context/SpreadsheetContextProvider';
 
 import Card from './Card';
@@ -84,6 +87,26 @@ const About = () => {
             </section>
           ))}
         </div>
+      </div>
+      <div className={cx('cta-container')}>
+        <ul className={cx('ctas')}>
+          <li className={cx('cta')}>
+            <Link to={RouteList.get}>
+              Get help
+              <span className={cx('arrow')}>
+                <ArrowIcon />
+              </span>
+            </Link>
+          </li>
+          <li className={cx('cta')}>
+            <Link to={RouteList.give}>
+              Give help
+              <span className={cx('arrow')}>
+                <ArrowIcon />
+              </span>
+            </Link>
+          </li>
+        </ul>
       </div>
     </article>
   );
