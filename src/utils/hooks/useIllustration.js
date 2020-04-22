@@ -14,20 +14,23 @@ function getRandomInt(min, max) {
   return Math.floor(Math.random() * (max - min + 1) + min);
 }
 
-const cache = [];
+let cache = [];
 
 function useIllustration() {
   let nextIllustration = null;
 
-  // 66% chance to show an illustration
+  // determine if we should show an illustration
   const b = getRandomInt(0, 2);
 
-  if (b) {
-    // Ensure the same illustration isn't used twice in a row
-    do {
-      nextIllustration =
-        illustrations[getRandomInt(0, illustrations.length - 1)];
-    } while (nextIllustration === cache[cache.length - 1]);
+  if (b === 0) {
+    let pool = illustrations.filter((i) => !cache.includes(i));
+
+    if (pool.length === 0) {
+      cache = [];
+      pool = [...illustrations];
+    }
+
+    nextIllustration = pool[getRandomInt(0, pool.length - 1)];
   }
 
   cache.push(nextIllustration);
