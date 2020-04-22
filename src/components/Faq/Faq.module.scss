@@ -1,7 +1,9 @@
+@import 'utils/styles/breakpoints';
 @import 'utils/styles/type';
 
 .root {
-  padding: var(--global-offset-y) var(--global-offset-x);
+  padding: var(--global-offset-y) var(--global-offset-small)
+    var(--global-offset-small);
 }
 
 .hero-headline {
@@ -12,25 +14,37 @@
 .hero-body {
   @include copy-2;
   color: rgba(#111, 0.8);
-  margin-top: 50px;
-  width: 66%;
+  margin-top: var(--global-offset-small);
+
+  @media (min-width: $bp-medium) {
+    width: 66%;
+  }
 }
 
 .hero-img {
-  margin: -20%;
+  margin: 0 calc(var(--global-offset-small) * -1);
+
+  @media (min-width: $bp-medium) {
+    margin: -20%;
+  }
 }
 
 .faq-container {
   border-top: 1px solid;
   display: flex;
-  margin: 70px auto 0;
+  margin: var(--global-offset-small) auto 0;
   width: 100%;
 }
 
 .faq-header {
   @include headline-3;
   color: var(--text-dark);
-  margin: 70px 70px 0 0;
+  display: none;
+  margin: var(--global-offset-small) var(--global-offset-small) 0 0;
+
+  @media (min-width: $bp-medium) {
+    display: unset;
+  }
 }
 
 .faq-body {
@@ -39,10 +53,11 @@
 }
 
 .faq-item {
-  padding: 70px 0 30px;
+  padding-top: var(--global-offset-small);
 
   & + & {
     border-top: 1px solid rgba(#111, 0.1);
+    margin-top: 30px;
   }
 }
 

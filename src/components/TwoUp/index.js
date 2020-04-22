@@ -7,8 +7,8 @@ const cx = classNames.bind(styles);
 
 const TwoUp = ({ slot1, slot2 }) => (
   <div className={cx('root')}>
-    <div>{slot1}</div>
-    <div>{slot2}</div>
+    <div className={cx('slot')}>{slot1}</div>
+    <div className={cx('slot')}>{slot2}</div>
   </div>
 );
 
