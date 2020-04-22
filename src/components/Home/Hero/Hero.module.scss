@@ -25,9 +25,11 @@
 
     &:first-child {
       padding-left: var(--global-offset-small);
+      padding-right: 0;
     }
 
     &:last-child {
+      padding-left: 0;
       padding-right: var(--global-offset-small);
     }
   }
