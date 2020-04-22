@@ -14,14 +14,25 @@ function getRandomInt(min, max) {
   return Math.floor(Math.random() * (max - min + 1) + min);
 }
 
+const cache = [];
+
 function useIllustration() {
+  let nextIllustration = null;
+
+  // 66% chance to show an illustration
   const b = getRandomInt(0, 2);
 
-  if (!b) {
-    return null;
+  if (b) {
+    // Ensure the same illustration isn't used twice in a row
+    do {
+      nextIllustration =
+        illustrations[getRandomInt(0, illustrations.length - 1)];
+    } while (nextIllustration === cache[cache.length - 1]);
   }
 
-  return illustrations[getRandomInt(0, illustrations.length - 1)];
+  cache.push(nextIllustration);
+
+  return nextIllustration;
 }
 
 export default useIllustration;
