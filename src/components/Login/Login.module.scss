@@ -1,8 +1,9 @@
+@import 'utils/styles/breakpoints';
 @import 'utils/styles/type';
 
 .root {
-  height: 100vh;
-  padding: 240px var(--global-offset-x) 0;
+  min-height: 100vh;
+  padding: calc(var(--global-offset-x) + 10vh) var(--global-offset-x) 0;
 }
 
 .title {
@@ -11,7 +12,10 @@
 
 .form-container {
   margin-top: 80px;
-  width: 420px;
+
+  @media (min-width: $bp-medium) {
+    width: 420px;
+  }
 }
 
 .input {
@@ -41,4 +45,5 @@
 .error {
   @include copy-1;
   color: var(--color-red-1);
+  margin-top: 10px;
 }
