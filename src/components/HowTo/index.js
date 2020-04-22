@@ -32,18 +32,20 @@ const HowTo = ({ onClose, type }) => {
 
   return (
     <article className={cx('root')}>
-      <div className={cx('header')}>
-        <p className={cx('support')}>
+      <div className={cx('support')}>
+        <div className={cx('support__body')}>
           For assistance at any time,{' '}
           <a className={cx('support__link')} href="mailto:support@helpspace.co">
             support@helpspace.co
           </a>
-          {hasCookie && (
+        </div>
+        {hasCookie && (
+          <div className={cx('support__close')}>
             <button className={cx('close-button')} onClick={() => onClose()}>
               Close
             </button>
-          )}
-        </p>
+          </div>
+        )}
       </div>
       <div className={cx('inner')}>
         <h1 className={cx('title')}>Here's how helpspace works</h1>

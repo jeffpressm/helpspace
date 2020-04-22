@@ -9,13 +9,13 @@
   @include uiTransition(color);
   position: absolute;
   right: 30px;
-  top: 25px;
+  top: 70px;
   z-index: 2;
-  
+
   &:hover {
     color: var(--color-red-2);
   }
-  
+
   @media (min-width: $bp-small) {
     top: 65px;
   }

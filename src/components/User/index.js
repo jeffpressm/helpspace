@@ -8,7 +8,6 @@ import Tile from 'components/Tile';
 import HowTo from 'components/HowTo';
 import helpspaceAvatar from 'assets/icons/helpspace-avatar.png';
 import Avatar from 'components/Avatar';
-import { ReactComponent as HelpIcon } from 'assets/icons/help.svg';
 import HelpLink from 'components/HelpLink';
 
 const cx = classNames.bind(styles);

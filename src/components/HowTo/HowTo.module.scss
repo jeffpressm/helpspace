@@ -1,4 +1,5 @@
 @import 'utils/styles/animations';
+@import 'utils/styles/breakpoints';
 @import 'utils/styles/type';
 @import 'utils/styles/mixins';
 
@@ -6,24 +7,27 @@
   background-color: var(--color-grey-1);
   display: flex;
   flex-direction: column;
-}
-
-.header {
-  align-self: flex-end;
-  display: flex;
-  padding: 60px var(--global-offset-x) 0;
-  position: relative;
-  z-index: 2;
+  padding: var(--global-offset-y) var(--global-offset-small)
+    var(--global-offset-small);
 }
 
 .support {
-  @include copy-2;
-  margin-left: auto;
-  margin-top: 5px;
-}
+  align-self: flex-end;
+  display: flex;
+  width: 100%;
+  z-index: 2;
 
-.support__link {
-  font-weight: 500;
+  &__body {
+    @include copy-2;
+  }
+
+  &__link {
+    font-weight: 500;
+  }
+
+  &__close {
+    margin-left: auto;
+  }
 }
 
 .close-button {
@@ -31,23 +35,26 @@
   @include copy-3;
   @include uiTransition(color);
   display: inline-block;
-  margin-left: 30px;
+  margin-left: 10px;
 
   &:hover {
     color: var(--color-red-2);
   }
 }
 
-.title {
-  @include headline-1;
-  margin-bottom: 100px;
-  max-width: 550px;
+.inner {
+  margin: var(--global-offset-small) auto;
+  max-width: 1080px;
 }
 
-.inner {
-  margin: 0 auto;
-  max-width: 1080px;
-  padding: 90px 0;
+.title {
+  @include headline-1;
+  margin-bottom: 50px;
+  max-width: 550px;
+
+  @media (min-width: $bp-medium) {
+    margin-bottom: 100px;
+  }
 }
 
 .section {
@@ -56,8 +63,11 @@
 }
 
 .block {
-  margin-bottom: 70px;
   max-width: 720px;
+
+  & + & {
+    margin-top: var(--global-offset-small);
+  }
 }
 
 .heading {
@@ -67,8 +77,8 @@
 .body {
   @include copy-2;
 
-  p {
-    margin-bottom: 30px;
+  p + p {
+    margin-top: 30px;
   }
 }
 
@@ -80,7 +90,7 @@
   border-radius: 6px;
   color: var(--color-white);
   margin-top: 80px;
-  padding: 30px;
+  padding: var(--global-offset-small);
   text-align: center;
   width: 100%;
 
