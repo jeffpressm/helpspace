@@ -13,8 +13,11 @@
   --text-red: var(--color-red-1);
   --text-light: var(--color-white);
   --text-dark: var(--color-gray-3);
-  --font-headline: 'Montserrat';
-  --font-copy: 'Work Sans';
+  --font-fallbacks: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto',
+    'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  --font-headline: 'Montserrat', var(--font-fallbacks);
+  --font-copy: 'Work Sans', var(--font-fallbacks);
 
   // Space
   --global-offset-y: 110px;
