@@ -6,19 +6,20 @@
 
 @mixin reset-button() {
   @include disable-callout();
+  all: unset;
 
-  background-color: transparent;
-  border: 0;
-  color: inherit;
+  // background-color: transparent;
+  // border: 0;
+  // color: inherit;
   display: block;
-  font-family: inherit;
-  font-size: inherit;
-  -webkit-font-smoothing: inherit;
-  margin: 0;
-  //outline: none;
-  overflow: hidden;
-  padding: 0;
-  text-align: inherit;
+  // font-family: inherit;
+  // font-size: inherit;
+  // -webkit-font-smoothing: inherit;
+  // margin: 0;
+  // //outline: none;
+  // overflow: hidden;
+  // padding: 0;
+  // text-align: inherit;
 
   &:not([disabled]) {
     cursor: pointer;
@@ -26,16 +27,17 @@
 }
 
 @mixin reset-input {
-  appearance: none;
-  background: none transparent;
-  border: 0;
-  box-shadow: none;
-  color: inherit;
+  all: unset;
+  // appearance: none;
+  // background: none transparent;
+  // border: 0;
+  // box-shadow: none;
+  // color: inherit;
   display: block;
-  font-family: inherit;
-  font-size: inherit;
-  -webkit-font-smoothing: inherit;
-  margin: 0;
-  //outline: none;
+  // font-family: inherit;
+  // font-size: inherit;
+  // -webkit-font-smoothing: inherit;
+  // margin: 0;
+  // //outline: none;
   width: 100%;
 }

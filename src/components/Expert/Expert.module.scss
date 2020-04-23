@@ -1,7 +1,7 @@
 @import 'utils/styles/animations';
-@import 'utils/styles/type';
-@import 'utils/styles/mixins';
 @import 'utils/styles/breakpoints';
+@import 'utils/styles/mixins';
+@import 'utils/styles/type';
 
 .root {
   background-color: var(--color-red-1);
@@ -85,8 +85,8 @@
 
 .challenges__add {
   @include headline-2;
+  @include reset-button;
   align-items: center;
-  all: unset;
   background-color: var(--color-red-2);
   border-radius: 6px;
   color: var(--color-white);
@@ -160,7 +160,8 @@
   top: 65px;
   z-index: 2;
 
-  &:hover {
+  &:hover,
+  &:focus {
     color: var(--color-red-2);
   }
 }

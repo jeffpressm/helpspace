@@ -1,4 +1,5 @@
 @import 'utils/styles/animations';
+@import 'utils/styles/mixins';
 @import 'utils/styles/type';
 
 .root {
@@ -40,7 +41,8 @@
   &:not(.active) {
     opacity: 0.3;
 
-    &:hover {
+    &:hover,
+    &:focus {
       opacity: 0.6;
     }
   }
@@ -89,7 +91,7 @@
   }
 
   > button {
-    all: unset;
+    @include reset-button;
   }
 }
 

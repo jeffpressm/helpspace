@@ -1,5 +1,6 @@
 @import 'utils/styles/animations';
 @import 'utils/styles/breakpoints';
+@import 'utils/styles/mixins';
 
 .root {
   align-items: center;
@@ -47,8 +48,8 @@
 }
 
 .link {
+  @include reset-button;
   @include uiTransition(all);
-  all: unset;
   color: var(--text-dark);
   font-size: 16px;
   line-height: 1.2;

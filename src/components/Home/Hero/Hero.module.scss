@@ -63,11 +63,9 @@
 }
 
 .link {
-  all: unset;
-  cursor: pointer;
+  @include reset-button;
 
   @media (min-width: $bp-medium) {
-    align-items: flex-end;
     display: flex;
     height: 100%;
     width: 100%;
@@ -79,6 +77,7 @@
 }
 
 .content-container {
+  align-self: flex-end;
   display: flex;
   flex-direction: column;
 
@@ -111,15 +110,10 @@
   @include uiTransition(opacity);
   display: none;
   flex: 0 0 50%;
-  width: 66%;
 
   @media (min-width: $bp-medium) {
     display: block;
   }
-
-  // .link:not(:hover) & {
-  //   opacity: 0;
-  // }
 
   .is-get-active .give &,
   .is-give-active .get & {
