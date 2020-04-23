@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import { Link } from 'react-router-dom';
 import classNames from 'classnames/bind';
 
@@ -13,14 +13,19 @@ import styles from './Hero.module.scss';
 const cx = classNames.bind(styles);
 
 const Hero = () => {
+  const [activeSection, setActiveSection] = useState();
   const { content } = useContext(SpreadsheetContext);
   const { Hero: HeroContent } = content;
 
   return (
-    <article className={cx('root')}>
+    <article className={cx('root', `is-${activeSection}-active`)}>
       <section className={cx('section', 'get')}>
         <Link className={cx('link')} to={RouteList.get}>
-          <div className={cx('content-container')}>
+          <div
+            className={cx('content-container')}
+            onMouseEnter={() => setActiveSection('get')}
+            onMouseLeave={() => setActiveSection()}
+          >
             <h2 className={cx('title')}>{HeroContent[0]['CTA']}</h2>
             <div className={cx('copy')}>{HeroContent[0]['Body']}</div>
             <div className={cx('cta')}>
@@ -34,15 +39,19 @@ const Hero = () => {
       </section>
       <section className={cx('section', 'give')}>
         <Link className={cx('link')} to={RouteList.give}>
-          <div className={cx('image-container')}>
-            <img role="presentation" src={rightImg} alt="" />
-          </div>
-          <div className={cx('content-container')}>
+          <div
+            className={cx('content-container')}
+            onMouseEnter={() => setActiveSection('give')}
+            onMouseLeave={() => setActiveSection()}
+          >
             <h2 className={cx('title')}>{HeroContent[1]['CTA']}</h2>
             <div className={cx('copy')}>{HeroContent[1]['Body']}</div>
             <div className={cx('cta')}>
               <ArrowIcon />
             </div>
+          </div>
+          <div className={cx('image-container')}>
+            <img role="presentation" src={rightImg} alt="" />
           </div>
         </Link>
       </section>

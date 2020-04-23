@@ -68,6 +68,10 @@
     display: flex;
     height: 100%;
     width: 100%;
+
+    .give & {
+      flex-direction: row-reverse;
+    }
   }
 }
 
@@ -91,9 +95,14 @@
 }
 
 .cta {
+  @include uiTransition(transform);
   fill: currentColor;
   margin-top: 48px;
   width: 24px;
+
+  .content-container:hover & {
+    transform: translateX(10px);
+  }
 }
 
 .image-container {
@@ -106,7 +115,12 @@
     display: block;
   }
 
-  .link:not(:hover) & {
+  // .link:not(:hover) & {
+  //   opacity: 0;
+  // }
+
+  .is-get-active .give &,
+  .is-give-active .get & {
     opacity: 0;
   }
 }
