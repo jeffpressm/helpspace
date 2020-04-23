@@ -1,9 +1,8 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
+import React, { useContext } from 'react';
 import classNames from 'classnames/bind';
 
 import { ReactComponent as ArrowIcon } from 'assets/icons/arrow.svg';
-import { RouteList } from 'lib/routes';
+import { FormContext, openForm } from 'utils/context/Form';
 import useIllustration from 'utils/hooks/useIllustration';
 
 import styles from './Card.module.scss';
@@ -11,6 +10,7 @@ import styles from './Card.module.scss';
 const cx = classNames.bind(styles);
 
 const Card = ({ title }) => {
+  const { getRef, giveRef } = useContext(FormContext);
   const illustration = useIllustration();
 
   return (
@@ -21,20 +21,20 @@ const Card = ({ title }) => {
       <div className={cx('challenge-section', 'challenge-section--ctas')}>
         <ul className={cx('challenge-ctas')}>
           <li className={cx('challenge-cta')}>
-            <Link to={RouteList.get}>
+            <button onClick={() => openForm(getRef)}>
               Get help
               <span className={cx('arrow')}>
                 <ArrowIcon />
               </span>
-            </Link>
+            </button>
           </li>
           <li className={cx('challenge-cta')}>
-            <Link to={RouteList.give}>
+            <button onClick={() => openForm(giveRef)}>
               Give help
               <span className={cx('arrow')}>
                 <ArrowIcon />
               </span>
-            </Link>
+            </button>
           </li>
         </ul>
         {illustration && (

@@ -1,9 +1,8 @@
 import React, { useEffect, useContext, useState } from 'react';
-import { Link } from 'react-router-dom';
 import classNames from 'classnames/bind';
 
 import { ReactComponent as ArrowIcon } from 'assets/icons/arrow.svg';
-import { RouteList } from 'lib/routes';
+import { FormContext, openForm } from 'utils/context/Form';
 import { SpreadsheetContext } from 'utils/context/SpreadsheetContextProvider';
 
 import Card from './Card';
@@ -33,6 +32,7 @@ function formatContent(raw) {
 const About = () => {
   const [activeSection, setActiveSection] = useState();
   const [ChallengesContent, setChallengesContent] = useState();
+  const { getRef, giveRef } = useContext(FormContext);
   const { content } = useContext(SpreadsheetContext);
 
   useEffect(() => {
@@ -91,20 +91,20 @@ const About = () => {
       <div className={cx('cta-container')}>
         <ul className={cx('ctas')}>
           <li className={cx('cta')}>
-            <Link to={RouteList.get}>
+            <button onClick={() => openForm(getRef)}>
               Get help
               <span className={cx('arrow')}>
                 <ArrowIcon />
               </span>
-            </Link>
+            </button>
           </li>
           <li className={cx('cta')}>
-            <Link to={RouteList.give}>
+            <button onClick={() => openForm(giveRef)}>
               Give help
               <span className={cx('arrow')}>
                 <ArrowIcon />
               </span>
-            </Link>
+            </button>
           </li>
         </ul>
       </div>

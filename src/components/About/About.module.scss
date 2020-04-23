@@ -87,6 +87,10 @@
   & + & {
     margin-top: 40px;
   }
+
+  > button {
+    all: unset;
+  }
 }
 
 .arrow {

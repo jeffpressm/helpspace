@@ -1,5 +1,6 @@
 @import 'utils/styles/animations';
 @import 'utils/styles/breakpoints';
+@import 'utils/styles/mixins';
 @import 'utils/styles/type';
 
 .root {
@@ -62,9 +63,11 @@
 }
 
 .link {
-  display: block;
+  all: unset;
+  cursor: pointer;
 
   @media (min-width: $bp-medium) {
+    align-items: flex-end;
     display: flex;
     height: 100%;
     width: 100%;
@@ -78,7 +81,6 @@
 .content-container {
   display: flex;
   flex-direction: column;
-  justify-content: flex-end;
 
   @media (min-width: $bp-medium) {
     flex: 0 0 50%;

@@ -39,7 +39,7 @@
   margin-bottom: 30px;
   order: -1;
   width: 180px;
-  
+
   @media (min-width: $bp-medium) {
     margin-bottom: 0;
     order: 0;
@@ -86,6 +86,7 @@
 .challenges__add {
   @include headline-2;
   align-items: center;
+  all: unset;
   background-color: var(--color-red-2);
   border-radius: 6px;
   color: var(--color-white);

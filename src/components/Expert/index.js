@@ -8,8 +8,8 @@ import { ReactComponent as FacebookIcon } from 'assets/icons/facebook.svg';
 import { ReactComponent as LinkedInIcon } from 'assets/icons/linkedin.svg';
 import { ReactComponent as TwitterIcon } from 'assets/icons/twitter.svg';
 import getUserInfo from 'utils/getUserInfo';
+import { FormContext, openForm } from 'utils/context/Form';
 import styles from './Expert.module.scss';
-import { RouteList } from 'lib/routes';
 import Avatar from 'components/Avatar';
 import HowTo from 'components/HowTo';
 import HelpLink from 'components/HelpLink';
@@ -33,6 +33,7 @@ const getCategories = (responses) =>
 const Expert = () => {
   const [showHowTo, setShowHowTo] = useState(false);
   const { search } = useLocation();
+  const { giveRef } = useContext(FormContext);
   const { responses } = useContext(SpreadsheetContext);
   const query = new URLSearchParams(search);
   const email = query.get('email');
@@ -86,9 +87,12 @@ const Expert = () => {
               </li>
             ))}
             <li>
-              <a href={RouteList.give} className={cx('challenges__add')}>
+              <button
+                className={cx('challenges__add')}
+                onClick={() => openForm(giveRef)}
+              >
                 +
-              </a>
+              </button>
             </li>
           </ul>
         </section>

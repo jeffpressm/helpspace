@@ -1,15 +1,10 @@
 import React, { useContext } from 'react';
 import { ReactTypeformEmbed } from 'react-typeform-embed';
-import classNames from 'classnames/bind';
 
 import { UserContext } from 'utils/context/UserContextProvider';
 import { generateUuid } from 'utils/strings';
 
-import styles from './SignUp.module.scss';
-
-const cx = classNames.bind(styles);
-
-const SignUp = ({ formUrl }) => {
+const TypeformEmbed = React.forwardRef(({ formUrl }, ref) => {
   const { name, email } = useContext(UserContext);
   const id = generateUuid();
 
@@ -21,13 +16,14 @@ const SignUp = ({ formUrl }) => {
   const paramString = new URLSearchParams(params);
 
   return (
-    <div className={cx('root')}>
-      <ReactTypeformEmbed
-        hideHeaders
-        url={`${formUrl}?${paramString.toString()}`}
-      />
-    </div>
+    <ReactTypeformEmbed
+      ref={ref}
+      hideHeaders
+      popup
+      style={{ zIndex: '-1' }}
+      url={`${formUrl}?${paramString.toString()}`}
+    />
   );
-};
+});
 
-export default SignUp;
+export default TypeformEmbed;

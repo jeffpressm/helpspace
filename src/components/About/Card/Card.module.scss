@@ -38,14 +38,18 @@
 }
 
 .challenge-cta {
-  @include uiTransition(color);
-
   & + & {
     margin-top: 15px;
   }
 
-  > a:hover {
-    color: var(--text-red);
+  > button {
+    @include uiTransition(color);
+    all: unset;
+
+    &:hover,
+    &:focus {
+      color: var(--text-red);
+    }
   }
 }
 
@@ -55,11 +59,12 @@
   margin-left: 0.5em;
   width: 0.66em;
 
-  a:hover & {
+  button:hover &,
+  button:focus & {
     fill: var(--text-red);
   }
 
-  a:not(:hover) & {
+  button:not(:hover):not(:focus) & {
     opacity: 0;
   }
 }

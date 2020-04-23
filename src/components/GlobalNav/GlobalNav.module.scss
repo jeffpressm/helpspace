@@ -48,12 +48,14 @@
 
 .link {
   @include uiTransition(all);
+  all: unset;
   color: var(--text-dark);
   font-size: 16px;
   line-height: 1.2;
   opacity: 0.6;
 
-  &:hover {
+  &:hover,
+  &:focus {
     opacity: 1;
   }
 

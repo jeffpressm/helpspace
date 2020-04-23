@@ -6,11 +6,11 @@ import Faq from 'components/Faq';
 import GlobalContainer from 'components/GlobalContainer';
 import Login from 'components/Login';
 import Home from 'components/Home';
-import SignUp from 'components/SignUp';
 import User from 'components/User';
 import Listing from 'components/Listing';
 import Register from 'components/Register';
 import { RouteList } from 'lib/routes';
+import FormProvider from 'utils/context/Form';
 import UserContextProvider from 'utils/context/UserContextProvider';
 import SpreadsheetContextProvider from 'utils/context/SpreadsheetContextProvider';
 
@@ -19,37 +19,33 @@ function App() {
     <Router>
       <SpreadsheetContextProvider>
         <UserContextProvider>
-          <GlobalContainer>
-            <Switch>
-              <Route exact path={RouteList.home}>
-                <Home />
-              </Route>
-              <Route path={RouteList.get}>
-                <SignUp formUrl={process.env.REACT_APP_CLIENT_TYPEFORM_URL} />
-              </Route>
-              <Route path={RouteList.give}>
-                <SignUp formUrl={process.env.REACT_APP_EXPERT_TYPEFORM_URL} />
-              </Route>
-              <Route path={RouteList.user}>
-                <User />
-              </Route>
-              <Route path={RouteList.expert}>
-                <Expert />
-              </Route>
-              <Route path={RouteList.faq}>
-                <Faq />
-              </Route>
-              <Route path={RouteList.login}>
-                <Login />
-              </Route>
-              <Route path={RouteList.listing}>
-                <Listing />
-              </Route>
-              <Route path={RouteList.register}>
-                <Register />
-              </Route>
-            </Switch>
-          </GlobalContainer>
+          <FormProvider>
+            <GlobalContainer>
+              <Switch>
+                <Route exact path={RouteList.home}>
+                  <Home />
+                </Route>
+                <Route path={RouteList.user}>
+                  <User />
+                </Route>
+                <Route path={RouteList.expert}>
+                  <Expert />
+                </Route>
+                <Route path={RouteList.faq}>
+                  <Faq />
+                </Route>
+                <Route path={RouteList.login}>
+                  <Login />
+                </Route>
+                <Route path={RouteList.listing}>
+                  <Listing />
+                </Route>
+                <Route path={RouteList.register}>
+                  <Register />
+                </Route>
+              </Switch>
+            </GlobalContainer>
+          </FormProvider>
         </UserContextProvider>
       </SpreadsheetContextProvider>
     </Router>

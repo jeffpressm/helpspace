@@ -1,9 +1,10 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { Link, NavLink } from 'react-router-dom';
 import classNames from 'classnames/bind';
 
 import { ReactComponent as Logo } from 'assets/logo.svg';
 import { RouteList } from 'lib/routes';
+import { FormContext, openForm } from 'utils/context/Form';
 
 import styles from './GlobalNav.module.scss';
 
@@ -11,45 +12,60 @@ const cx = classNames.bind(styles);
 
 const GlobalNavLinks = ({ links }) => (
   <ul className={cx('linkList')}>
-    {links.map(({ to, label, target }) => (
-      <li key={to} className={cx('linkItem')}>
-        <NavLink
-          className={cx('link')}
-          activeClassName={cx('selected')}
-          to={to}
-          target={target}
-        >
-          {label}
-        </NavLink>
-      </li>
-    ))}
+    {links.map(({ to, onClick, label }) => {
+      if (to) {
+        return (
+          <li key={label} className={cx('linkItem')}>
+            <NavLink
+              className={cx('link')}
+              activeClassName={cx('selected')}
+              to={to}
+            >
+              {label}
+            </NavLink>
+          </li>
+        );
+      }
+      if (onClick) {
+        return (
+          <li key={label} className={cx('linkItem')}>
+            <button className={cx('link')} onClick={onClick}>
+              {label}
+            </button>
+          </li>
+        );
+      }
+      return null;
+    })}
   </ul>
 );
 
-const GlobalNav = ({ theme, mode, target }) => {
+const GlobalNav = ({ theme, mode }) => {
+  const { getRef, giveRef } = useContext(FormContext);
+
   const links = {
     standard: [
       {
         to: RouteList.faq,
         label: 'FAQ',
-        target: target,
       },
       {
         to: RouteList.login,
         label: 'Login',
-        target: target,
       },
     ],
     dashboard: [
       {
-        to: RouteList.give,
+        onClick: () => {
+          openForm(getRef);
+        },
         label: 'Give',
-        target: target,
       },
       {
-        to: RouteList.get,
+        onClick: () => {
+          openForm(giveRef);
+        },
         label: 'Get',
-        target: target,
       },
     ],
   };
@@ -57,7 +73,7 @@ const GlobalNav = ({ theme, mode, target }) => {
   return (
     <div className={cx('root', [theme])}>
       <div className={cx('logoContainer')}>
-        <Link to="/" target={target}>
+        <Link to="/">
           <Logo />
         </Link>
       </div>
