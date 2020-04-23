@@ -21,7 +21,7 @@ const Hero = () => {
     <>
       <article className={cx('root', `is-${activeSection}-active`)}>
         <section className={cx('section', 'get')}>
-          <button className={cx('link')} onClick={() => openForm(getRef)}>
+          <div className={cx('link')} onClick={() => openForm(getRef)}>
             <div
               className={cx('content-container')}
               onMouseEnter={() => setActiveSection('get')}
@@ -36,10 +36,10 @@ const Hero = () => {
             <div className={cx('image-container')}>
               <img role="presentation" src={leftImg} alt="" />
             </div>
-          </button>
+          </div>
         </section>
         <section className={cx('section', 'give')}>
-          <button className={cx('link')} onClick={() => openForm(giveRef)}>
+          <div className={cx('link')} onClick={() => openForm(giveRef)}>
             <div
               className={cx('content-container')}
               onMouseEnter={() => setActiveSection('give')}
@@ -54,7 +54,7 @@ const Hero = () => {
             <div className={cx('image-container')}>
               <img role="presentation" src={rightImg} alt="" />
             </div>
-          </button>
+          </div>
         </section>
       </article>
     </>

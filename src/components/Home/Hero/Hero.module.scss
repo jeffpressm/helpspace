@@ -110,6 +110,7 @@
   @include uiTransition(opacity);
   display: none;
   flex: 0 0 50%;
+  height: 100%;
 
   @media (min-width: $bp-medium) {
     display: block;
@@ -118,5 +119,17 @@
   .is-get-active .give &,
   .is-give-active .get & {
     opacity: 0;
+  }
+
+  > img {
+    height: 100%;
+
+    .give & {
+      margin-right: auto;
+    }
+
+    .get & {
+      margin-left: auto;
+    }
   }
 }
