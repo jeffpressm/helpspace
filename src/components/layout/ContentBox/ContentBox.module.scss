@@ -1,0 +1,23 @@
+@import 'utils/styles/breakpoints';
+
+.root {
+  padding: var(--global-offset-small);
+
+  &.white {
+    background-color: var(--color-white);
+  }
+
+  &.gray {
+    background-color: var(--color-gray-1);
+  }
+
+  @media (min-width: $bp-medium) {
+    padding-left: var(--global-offset-x);
+    padding-right: var(--global-offset-x);
+  }
+}
+
+.content-container {
+  margin: 0 auto;
+  max-width: var(--global-content-width);
+}
