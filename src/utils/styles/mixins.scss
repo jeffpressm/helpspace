@@ -7,6 +7,7 @@
 @mixin reset-button() {
   @include disable-callout();
   all: unset;
+  box-sizing: inherit;
 
   // background-color: transparent;
   // border: 0;
@@ -28,6 +29,7 @@
 
 @mixin reset-input {
   all: unset;
+  box-sizing: inherit;
   // appearance: none;
   // background: none transparent;
   // border: 0;
