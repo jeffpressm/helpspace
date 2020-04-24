@@ -43,3 +43,8 @@
   // //outline: none;
   width: 100%;
 }
+
+@mixin prevent-margin-collapse {
+  display: flex;
+  flex-direction: column;
+}

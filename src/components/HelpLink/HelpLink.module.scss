@@ -7,10 +7,6 @@
   @include reset-button;
   @include copy-2;
   @include uiTransition(color);
-  position: absolute;
-  right: 30px;
-  top: 70px;
-  z-index: 2;
 
   &:hover {
     color: var(--color-red-2);

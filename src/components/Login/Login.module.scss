@@ -3,43 +3,19 @@
 
 .root {
   min-height: 100vh;
-  padding: calc(var(--global-offset-x) + 10vh) var(--global-offset-x) 0;
 }
 
 .title {
   @include headline-2;
+  margin-top: 10vh;
 }
 
 .form-container {
-  margin-top: 80px;
+  margin-top: 10vh;
 
   @media (min-width: $bp-medium) {
-    width: 420px;
+    max-width: 420px;
   }
-}
-
-.input {
-  @include copy-1;
-  background: transparent;
-  border: 0;
-  padding: 15px 10px;
-  width: 100%;
-
-  &::placeholder {
-    color: var(--color-gray-3);
-  }
-}
-
-.button {
-  background: none;
-  border: 0;
-  fill: var(--color-gray-3);
-  padding: 0;
-  position: absolute;
-  right: 10px;
-  top: 50%;
-  transform: translateY(-50%);
-  width: 16px;
 }
 
 .error {

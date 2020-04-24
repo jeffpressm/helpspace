@@ -1,7 +1,12 @@
 @import 'utils/styles/breakpoints';
+@import 'utils/styles/mixins';
 
 .root {
   padding: var(--global-offset-small);
+
+  &.top {
+    padding-top: var(--global-offset-y);
+  }
 
   &.white {
     background-color: var(--color-white);
@@ -11,6 +16,10 @@
     background-color: var(--color-gray-1);
   }
 
+  &.red {
+    background-color: var(--color-red-1);
+  }
+
   @media (min-width: $bp-medium) {
     padding-left: var(--global-offset-x);
     padding-right: var(--global-offset-x);
@@ -18,6 +27,7 @@
 }
 
 .content-container {
+  @include prevent-margin-collapse;
   margin: 0 auto;
   max-width: var(--global-content-width);
 }

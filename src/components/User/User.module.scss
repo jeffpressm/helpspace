@@ -3,12 +3,11 @@
 @import 'utils/styles/type';
 @import 'utils/styles/mixins';
 
-.root {
-  margin: 0 auto;
-  max-width: 840px;
-  padding: var(--global-offset-y) var(--global-offset-small)
-    var(--global-offset-small);
-  position: relative;
+.help-container {
+  display: flex;
+  justify-content: flex-end;
+  margin-bottom: 20px;
+  width: 100%;
 }
 
 .item {

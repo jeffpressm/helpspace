@@ -2,17 +2,20 @@ import React, { useContext, useState, useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
 import classNames from 'classnames/bind';
 import useClipboard from 'react-use-clipboard';
-import { SpreadsheetContext } from 'utils/context/SpreadsheetContextProvider';
+
 import { ReactComponent as CopyIcon } from 'assets/icons/copy.svg';
 import { ReactComponent as FacebookIcon } from 'assets/icons/facebook.svg';
 import { ReactComponent as LinkedInIcon } from 'assets/icons/linkedin.svg';
 import { ReactComponent as TwitterIcon } from 'assets/icons/twitter.svg';
-import getUserInfo from 'utils/getUserInfo';
-import { FormContext, openForm } from 'utils/context/Form';
-import styles from './Expert.module.scss';
 import Avatar from 'components/Avatar';
+import ContentBox from 'components/layout/ContentBox';
 import HowTo from 'components/HowTo';
 import HelpLink from 'components/HelpLink';
+import { FormContext, openForm } from 'utils/context/Form';
+import { SpreadsheetContext } from 'utils/context/SpreadsheetContextProvider';
+import getUserInfo from 'utils/getUserInfo';
+
+import styles from './Expert.module.scss';
 
 const cx = classNames.bind(styles);
 
@@ -62,9 +65,11 @@ const Expert = () => {
   }
 
   return (
-    <article className={cx('root')}>
-      <div className={cx('inner')}>
-        <HelpLink onClick={() => setShowHowTo(true)} />
+    <ContentBox theme="red" isTop>
+      <article className={cx('inner')}>
+        <div className={cx('help-container')}>
+          <HelpLink onClick={() => setShowHowTo(true)} />
+        </div>
         <header className={cx('header')}>
           <div>
             <h1 className={cx('title')}>{name}</h1>
@@ -151,8 +156,8 @@ const Expert = () => {
             </li>
           </ul>
         </section>
-      </div>
-    </article>
+      </article>
+    </ContentBox>
   );
 };
 

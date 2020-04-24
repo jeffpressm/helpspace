@@ -1,11 +1,6 @@
 @import 'utils/styles/breakpoints';
 @import 'utils/styles/type';
 
-.root {
-  padding: var(--global-offset-y) var(--global-offset-small)
-    var(--global-offset-small);
-}
-
 .hero-headline {
   @include headline-2;
   color: var(--text-dark);
@@ -32,7 +27,6 @@
 .faq-container {
   border-top: 1px solid;
   display: flex;
-  margin: var(--global-offset-small) auto 0;
   width: 100%;
 }
 

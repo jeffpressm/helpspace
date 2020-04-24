@@ -2,6 +2,8 @@ import React, { useState, useContext } from 'react';
 import classNames from 'classnames/bind';
 import styles from './Login.module.scss';
 import { useHistory } from 'react-router-dom';
+
+import ContentBox from 'components/layout/ContentBox';
 import EmailForm from 'components/form/EmailForm';
 import { UserContext } from 'utils/context/UserContextProvider';
 import { SpreadsheetContext } from 'utils/context/SpreadsheetContextProvider';
@@ -41,7 +43,7 @@ const Login = () => {
   };
 
   return (
-    <div className={cx('root')}>
+    <ContentBox isTop className={cx('root')}>
       <label className={cx('title')} htmlFor="login">
         Enter your email to view your helpspace
       </label>
@@ -55,7 +57,7 @@ const Login = () => {
         />
       </div>
       {error && <p className={cx('error')}>{error}</p>}
-    </div>
+    </ContentBox>
   );
 };
 
