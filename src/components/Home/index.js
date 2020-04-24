@@ -4,7 +4,7 @@ import classNames from 'classnames/bind';
 import Footer from 'components/Footer';
 
 import About from './About';
-import Help from './Help';
+import Challenges from './Challenges';
 import Hero from './Hero';
 import styles from './Home.module.scss';
 
@@ -15,7 +15,7 @@ const Home = () => {
     <>
       <Hero />
       <About />
-      <Help />
+      <Challenges />
       <footer className={cx('footer-container')}>
         <Footer />
       </footer>

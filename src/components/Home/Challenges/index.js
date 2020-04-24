@@ -7,7 +7,7 @@ import { FormContext, openForm } from 'utils/context/Form';
 import { SpreadsheetContext } from 'utils/context/SpreadsheetContextProvider';
 
 import Card from './Card';
-import styles from './Help.module.scss';
+import styles from './Challenges.module.scss';
 
 const cx = classNames.bind(styles);
 
@@ -30,7 +30,7 @@ function formatContent(raw) {
   };
 }
 
-const Help = () => {
+const Challenges = () => {
   const [activeSection, setActiveSection] = useState();
   const [ChallengesContent, setChallengesContent] = useState();
   const { getRef, giveRef } = useContext(FormContext);
@@ -113,4 +113,4 @@ const Help = () => {
   );
 };
 
-export default Help;
+export default Challenges;
