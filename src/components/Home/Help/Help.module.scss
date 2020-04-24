@@ -1,0 +1,87 @@
+@import 'utils/styles/animations';
+@import 'utils/styles/mixins';
+@import 'utils/styles/type';
+
+.headline {
+  @include headline-2;
+  color: var(--color-gray-3);
+
+  @media (min-width: $bp-medium) {
+    width: 50%;
+  }
+}
+
+.toc {
+  display: flex;
+  margin-top: var(--global-offset-small);
+  overflow-x: auto;
+  width: 100%;
+}
+
+.toc-item {
+  @include headline-3;
+  @include uiTransition(opacity);
+  white-space: nowrap;
+
+  &:not(.active) {
+    opacity: 0.3;
+
+    &:hover,
+    &:focus {
+      opacity: 0.6;
+    }
+  }
+
+  & + & {
+    margin-left: 25px;
+
+    @media (min-width: $bp-medium) {
+      margin-left: 40px;
+    }
+  }
+}
+
+.section-container {
+  margin-top: 40px;
+}
+
+.section {
+  display: grid;
+  grid-gap: 10px;
+  grid-template-columns: repeat(2, 1fr);
+
+  @media (min-width: $bp-medium) {
+    grid-gap: 20px;
+    grid-template-columns: repeat(4, 1fr);
+  }
+
+  &:not(.active) {
+    display: none;
+  }
+}
+
+.cta-container {
+  margin-top: var(--global-offset-small);
+
+  @media (min-width: $bp-medium) {
+    display: none;
+  }
+}
+
+.cta {
+  @include headline-2;
+
+  & + & {
+    margin-top: 40px;
+  }
+
+  > button {
+    @include reset-button;
+  }
+}
+
+.arrow {
+  display: inline-block;
+  margin-left: 0.5em;
+  width: 0.66em;
+}

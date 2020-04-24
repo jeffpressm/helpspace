@@ -1,114 +1,56 @@
-import React, { useEffect, useContext, useState } from 'react';
+import React from 'react';
 import classNames from 'classnames/bind';
 
-import { ReactComponent as ArrowIcon } from 'assets/icons/arrow.svg';
-import { FormContext, openForm } from 'utils/context/Form';
-import { SpreadsheetContext } from 'utils/context/SpreadsheetContextProvider';
+import ContentBox from 'components/layout/ContentBox';
 
-import Card from './Card';
 import styles from './About.module.scss';
 
 const cx = classNames.bind(styles);
 
-function formatContent(raw) {
-  const sections = {};
-  raw.forEach((item) => {
-    const key = item['Section'];
-    if (!sections[key]) {
-      sections[key] = [];
-    }
-    sections[key].push(item['Body']);
-  });
-
-  const title = sections['Title'][0];
-  delete sections['Title'];
-
-  return {
-    title,
-    sections,
-  };
-}
-
 const About = () => {
-  const [activeSection, setActiveSection] = useState();
-  const [ChallengesContent, setChallengesContent] = useState();
-  const { getRef, giveRef } = useContext(FormContext);
-  const { content } = useContext(SpreadsheetContext);
-
-  useEffect(() => {
-    setChallengesContent(formatContent(content['Challenges']));
-  }, [setChallengesContent, content]);
-
-  useEffect(() => {
-    if (!ChallengesContent?.sections) {
-      return;
-    }
-    setActiveSection(Object.keys(ChallengesContent.sections)[0]);
-  }, [setActiveSection, ChallengesContent]);
-
-  if (!ChallengesContent) {
-    return null;
-  }
-
   return (
-    <article className={cx('root')}>
-      <div className={cx('content-container')}>
-        <h2 className={cx('headline')}>{ChallengesContent.title}</h2>
-        <nav>
-          <ul className={cx('toc')}>
-            {Object.keys(ChallengesContent.sections).map((k) => (
-              <li
-                className={cx('toc-item', { active: k === activeSection })}
-                key={k}
-              >
-                <a
-                  href={`#${k}`}
-                  onClick={(e) => {
-                    e.preventDefault();
-                    setActiveSection(k);
-                  }}
-                >
-                  {k}
-                </a>
-              </li>
-            ))}
-          </ul>
-        </nav>
-        <div className={cx('section-container')}>
-          {Object.entries(ChallengesContent.sections).map((e) => (
-            <section
-              className={cx('section', { active: e[0] === activeSection })}
-              key={e[0]}
-              id={e[0]}
-            >
-              {e[1].map((c) => (
-                <Card key={c} title={c} />
-              ))}
-            </section>
-          ))}
-        </div>
-      </div>
-      <div className={cx('cta-container')}>
-        <ul className={cx('ctas')}>
-          <li className={cx('cta')}>
-            <button onClick={() => openForm(getRef)}>
-              Get help
-              <span className={cx('arrow')}>
-                <ArrowIcon />
-              </span>
-            </button>
-          </li>
-          <li className={cx('cta')}>
-            <button onClick={() => openForm(giveRef)}>
-              Give help
-              <span className={cx('arrow')}>
-                <ArrowIcon />
-              </span>
-            </button>
-          </li>
-        </ul>
-      </div>
-    </article>
+    <ContentBox>
+      <article className={cx('root')}>
+        <section className={cx('section--1')}>
+          <div className={cx('about-us')}>
+            <p>
+              Helpspace connects small businesses with volunteer professionals
+              whose expertise can help solve crisis-specific challenges.
+            </p>
+            <p>
+              Once the match is made, you collaborate to solve the business
+              challenge via shared Google Docs – your “helpspace”
+            </p>
+          </div>
+        </section>
+        <section className={cx('section--2')}>
+          <div className={cx('about-you')}>
+            <h3 className={cx('about-you__heading')}>As a client</h3>
+            <div className={cx('about-you__body')}>
+              <p>
+                Choose a challenge from one’s we’ve seen before – or write your
+                own. When you’re matched, use your helpspace to interact with
+                your Advisor and ask any questions you have about their advice
+                and feedback. Pay it forward by offering your own expertise as
+                an Advisor.
+              </p>
+            </div>
+          </div>
+          <div className={cx('about-you')}>
+            <h3 className={cx('about-you__heading')}>As an advisor</h3>
+            <div className={cx('about-you__body')}>
+              <p>
+                You let helpspace know what challenges you’re qualified to help
+                with. When you’re matched with a client, you’ll spend no more
+                than 30 minutes giving help via a Google Doc workspace. And
+                since we all need help sometimes, feel free to list yourself as
+                a client too.
+              </p>
+            </div>
+          </div>
+        </section>
+      </article>
+    </ContentBox>
   );
 };
 

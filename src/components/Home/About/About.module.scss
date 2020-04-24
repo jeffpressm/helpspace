@@ -1,102 +1,43 @@
-@import 'utils/styles/animations';
-@import 'utils/styles/mixins';
+@import 'utils/styles/breakpoints';
 @import 'utils/styles/type';
 
 .root {
-  background-color: var(--color-gray-1);
-  padding: var(--global-offset-small);
-
-  @media (min-width: $bp-medium) {
-    padding-left: var(--global-offset-x);
-    padding-right: var(--global-offset-x);
-  }
-}
-
-.content-container {
-  margin: 0 auto;
-  max-width: var(--global-content-width);
-}
-
-.headline {
-  @include headline-2;
-  color: var(--color-gray-3);
-
-  @media (min-width: $bp-medium) {
-    width: 50%;
-  }
-}
-
-.toc {
-  display: flex;
-  margin-top: var(--global-offset-small);
-  overflow-x: auto;
-  width: 100%;
-}
-
-.toc-item {
-  @include headline-3;
-  @include uiTransition(opacity);
-  white-space: nowrap;
-
-  &:not(.active) {
-    opacity: 0.3;
-
-    &:hover,
-    &:focus {
-      opacity: 0.6;
-    }
-  }
-
-  & + & {
-    margin-left: 25px;
-
-    @media (min-width: $bp-medium) {
-      margin-left: 40px;
-    }
-  }
-}
-
-.section-container {
-  margin-top: 40px;
+  display: grid;
+  grid-gap: 60px 120px;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: 1fr 2fr;
 }
 
 .section {
-  display: grid;
-  grid-gap: 10px;
-  grid-template-columns: repeat(2, 1fr);
-
-  @media (min-width: $bp-medium) {
-    grid-gap: 20px;
-    grid-template-columns: repeat(4, 1fr);
+  &--1 {
+    grid-column-start: 1;
+    grid-row: span 2;
   }
 
-  &:not(.active) {
-    display: none;
+  &--2 {
+    grid-column-start: 2;
+    grid-row-start: 2;
   }
 }
 
-.cta-container {
-  margin-top: var(--global-offset-small);
+.about-us {
+  @include headline-3;
 
-  @media (min-width: $bp-medium) {
-    display: none;
+  > p {
+    margin-top: 1.5em;
   }
 }
 
-.cta {
-  @include headline-2;
-
+.about-you {
   & + & {
-    margin-top: 40px;
+    margin-top: 1.5em;
   }
 
-  > button {
-    @include reset-button;
+  &__heading {
+    @include headline-3;
   }
-}
 
-.arrow {
-  display: inline-block;
-  margin-left: 0.5em;
-  width: 0.66em;
+  &__body {
+    @include copy-2;
+  }
 }
