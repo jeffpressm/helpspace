@@ -1,51 +1,43 @@
-import React from 'react';
+import React, { useContext } from 'react';
+import ReactMarkdown from 'react-markdown';
 import classNames from 'classnames/bind';
 
 import ContentBox from 'components/layout/ContentBox';
+import { pivotTable } from 'utils/pivotTable';
+import { SpreadsheetContext } from 'utils/context/SpreadsheetContextProvider';
 
 import styles from './About.module.scss';
 
 const cx = classNames.bind(styles);
 
 const About = () => {
+  const { content } = useContext(SpreadsheetContext);
+  const { About } = content;
+  const AboutContent = pivotTable(About);
+
   return (
     <ContentBox>
       <article className={cx('root')}>
         <section className={cx('section--1')}>
           <div className={cx('about-us')}>
-            <p>
-              Helpspace connects small businesses with volunteer professionals
-              whose expertise can help solve crisis-specific challenges.
-            </p>
-            <p>
-              Once the match is made, you collaborate to solve the business
-              challenge via shared Google Docs – your “helpspace”
-            </p>
+            <ReactMarkdown source={AboutContent['Main']} />
           </div>
         </section>
         <section className={cx('section--2')}>
           <div className={cx('about-you')}>
-            <h3 className={cx('about-you__heading')}>As a client</h3>
+            <h3 className={cx('about-you__heading')}>
+              {AboutContent['Client Heading']}
+            </h3>
             <div className={cx('about-you__body')}>
-              <p>
-                Choose a challenge from one’s we’ve seen before – or write your
-                own. When you’re matched, use your helpspace to interact with
-                your Advisor and ask any questions you have about their advice
-                and feedback. Pay it forward by offering your own expertise as
-                an Advisor.
-              </p>
+              <ReactMarkdown source={AboutContent['Client Body']} />
             </div>
           </div>
           <div className={cx('about-you')}>
-            <h3 className={cx('about-you__heading')}>As an advisor</h3>
+            <h3 className={cx('about-you__heading')}>
+              {AboutContent['Advisor Heading']}
+            </h3>
             <div className={cx('about-you__body')}>
-              <p>
-                You let helpspace know what challenges you’re qualified to help
-                with. When you’re matched with a client, you’ll spend no more
-                than 30 minutes giving help via a Google Doc workspace. And
-                since we all need help sometimes, feel free to list yourself as
-                a client too.
-              </p>
+              <ReactMarkdown source={AboutContent['Advisor Body']} />
             </div>
           </div>
         </section>
