@@ -1,9 +1,9 @@
 import React from 'react';
 import classNames from 'classnames/bind';
 
-import About from 'components/About';
 import Footer from 'components/Footer';
 
+import About from './About';
 import Hero from './Hero';
 import styles from './Home.module.scss';
 
