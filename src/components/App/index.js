@@ -25,10 +25,10 @@ function App() {
                 <Route exact path={RouteList.home}>
                   <Home />
                 </Route>
-                <Route path={RouteList.user}>
+                <Route path={RouteList.client}>
                   <User />
                 </Route>
-                <Route path={RouteList.expert}>
+                <Route path={RouteList.advisor}>
                   <Expert />
                 </Route>
                 <Route path={RouteList.faq}>

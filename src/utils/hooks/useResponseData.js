@@ -1,7 +1,7 @@
 import { useState, useEffect, useContext } from 'react';
 import { SpreadsheetContext } from '../context/SpreadsheetContextProvider';
 
-function useResponseData(responseId, sheetId) {
+function useResponseData(email, sheetId) {
   const { responses } = useContext(SpreadsheetContext);
   const [responseData, setResponseData] = useState();
   const [isLoading, setIsLoading] = useState(false);
@@ -11,7 +11,7 @@ function useResponseData(responseId, sheetId) {
       return;
     }
     const newresponseData = responses[sheetId].find(
-      (c) => c['ID'] === responseId
+      (c) => c['Email'] === email
     );
 
     if (!newresponseData) {
@@ -22,7 +22,7 @@ function useResponseData(responseId, sheetId) {
     }
 
     setResponseData(newresponseData);
-  }, [responses, setResponseData, responseId, sheetId]);
+  }, [responses, setResponseData, email, sheetId]);
 
   return { data: responseData, isLoading };
 }

@@ -14,8 +14,7 @@ const Register = () => {
   const query = new URLSearchParams(search);
   const userEmail = query.get('email');
   const userType = query.get('type');
-  const responseId = query.get('responseId');
-  const { data } = useResponseData(responseId, responseSheets[userType]);
+  const { data } = useResponseData(userEmail, responseSheets[userType]);
 
   useEffect(() => {
     const existingEmail = window.localStorage.getItem('email');
@@ -32,7 +31,7 @@ const Register = () => {
     if (data) {
       history.push(`/${userType}?email=${requestEmail}`);
     }
-  }, [userEmail, userType, responseId, history, data, setUserData, responses]);
+  }, [userEmail, userType, history, data, setUserData, responses]);
 
   return <div>Please wait while we register you...</div>;
 };

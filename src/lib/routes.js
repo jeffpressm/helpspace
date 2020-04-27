@@ -1,9 +1,9 @@
 export const RouteList = {
   home: '/',
-  expert: '/expert',
+  advisor: '/advisor',
   faq: '/faq',
   login: '/login',
-  user: '/user',
+  client: '/client',
   register: '/register',
   listing: '/listing',
 };
