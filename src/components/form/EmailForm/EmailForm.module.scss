@@ -8,6 +8,7 @@
   border-bottom: 2px solid;
   color: rgba(#111, 0.3);
   display: flex;
+  font-size: 16px; // Input text needs to be at least 16px, or Mobile Safari will zoom when focused
   padding-bottom: 10px;
 
   &:hover {

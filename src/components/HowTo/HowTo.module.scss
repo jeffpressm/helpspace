@@ -79,8 +79,8 @@
 }
 
 .cta {
-  @include uiTransition(background-color);
   @include reset-button;
+  @include uiTransition(background-color);
   @include copy-1;
 
   background-color: var(--color-gray-3);
