@@ -64,6 +64,7 @@
 }
 
 .animation-container {
+  display: none;
   height: 100%;
   left: 50%;
   pointer-events: none;
@@ -71,6 +72,10 @@
   top: 50%;
   transform: translate(-50%, -50%);
   width: 50%;
+
+  @media (min-width: $bp-medium) {
+    display: block;
+  }
 }
 
 .animation {

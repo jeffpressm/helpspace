@@ -1,4 +1,4 @@
-import React, { useContext, useState, useReducer } from 'react';
+import React, { useContext, useReducer } from 'react';
 import { Lottie } from '@crello/react-lottie';
 import classNames from 'classnames/bind';
 
@@ -50,6 +50,7 @@ const Hero = () => {
     });
   };
 
+  // TODO animations occur even in mobile
   const handleAnimationComplete = (name) => {
     return () => {
       aDispatch({
