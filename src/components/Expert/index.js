@@ -32,7 +32,6 @@ const getCategories = (responses) =>
     acc.push(...list);
     return acc;
   }, []);
-
 const Expert = () => {
   const [showHowTo, setShowHowTo] = useState(false);
   const { search } = useLocation();
@@ -40,7 +39,7 @@ const Expert = () => {
   const { responses } = useContext(SpreadsheetContext);
   const query = new URLSearchParams(search);
   const email = query.get('email');
-  const { expertResponses, name, role, location } = getUserInfo(
+  const { expertResponses, name, role, location, image } = getUserInfo(
     responses,
     email
   );
@@ -78,7 +77,7 @@ const Expert = () => {
             </p>
           </div>
           <div className={cx('avatar')}>
-            <Avatar />
+            <Avatar src={image} />
           </div>
         </header>
         <section>
@@ -113,6 +112,8 @@ const Expert = () => {
                 href={`https://www.linkedin.com/shareArticle?mini=true&title=Helpspace&summary=${encodeURIComponent(
                   shareString
                 )}&url=${encodeURIComponent(window.location.href)}`}
+                target="_blank"
+                rel="noopener noreferrer"
               >
                 <div className={cx('share__icon')}>
                   <LinkedInIcon />
@@ -126,6 +127,8 @@ const Expert = () => {
                 href={`https://twitter.com/intent/tweet?url=${encodeURIComponent(
                   window.location.href
                 )}&text=${encodeURIComponent(shareString)}`}
+                target="_blank"
+                rel="noopener noreferrer"
               >
                 <div className={cx('share__icon')}>
                   <TwitterIcon />
@@ -139,6 +142,8 @@ const Expert = () => {
                 href={`https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(
                   window.location.href
                 )}`}
+                target="_blank"
+                rel="noopener noreferrer"
               >
                 <div className={cx('share__icon')}>
                   <FacebookIcon />

@@ -13,12 +13,15 @@ const getUserInfo = (responses, email) => {
     expertResponses.find(findUserInfo) ||
     {};
 
+  console.log(userInfo);
+
   return {
     name: userInfo['Name'],
-    email: email,
+    email: userInfo['Email'],
     industry: userInfo['Industry'],
     role: userInfo['Role'],
     location: userInfo['Location'],
+    image: userInfo['Image'],
     clientResponses,
     expertResponses,
   };

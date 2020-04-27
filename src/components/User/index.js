@@ -20,7 +20,7 @@ const User = () => {
   const { responses } = useContext(SpreadsheetContext);
   const query = new URLSearchParams(search);
   const email = query.get('email');
-  const { clientResponses } = getUserInfo(responses, email);
+  const { image, clientResponses } = getUserInfo(responses, email);
 
   useEffect(() => {
     const shouldShowHowTo = !localStorage.getItem('seenHowTo');
@@ -55,7 +55,7 @@ const User = () => {
                     <img src={helpspaceAvatar} alt="Helpspace avatar" />
                   </li>
                   <li className={cx('avatar__item')}>
-                    <Avatar />
+                    <Avatar src={image} />
                   </li>
                 </ul>
                 <p>Shared with you and Helpspace</p>
