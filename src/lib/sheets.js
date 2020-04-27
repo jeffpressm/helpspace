@@ -1,4 +1,4 @@
 export const responseSheets = {
-  user: 'Users',
-  expert: 'Experts',
+  client: 'Client',
+  advisor: 'Advisor',
 };

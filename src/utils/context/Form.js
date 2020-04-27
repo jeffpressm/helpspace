@@ -4,7 +4,7 @@ import TypeformEmbed from 'components/TypeformEmbed';
 
 const FORM_URL = {
   get: process.env.REACT_APP_CLIENT_TYPEFORM_URL,
-  give: process.env.REACT_APP_EXPERT_TYPEFORM_URL,
+  give: process.env.REACT_APP_ADVISOR_TYPEFORM_URL,
 };
 
 export const FormContext = createContext({

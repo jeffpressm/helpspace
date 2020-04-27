@@ -4,16 +4,16 @@ const getUserInfo = (responses, email) => {
   const findResponses = (response) => response['Email'] === email;
   const findUserInfo = (response) => response['Name'];
 
-  const clientResponses = responses[responseSheets.user].filter(findResponses);
-  const expertResponses = responses[responseSheets.expert].filter(
+  const clientResponses = responses[responseSheets.client].filter(
+    findResponses
+  );
+  const expertResponses = responses[responseSheets.advisor].filter(
     findResponses
   );
   const userInfo =
     clientResponses.find(findUserInfo) ||
     expertResponses.find(findUserInfo) ||
     {};
-
-  console.log(userInfo);
 
   return {
     name: userInfo['Name'],
