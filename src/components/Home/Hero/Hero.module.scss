@@ -5,6 +5,7 @@
 
 .root {
   overflow: hidden;
+  position: relative;
   width: 100%;
 
   @media (min-width: $bp-medium) {
@@ -24,18 +25,18 @@
     flex: 0 0 50%;
     min-width: 0;
 
-    &:first-child {
+    &:first-of-type {
       padding-left: var(--global-offset-small);
       padding-right: 0;
     }
 
-    &:last-child {
+    &:last-of-type {
       padding-left: 0;
       padding-right: var(--global-offset-small);
     }
   }
 
-  &:first-child {
+  &:first-of-type {
     padding-top: calc(var(--global-offset-y) + 80px);
 
     @media (min-width: $bp-medium) {
@@ -44,7 +45,7 @@
     }
   }
 
-  &:last-child {
+  &:last-of-type {
     padding-top: 80px;
 
     @media (min-width: $bp-medium) {
@@ -59,6 +60,42 @@
 
   &.give {
     background-color: var(--color-red-1);
+  }
+}
+
+.animation-container {
+  height: 100%;
+  left: 50%;
+  pointer-events: none;
+  position: absolute;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  width: 50%;
+}
+
+.animation {
+  @include uiTransition(opacity);
+  height: 100%;
+  left: 0;
+  position: absolute;
+  top: 0;
+  width: 100%;
+
+  &.is-hidden {
+    opacity: 0;
+  }
+
+  &--full {
+    .animation-container.is-intro-complete & {
+      opacity: 0;
+    }
+  }
+
+  &--get,
+  &--give {
+    .animation-container:not(.is-intro-complete) & {
+      opacity: 0;
+    }
   }
 }
 
@@ -103,33 +140,5 @@
 
   .content-container:hover & {
     transform: translateX(10px);
-  }
-}
-
-.image-container {
-  @include uiTransition(opacity);
-  display: none;
-  flex: 0 0 50%;
-  height: 100%;
-
-  @media (min-width: $bp-medium) {
-    display: block;
-  }
-
-  .is-get-active .give &,
-  .is-give-active .get & {
-    opacity: 0;
-  }
-
-  > img {
-    height: 100%;
-
-    .give & {
-      margin-right: auto;
-    }
-
-    .get & {
-      margin-left: auto;
-    }
   }
 }

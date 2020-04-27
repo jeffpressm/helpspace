@@ -22,3 +22,9 @@ https://github.com/alexgarces/react-typeform-embed/
 https://developer.typeform.com/
 
 ### HTML Emails
+
+### Animations
+
+Lottie
+http://airbnb.io/lottie/
+https://github.com/crello/react-lottie/blob/master/src/components/Lottie/index.tsx
