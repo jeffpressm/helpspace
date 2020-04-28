@@ -3,7 +3,9 @@ import classNames from 'classnames/bind';
 
 import ContentBox from 'components/layout/ContentBox';
 import Footer from 'components/Footer';
+import Markdown from 'components/Markdown';
 import { SpreadsheetContext } from 'utils/context/SpreadsheetContextProvider';
+import { pivotTable } from 'utils/pivotTable';
 
 import TwoUp from 'components/TwoUp';
 import heroImg from './assets/hero.png';
@@ -13,7 +15,8 @@ const cx = classNames.bind(styles);
 
 const Faq = () => {
   const { content } = useContext(SpreadsheetContext);
-  const { FAQ: FaqContent, 'FAQ Hero': HeroContent } = content;
+  const { 'FAQ: Items': FaqItemsContent } = content;
+  const FaqHeroContent = pivotTable(content['FAQ: Hero']);
 
   return (
     <>
@@ -22,8 +25,12 @@ const Faq = () => {
           <TwoUp
             slot1={
               <div>
-                <h1 className={cx('hero-headline')}>{HeroContent[0]['CTA']}</h1>
-                <div className={cx('hero-body')}>{HeroContent[0]['Body']}</div>
+                <h1 className={cx('hero-headline')}>
+                  {FaqHeroContent['Headline']}
+                </h1>
+                <div className={cx('hero-body')}>
+                  <Markdown source={FaqHeroContent['Body']} />
+                </div>
               </div>
             }
             slot2={
@@ -40,7 +47,7 @@ const Faq = () => {
             </div>
             <div className={cx('faq-body')}>
               <ul>
-                {FaqContent.map((item) => {
+                {FaqItemsContent.map((item) => {
                   const {
                     Question: question,
                     Answer: answer,
@@ -60,7 +67,7 @@ const Faq = () => {
                               </strong>
                             </div>
                             <div className={cx('faq-description')}>
-                              {description}
+                              <Markdown source={description} />
                             </div>
                           </>
                         }

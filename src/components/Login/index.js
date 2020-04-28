@@ -5,6 +5,7 @@ import { useHistory } from 'react-router-dom';
 
 import ContentBox from 'components/layout/ContentBox';
 import EmailForm from 'components/form/EmailForm';
+import { RouteList } from 'lib/routes';
 import { UserContext } from 'utils/context/UserContextProvider';
 import { SpreadsheetContext } from 'utils/context/SpreadsheetContextProvider';
 import getUserInfo from 'utils/getUserInfo';
@@ -33,9 +34,9 @@ const Login = () => {
     }
 
     if (userInfo.clientResponses[0]) {
-      history.push(`/client?email=${email}`);
+      history.push(`${RouteList.client}?email=${email}`);
     } else {
-      history.push(`/advisor?email=${email}`);
+      history.push(`${RouteList.advisor}?email=${email}`);
     }
 
     localStorage.setItem('email', email);

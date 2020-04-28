@@ -1,23 +1,23 @@
 import React, { useContext } from 'react';
-import { SpreadsheetContext } from 'utils/context/SpreadsheetContextProvider';
-import styles from './HowTo.module.scss';
 import classNames from 'classnames/bind';
 
 import ContentBox from 'components/layout/ContentBox';
-import TwoUp from 'components/TwoUp';
 import Expandable from 'components/Expandable';
-import { pivotTable } from 'utils/pivotTable';
+import Markdown from 'components/Markdown';
+import TwoUp from 'components/TwoUp';
+import { SpreadsheetContext } from 'utils/context/SpreadsheetContextProvider';
+
+import styles from './HowTo.module.scss';
 
 const cx = classNames.bind(styles);
 
 const HowTo = ({ onClose, type }) => {
   const { content } = useContext(SpreadsheetContext);
-  const clientGuidelines = content['Guidelines'];
-  const expertGuidelines = content['Expert Guidelines'];
-  const FooterContent = pivotTable(content['Footer']);
+  const clientGuidelines = content['Guidelines: Client'];
+  const advisorGuidelines = content['Guidelines: Advisor'];
   const hasCookie = window.localStorage.getItem('seenHowTo', true) === 'true';
 
-  const pageContent = type === 'client' ? clientGuidelines : expertGuidelines;
+  const pageContent = type === 'client' ? clientGuidelines : advisorGuidelines;
 
   const subContents = pageContent.filter((entry) => {
     return entry['Section'] === 'Sub-section';
@@ -25,6 +25,10 @@ const HowTo = ({ onClose, type }) => {
 
   const guidelines = pageContent.filter((entry) => {
     return entry['Section'] === 'Guidelines';
+  });
+
+  const important = pageContent.filter((entry) => {
+    return entry['Section'] === 'Important';
   });
 
   const handleContinue = () => {
@@ -86,42 +90,11 @@ const HowTo = ({ onClose, type }) => {
               <div>
                 <div className={cx('block')}>
                   <TwoUp
-                    slot1={
-                      <h3 className={cx('heading')}>
-                        <div></div>
-                      </h3>
-                    }
                     slot2={
                       <div className={cx('body')}>
-                        <p>
-                          You agree to keep any private information exchanged on
-                          helpspace confidential. If you have any questions
-                          about confidentiality, raise them when you start your
-                          exchange.
-                        </p>
-                        <p>
-                          Don’t use helpspace to provide or receive legal or
-                          investing advice.
-                        </p>
-                        <p>
-                          Don’t break the law using helpspace. All information
-                          exchanged in this workspace is subject to our{' '}
-                          <a
-                            href={FooterContent['Privacy Policy']}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                          >
-                            Privacy Policy
-                          </a>{' '}
-                          and{' '}
-                          <a
-                            href={FooterContent['User Agreement']}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                          >
-                            User Agreement.
-                          </a>
-                        </p>
+                        {important.map(({ Body: body }, i) => (
+                          <Markdown key={i} source={body} />
+                        ))}
                       </div>
                     }
                   />

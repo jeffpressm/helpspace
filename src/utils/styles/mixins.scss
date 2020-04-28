@@ -28,6 +28,7 @@
 @mixin reset-input {
   all: unset;
   box-sizing: inherit;
+  cursor: text;
   // appearance: none;
   // background: none transparent;
   // border: 0;

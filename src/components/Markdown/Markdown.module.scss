@@ -1,0 +1,26 @@
+.root {
+  a {
+    color: inherit;
+    font-weight: bold;
+    text-decoration: none;
+
+    &:hover,
+    &:focus {
+      text-decoration: underline;
+    }
+  }
+
+  i {
+    font-style: italic;
+  }
+
+  b {
+    font-weight: bold;
+  }
+
+  > * {
+    &:not(:first-child) {
+      margin-top: 1.5em;
+    }
+  }
+}

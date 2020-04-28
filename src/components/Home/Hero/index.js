@@ -3,8 +3,10 @@ import { Lottie } from '@crello/react-lottie';
 import classNames from 'classnames/bind';
 
 import { ReactComponent as ArrowIcon } from 'assets/icons/arrow.svg';
+import Markdown from 'components/Markdown';
 import { FormContext, openForm } from 'utils/context/Form';
 import { SpreadsheetContext } from 'utils/context/SpreadsheetContextProvider';
+import { pivotTable } from 'utils/pivotTable';
 
 import animationDataFull from './Animation/lib/Hero_Elbowbump_12fps.json';
 import animationDataGet from './Animation/lib/Hero_Elbowbump_Hover_L_12fps.json';
@@ -38,7 +40,7 @@ const Hero = () => {
   );
   const { getRef, giveRef } = useContext(FormContext);
   const { content } = useContext(SpreadsheetContext);
-  const { Hero: HeroContent } = content;
+  const HeroContent = pivotTable(content['Home: Hero']);
 
   const handleMouseEvent = (name) => {
     aDispatch({
@@ -75,8 +77,10 @@ const Hero = () => {
             }}
           >
             <div className={cx('content-container')}>
-              <h2 className={cx('title')}>{HeroContent[0]['CTA']}</h2>
-              <div className={cx('copy')}>{HeroContent[0]['Body']}</div>
+              <h2 className={cx('title')}>{HeroContent['Get Headline']}</h2>
+              <div className={cx('copy')}>
+                <Markdown source={HeroContent['Get Body']} />
+              </div>
               <div className={cx('cta')}>
                 <ArrowIcon />
               </div>
@@ -90,8 +94,10 @@ const Hero = () => {
             onMouseEnter={() => handleMouseEvent('give')}
           >
             <div className={cx('content-container')}>
-              <h2 className={cx('title')}>{HeroContent[1]['CTA']}</h2>
-              <div className={cx('copy')}>{HeroContent[1]['Body']}</div>
+              <h2 className={cx('title')}>{HeroContent['Give Headline']}</h2>
+              <div className={cx('copy')}>
+                <Markdown source={HeroContent['Give Body']} />
+              </div>
               <div className={cx('cta')}>
                 <ArrowIcon />
               </div>

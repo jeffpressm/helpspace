@@ -29,10 +29,6 @@
 
 .about-us {
   @include headline-3;
-
-  > p + p {
-    margin-top: 1.5em;
-  }
 }
 
 .about-you {

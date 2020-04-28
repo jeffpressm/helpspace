@@ -37,7 +37,7 @@ const Challenges = () => {
   const { content } = useContext(SpreadsheetContext);
 
   useEffect(() => {
-    setChallengesContent(formatContent(content['Challenges']));
+    setChallengesContent(formatContent(content['Home: Challenges']));
   }, [setChallengesContent, content]);
 
   useEffect(() => {
