@@ -6,6 +6,7 @@ import Faq from 'components/Faq';
 import GlobalContainer from 'components/GlobalContainer';
 import Login from 'components/Login';
 import Home from 'components/Home';
+import HowTo from 'components/HowTo';
 import User from 'components/User';
 import Listing from 'components/Listing';
 import Register from 'components/Register';
@@ -42,6 +43,9 @@ function App() {
                 </Route>
                 <Route path={RouteList.register}>
                   <Register />
+                </Route>
+                <Route path={RouteList.help}>
+                  <HowTo />
                 </Route>
               </Switch>
             </GlobalContainer>
