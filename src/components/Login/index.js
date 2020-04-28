@@ -33,9 +33,9 @@ const Login = () => {
     }
 
     if (userInfo.clientResponses[0]) {
-      history.push(`/user?email=${email}`);
+      history.push(`/client?email=${email}`);
     } else {
-      history.push(`/expert?email=${email}`);
+      history.push(`/advisor?email=${email}`);
     }
 
     localStorage.setItem('email', email);
