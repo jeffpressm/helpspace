@@ -1,4 +1,16 @@
+@import 'utils/styles/mixins';
+
 .root {
+  @include ratio-height;
   border-radius: 50%;
-  overflow: hidden;
+
+  > img,
+  > svg {
+    height: 100%;
+    left: 0;
+    object-fit: cover;
+    position: absolute;
+    top: 0;
+    width: 100%;
+  }
 }

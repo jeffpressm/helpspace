@@ -8,10 +8,8 @@ import styles from './Avatar.module.scss';
 const cx = classNames.bind(styles);
 
 const Avatar = ({ src }) => {
-  if (src) {
-    return <img className={cx('root')} src={src} alt="" />;
-  }
-  return <AvatarIcon />;
+  const asset = src ? <img src={src} alt="" /> : <AvatarIcon />;
+  return <div className={cx('root')}>{asset}</div>;
 };
 
 export default Avatar;
