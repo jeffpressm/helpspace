@@ -13,18 +13,18 @@
   }
 }
 
-.logoContainer {
+.logo-container {
   fill: var(--text-color);
   width: var(--logo-width);
 }
 
-.linkList {
+.link-list {
   align-items: center;
   display: flex;
   justify-content: center;
 }
 
-.linkContainer {
+.link-container {
   @media (min-width: $bp-small) {
     &.standard {
       margin-left: auto;
@@ -36,7 +36,7 @@
   }
 }
 
-.linkItem {
+.link-item {
   list-style-type: none;
 
   & + & {

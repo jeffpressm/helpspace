@@ -11,11 +11,11 @@ import styles from './GlobalNav.module.scss';
 const cx = classNames.bind(styles);
 
 const GlobalNavLinks = ({ links }) => (
-  <ul className={cx('linkList')}>
+  <ul className={cx('link-list')}>
     {links.map(({ to, onClick, label }) => {
       if (to) {
         return (
-          <li key={label} className={cx('linkItem')}>
+          <li key={label} className={cx('link-item')}>
             <NavLink
               className={cx('link')}
               activeClassName={cx('selected')}
@@ -28,7 +28,7 @@ const GlobalNavLinks = ({ links }) => (
       }
       if (onClick) {
         return (
-          <li key={label} className={cx('linkItem')}>
+          <li key={label} className={cx('link-item')}>
             <button className={cx('link')} onClick={onClick}>
               {label}
             </button>
@@ -72,12 +72,12 @@ const GlobalNav = ({ theme, mode }) => {
 
   return (
     <div className={cx('root', [theme])}>
-      <div className={cx('logoContainer')}>
+      <div className={cx('logo-container')}>
         <Link to="/">
           <Logo />
         </Link>
       </div>
-      <div className={cx('linkContainer', [mode])}>
+      <div className={cx('link-container', [mode])}>
         <GlobalNavLinks links={links[mode]} />
       </div>
     </div>

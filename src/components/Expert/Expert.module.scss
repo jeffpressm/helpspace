@@ -36,7 +36,7 @@
 }
 
 .subtitle {
-  @include copy-3;
+  @include copy-2(500);
 }
 
 .avatar {
@@ -53,7 +53,7 @@
 }
 
 .heading {
-  @include headline-4;
+  @include headline-3(500);
   margin-bottom: 35px;
 }
 

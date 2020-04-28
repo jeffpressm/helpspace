@@ -3,7 +3,7 @@
 @import 'utils/styles/mixins';
 
 .title {
-  @include headline-4;
+  @include headline-3(500);
   @include reset-button;
   @include uiTransition(all);
 
@@ -30,5 +30,5 @@
 }
 
 .indicator {
-  @include copy-3(600);
+  @include copy-2(600);
 }

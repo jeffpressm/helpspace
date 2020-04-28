@@ -28,7 +28,7 @@
 }
 
 .about-us {
-  @include headline-3;
+  @include headline-3(800);
 }
 
 .about-you {
@@ -37,10 +37,15 @@
   }
 
   &__heading {
-    @include headline-3;
+    @include headline-3(800);
   }
 
   &__body {
     @include copy-2;
   }
+}
+
+.footer {
+  @include copy-2;
+  margin-top: 60px;
 }

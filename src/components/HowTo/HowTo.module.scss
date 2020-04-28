@@ -29,7 +29,7 @@
 
 .close-button {
   @include reset-button;
-  @include copy-3;
+  @include copy-2(500);
   @include uiTransition(color);
   display: inline-block;
   margin-left: 10px;
@@ -67,7 +67,7 @@
 }
 
 .heading {
-  @include headline-4(600);
+  @include headline-3(600);
 }
 
 .body {

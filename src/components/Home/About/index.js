@@ -1,8 +1,10 @@
 import React, { useContext } from 'react';
+import { Link } from 'react-router-dom';
 import classNames from 'classnames/bind';
 
 import ContentBox from 'components/layout/ContentBox';
 import Markdown from 'components/Markdown';
+import { RouteList } from 'lib/routes';
 import { SpreadsheetContext } from 'utils/context/SpreadsheetContextProvider';
 import { pivotTable } from 'utils/pivotTable';
 
@@ -37,6 +39,9 @@ const About = () => {
             </h3>
             <div className={cx('about-you__body')}>
               <Markdown source={AboutContent['Advisor Body']} />
+            </div>
+            <div className={cx('footer')}>
+              You can learn more in the <Link to={RouteList.faq}>FAQ</Link>
             </div>
           </div>
         </section>
