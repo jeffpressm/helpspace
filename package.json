@@ -21,7 +21,7 @@
     "react-scripts": "3.4.1",
     "react-typeform-embed": "^0.2.1",
     "react-use-clipboard": "1.0.0",
-    "stylelint": "^13.3.2",
+    "stylelint": "^13.3.3",
     "stylelint-config-sass-guidelines": "^7.0.0",
     "tabletop": "^1.6.2"
   },
