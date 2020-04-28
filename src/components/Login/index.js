@@ -5,16 +5,19 @@ import { useHistory } from 'react-router-dom';
 
 import ContentBox from 'components/layout/ContentBox';
 import EmailForm from 'components/form/EmailForm';
+import Markdown from 'components/Markdown';
 import { RouteList } from 'lib/routes';
 import { UserContext } from 'utils/context/UserContextProvider';
 import { SpreadsheetContext } from 'utils/context/SpreadsheetContextProvider';
 import getUserInfo from 'utils/getUserInfo';
+import { pivotTable } from 'utils/pivotTable';
 
 const cx = classNames.bind(styles);
 
 const Login = () => {
   const { setUserData } = useContext(UserContext);
-  const { responses } = useContext(SpreadsheetContext);
+  const { content, responses } = useContext(SpreadsheetContext);
+  const LoginContent = pivotTable(content['Login']);
   const history = useHistory();
   const [email, setEmail] = useState();
   const [error, setError] = useState();
@@ -45,9 +48,10 @@ const Login = () => {
 
   return (
     <ContentBox isTop className={cx('root')}>
-      <label className={cx('title')} htmlFor="login">
-        Enter your email to view your helpspace
-      </label>
+      <h1 className={cx('headline')}>{LoginContent['Headline']}</h1>
+      <div className={cx('body')}>
+        <Markdown source={LoginContent['Body']} />
+      </div>
       <div className={cx('form-container')}>
         <EmailForm
           formProps={{

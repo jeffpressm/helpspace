@@ -5,16 +5,29 @@
   min-height: 100vh;
 }
 
-.title {
+.headline {
   @include headline-2;
   margin-top: 10vh;
+
+  @media (min-width: $bp-medium) {
+    max-width: calc(var(--global-content-width) * 0.66);
+  }
+}
+
+.body {
+  @include copy-2;
+  margin-top: 30px;
+
+  @media (min-width: $bp-medium) {
+    max-width: calc(var(--global-content-width) * 0.4);
+  }
 }
 
 .form-container {
   margin-top: 10vh;
 
   @media (min-width: $bp-medium) {
-    max-width: 420px;
+    max-width: calc(var(--global-content-width) * 0.4);
   }
 }
 
