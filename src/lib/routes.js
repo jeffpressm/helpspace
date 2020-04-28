@@ -6,4 +6,5 @@ export const RouteList = {
   client: '/client',
   register: '/register',
   listing: '/listing',
+  help: '/help',
 };

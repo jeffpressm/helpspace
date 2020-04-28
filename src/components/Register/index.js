@@ -1,17 +1,17 @@
 import React, { useEffect, useContext } from 'react';
-import { useLocation, useHistory } from 'react-router-dom';
+import { useHistory } from 'react-router-dom';
 import useResponseData from '../../utils/hooks/useResponseData';
 import { responseSheets } from '../../lib/sheets';
 import { UserContext } from 'utils/context/UserContextProvider';
 import getUserInfo from 'utils/getUserInfo';
 import { SpreadsheetContext } from 'utils/context/SpreadsheetContextProvider';
+import useSearchParams from 'utils/hooks/useSearchParams';
 
 const Register = () => {
   const history = useHistory();
-  const { search } = useLocation();
   const { setUserData } = useContext(UserContext);
   const { responses } = useContext(SpreadsheetContext);
-  const query = new URLSearchParams(search);
+  const query = useSearchParams();
   const userEmail = query.get('email');
   const userType = query.get('type');
   const { data } = useResponseData(userEmail, responseSheets[userType]);
