@@ -37,7 +37,7 @@ const HowTo = ({ onClose, type }) => {
       <article className={cx('root')}>
         <div className={cx('support')}>
           <div className={cx('support__body')}>
-            For assistance at any time,{' '}
+            For assistance at any time, contact{' '}
             <a
               className={cx('support__link')}
               href="mailto:support@helpspace.co"
