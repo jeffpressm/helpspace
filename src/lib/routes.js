@@ -8,7 +8,5 @@ export const RouteList = {
   listing: '/listing',
   help: '/help',
   dashboard: '/dashboard',
-  dashboardGive: '/dashboard/give',
-  dashboardGet: '/dashboard/get',
   profile: '/profile',
 };

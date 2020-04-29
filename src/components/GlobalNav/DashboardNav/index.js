@@ -24,14 +24,17 @@ const DashboardNav = () => {
       <div className={cx('section', 'section--1')}>
         <div className={cx('section-link')}>
           <NavLink
-            to={RouteList.dashboardGive}
+            to={`${RouteList.dashboard}/give`}
             activeClassName={cx('selected')}
           >
             give help
           </NavLink>
         </div>
         <div className={cx('section-link')}>
-          <NavLink to={RouteList.dashboardGet} activeClassName={cx('selected')}>
+          <NavLink
+            to={`${RouteList.dashboard}/get`}
+            activeClassName={cx('selected')}
+          >
             get help
           </NavLink>
         </div>

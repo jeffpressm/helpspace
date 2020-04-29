@@ -6,6 +6,7 @@ import {
   Switch,
 } from 'react-router-dom';
 
+import Dashboard from 'components/Dashboard';
 import Expert from 'components/Expert';
 import Faq from 'components/Faq';
 import GlobalContainer from 'components/GlobalContainer';
@@ -56,8 +57,15 @@ function App() {
                 <Route path={`${RouteList.help}/${USER_TYPE.CLIENT}`}>
                   <HowTo as={USER_TYPE.CLIENT} />
                 </Route>
+
                 <Route path={`${RouteList.help}/${USER_TYPE.ADVISOR}`}>
                   <HowTo as={USER_TYPE.ADVISOR} />
+                </Route>
+                <Route exact path={RouteList.dashboard}>
+                  <Redirect to={`${RouteList.dashboard}/give`} />
+                </Route>
+                <Route path={`${RouteList.dashboard}/:type`}>
+                  <Dashboard />
                 </Route>
               </Switch>
             </GlobalContainer>
