@@ -3,6 +3,10 @@
 .root {
   min-height: 100vh;
   position: relative;
+
+  &.red {
+    background-color: var(--color-red-1);
+  }
 }
 
 .header {

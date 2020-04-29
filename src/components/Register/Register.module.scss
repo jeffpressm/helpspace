@@ -1,0 +1,60 @@
+@import 'utils/styles/animations';
+@import 'utils/styles/breakpoints';
+@import 'utils/styles/type';
+@import 'utils/styles/mixins';
+
+.link {
+  background-color: var(--color-gray-3);
+  border-radius: 6px;
+  color: var(--color-white);
+  height: 57px;
+  margin-top: 60px;
+  padding: 16px 24px;
+  text-align: center;
+  width: 126px;
+
+  &:hover,
+  &:focus {
+    background-color: var(--color-red-2);
+  }
+}
+
+.register {
+  display: flex;
+  min-height: 100vh;
+  padding-bottom: 0;
+}
+
+.register-wrapper {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  justify-content: space-between;
+}
+
+.register-title {
+  @include headline-2-small;
+  margin-bottom: 60px;
+}
+
+.register-content {
+  flex-grow: 1;
+  flex-shrink: 0;
+  margin: 0 auto;
+  max-width: 600px;
+}
+
+.image-wrapper {
+  flex-grow: 0;
+  flex-shrink: 1;
+  height: 100%;
+  pointer-events: none;
+  position: relative;
+}
+
+.image {
+  bottom: 0;
+  max-height: 100%;
+  position: absolute;
+  right: 0;
+}

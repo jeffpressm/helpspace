@@ -28,13 +28,23 @@ function getNavMode(pathname) {
   }
 }
 
+function getPageTheme(pathname) {
+  switch (pathname) {
+    case RouteList.register:
+      return 'red';
+    default:
+      return 'white';
+  }
+}
+
 const GlobalContainer = ({ children }) => {
   const location = useLocation();
   const theme = getNavTheme(location.pathname);
   const mode = getNavMode(location.pathname);
+  const page = getPageTheme(location.pathname);
 
   return (
-    <div className={cx('root')}>
+    <div className={cx('root', [page])}>
       <header className={cx('header')}>
         <GlobalNav theme={theme} mode={mode} />
       </header>
