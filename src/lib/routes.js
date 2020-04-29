@@ -7,4 +7,8 @@ export const RouteList = {
   register: '/register',
   listing: '/listing',
   help: '/help',
+  dashboard: '/dashboard',
+  dashboardGive: '/dashboard/give',
+  dashboardGet: '/dashboard/get',
+  profile: '/profile',
 };

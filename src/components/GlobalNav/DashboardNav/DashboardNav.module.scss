@@ -1,0 +1,64 @@
+@import 'utils/styles/animations';
+@import 'utils/styles/mixins';
+@import 'utils/styles/type';
+
+.root {
+  display: flex;
+  width: 100%;
+}
+
+.section {
+  align-items: center;
+  display: flex;
+
+  &--1 {
+    margin-left: 7vw;
+  }
+
+  &--2 {
+    margin-left: auto;
+  }
+}
+
+.section-link {
+  margin: 0 30px;
+
+  > a {
+    @include headline-3;
+    @include uiTransition(all);
+    border-bottom: 2px solid transparent;
+    display: block;
+    opacity: 0.5;
+    padding: var(--global-nav-y-offset) 0;
+
+    &:hover,
+    &:focus {
+      opacity: 1;
+    }
+
+    &.selected {
+      border-bottom-color: currentColor;
+      opacity: 1;
+    }
+  }
+}
+
+.user-link {
+  margin-left: 30px;
+}
+
+.help {
+  @include uiTransition(opacity);
+  color: var(--color-text-dark);
+  opacity: 0.5;
+  width: 25px;
+
+  &:hover,
+  &:focus {
+    opacity: 1;
+  }
+}
+
+.avatar {
+  width: 50px;
+}

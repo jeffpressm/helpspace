@@ -42,7 +42,7 @@ const Register = () => {
             Thanks for signing up! You’ll receive an email from us once we find
             a match.
           </h3>
-          <Link className={cx('link')} to={`${RouteList.help}?as=${userType}`}>
+          <Link className={cx('link')} to={`${RouteList.help}/${userType}`}>
             Continue
           </Link>
         </div>

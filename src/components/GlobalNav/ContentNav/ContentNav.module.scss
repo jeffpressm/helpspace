@@ -1,0 +1,47 @@
+@import 'utils/styles/animations';
+@import 'utils/styles/breakpoints';
+@import 'utils/styles/mixins';
+
+.link-list {
+  align-items: center;
+  display: flex;
+  justify-content: flex-end;
+  width: 100%;
+}
+
+.link-item {
+  list-style-type: none;
+
+  & + & {
+    margin-left: 30px;
+    @media (min-width: $bp-medium) {
+      margin-left: 55px;
+    }
+  }
+}
+
+.link {
+  @include reset-button;
+  @include uiTransition(all);
+  color: var(--text-dark);
+  font-size: 16px;
+  line-height: 1.2;
+  opacity: 0.6;
+
+  &:hover,
+  &:focus {
+    opacity: 1;
+  }
+
+  &.selected {
+    opacity: 1;
+
+    .root.red & {
+      color: var(--text-light);
+    }
+
+    .root.white & {
+      color: var(--color-red-2);
+    }
+  }
+}

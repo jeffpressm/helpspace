@@ -1,5 +1,10 @@
 import React from 'react';
-import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
+import {
+  BrowserRouter as Router,
+  Redirect,
+  Route,
+  Switch,
+} from 'react-router-dom';
 
 import Expert from 'components/Expert';
 import Faq from 'components/Faq';
@@ -11,6 +16,7 @@ import User from 'components/User';
 import Listing from 'components/Listing';
 import Register from 'components/Register';
 import { RouteList } from 'lib/routes';
+import { USER_TYPE } from 'lib/users';
 import FormProvider from 'utils/context/Form';
 import UserContextProvider from 'utils/context/UserContextProvider';
 import SpreadsheetContextProvider from 'utils/context/SpreadsheetContextProvider';
@@ -44,8 +50,14 @@ function App() {
                 <Route path={RouteList.register}>
                   <Register />
                 </Route>
-                <Route path={RouteList.help}>
-                  <HowTo />
+                <Route exact path={RouteList.help}>
+                  <Redirect to={`${RouteList.help}/${USER_TYPE.CLIENT}`} />
+                </Route>
+                <Route path={`${RouteList.help}/${USER_TYPE.CLIENT}`}>
+                  <HowTo as={USER_TYPE.CLIENT} />
+                </Route>
+                <Route path={`${RouteList.help}/${USER_TYPE.ADVISOR}`}>
+                  <HowTo as={USER_TYPE.ADVISOR} />
                 </Route>
               </Switch>
             </GlobalContainer>

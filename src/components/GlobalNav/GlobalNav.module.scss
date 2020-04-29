@@ -1,11 +1,11 @@
-@import 'utils/styles/animations';
 @import 'utils/styles/breakpoints';
-@import 'utils/styles/mixins';
 
 .root {
+  --global-nav-y-offset: 45px;
   align-items: center;
   display: flex;
   justify-content: space-between;
+  padding: 0 var(--global-offset-small);
   width: 100%;
 
   @media (min-width: $bp-small) {
@@ -14,17 +14,14 @@
 }
 
 .logo-container {
-  fill: var(--text-color);
+  fill: currentColor;
+  margin: var(--global-nav-y-offset) 0;
   width: var(--logo-width);
 }
 
-.link-list {
-  align-items: center;
-  display: flex;
-  justify-content: center;
-}
-
 .link-container {
+  flex-grow: 1;
+
   @media (min-width: $bp-small) {
     &.standard {
       margin-left: auto;
@@ -32,43 +29,6 @@
 
     &.dashboard {
       margin-left: 70px;
-    }
-  }
-}
-
-.link-item {
-  list-style-type: none;
-
-  & + & {
-    margin-left: 30px;
-    @media (min-width: $bp-medium) {
-      margin-left: 55px;
-    }
-  }
-}
-
-.link {
-  @include reset-button;
-  @include uiTransition(all);
-  color: var(--text-dark);
-  font-size: 16px;
-  line-height: 1.2;
-  opacity: 0.6;
-
-  &:hover,
-  &:focus {
-    opacity: 1;
-  }
-
-  &.selected {
-    opacity: 1;
-
-    .root.red & {
-      color: var(--text-light);
-    }
-
-    .root.white & {
-      color: var(--color-red-2);
     }
   }
 }
