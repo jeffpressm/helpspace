@@ -1,6 +1,8 @@
 import React, { useContext, useEffect, useState } from 'react';
 import classNames from 'classnames/bind';
 
+import { useHistory } from 'react-router-dom';
+
 import ContentBox from 'components/layout/ContentBox';
 import Markdown from 'components/Markdown';
 import TwoUp from 'components/TwoUp';
@@ -12,12 +14,14 @@ import styles from './HowTo.module.scss';
 const cx = classNames.bind(styles);
 
 const HowTo = ({ onClose, type }) => {
+  const history = useHistory();
   const [guidelinesContent, setGuidelinesContent] = useState();
   const query = useSearchParams();
   const { content } = useContext(SpreadsheetContext);
   const clientGuidelines = content['Guidelines: Client'];
   const advisorGuidelines = content['Guidelines: Advisor'];
   const hasCookie = window.localStorage.getItem('seenHowTo', true) === 'true';
+  const userEmail = query?.get('email');
 
   useEffect(() => {
     let newType;
@@ -56,7 +60,12 @@ const HowTo = ({ onClose, type }) => {
 
   const handleContinue = () => {
     window.localStorage.setItem('seenHowTo', true);
-    onClose();
+
+    if (onClose) {
+      onClose();
+    } else {
+      history.push(`/profile?email=${userEmail}`);
+    }
   };
 
   return (
@@ -100,6 +109,7 @@ const HowTo = ({ onClose, type }) => {
             </div>
           </div>
           <div className={cx('section')}>
+            <h3 className={cx('heading', 'guidelines-label')}>Guidelines</h3>
             <div>
               {guidelines.map(({ Heading: heading, Body: body }) => (
                 <div key={heading} className={cx('block', 'hasBorder')}>
