@@ -2,7 +2,6 @@ import React, { useContext, useEffect, useState } from 'react';
 import classNames from 'classnames/bind';
 
 import ContentBox from 'components/layout/ContentBox';
-import Expandable from 'components/Expandable';
 import Markdown from 'components/Markdown';
 import TwoUp from 'components/TwoUp';
 import { SpreadsheetContext } from 'utils/context/SpreadsheetContextProvider';
@@ -100,45 +99,39 @@ const HowTo = ({ onClose, type }) => {
               ))}
             </div>
           </div>
-          <Expandable title="General Guidelines">
-            <div className={cx('section')}>
-              <div>
-                {guidelines.map(({ Heading: heading, Body: body }) => (
+          <div className={cx('section')}>
+            <div>
+              {guidelines.map(({ Heading: heading, Body: body }) => (
+                <div key={heading} className={cx('block', 'hasBorder')}>
+                  <TwoUp
+                    slot1={<h3 className={cx('heading')}>{heading}</h3>}
+                    slot2={<div className={cx('body')}>{body}</div>}
+                  />
+                </div>
+              ))}
+            </div>
+          </div>
+          <div className={cx('section')}>
+            <div>
+              <div className={cx('block')}>
+                {important.map(({ Heading: heading, Body: body }) => (
                   <div key={heading} className={cx('block')}>
                     <TwoUp
                       slot1={<h3 className={cx('heading')}>{heading}</h3>}
-                      slot2={<div className={cx('body')}>{body}</div>}
+                      slot2={
+                        <div className={cx('body')}>
+                          <Markdown source={body} />
+                        </div>
+                      }
                     />
                   </div>
                 ))}
               </div>
             </div>
-          </Expandable>
-          <Expandable title="Important to remember">
-            <div className={cx('section')}>
-              <div>
-                <div className={cx('block')}>
-                  {important.map(({ Heading: heading, Body: body }) => (
-                    <div key={heading} className={cx('block')}>
-                      <TwoUp
-                        slot1={<h3 className={cx('heading')}>{heading}</h3>}
-                        slot2={
-                          <div className={cx('body')}>
-                            <Markdown source={body} />
-                          </div>
-                        }
-                      />
-                    </div>
-                  ))}
-                </div>
-              </div>
-            </div>
-          </Expandable>
-          {!hasCookie && (
-            <button onClick={handleContinue} className={cx('cta')}>
-              Accept and continue
-            </button>
-          )}
+          </div>
+          <button onClick={handleContinue} className={cx('cta')}>
+            Accept and continue
+          </button>
         </div>
       </article>
     </ContentBox>
