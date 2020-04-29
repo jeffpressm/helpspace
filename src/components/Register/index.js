@@ -2,8 +2,6 @@ import React, { useEffect, useContext } from 'react';
 import classNames from 'classnames/bind';
 import { useHistory, Link } from 'react-router-dom';
 import { RouteList } from 'lib/routes';
-import useResponseData from '../../utils/hooks/useResponseData';
-import { responseSheets } from '../../lib/sheets';
 import { UserContext } from 'utils/context/UserContextProvider';
 import getUserInfo from 'utils/getUserInfo';
 import { SpreadsheetContext } from 'utils/context/SpreadsheetContextProvider';
@@ -22,7 +20,6 @@ const Register = () => {
   const query = useSearchParams();
   const userEmail = query?.get('email');
   const userType = query?.get('type');
-  const { data } = useResponseData(userEmail, responseSheets[userType]);
 
   useEffect(() => {
     const existingEmail = window.localStorage.getItem('email');
@@ -35,7 +32,7 @@ const Register = () => {
       const userInfo = getUserInfo(responses, requestEmail);
       setUserData(userInfo);
     }
-  }, [userEmail, userType, history, data, setUserData, responses]);
+  }, [userEmail, userType, history, setUserData, responses]);
 
   return (
     <ContentBox theme="none" className={cx('register')} isTop>
