@@ -35,10 +35,6 @@ const Register = () => {
       const userInfo = getUserInfo(responses, requestEmail);
       setUserData(userInfo);
     }
-
-    if (data) {
-      history.push(`/${userType}?email=${requestEmail}`);
-    }
   }, [userEmail, userType, history, data, setUserData, responses]);
 
   return (
