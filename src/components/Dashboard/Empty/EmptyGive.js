@@ -1,4 +1,5 @@
-import React from 'react';
+import React, { useContext } from 'react';
+import { FormContext } from 'utils/context/Form';
 
 import imageClient from 'assets/illustrations/illustration 8.png';
 import imageAdvisor from 'assets/illustrations/illustration 3.png';
@@ -21,20 +22,23 @@ const content = {
   },
 };
 
-const EmptyGive = (props) => (
-  <InfoBlock
-    title={content[props.userType].title}
-    text={content[props.userType].text}
-    image={content[props.userType].image}
-    cta={
-      props.userType === USER_TYPE.CLIENT
-        ? {
-            text: 'Give',
-            action: () => openForm(props.useRef),
-          }
-        : null
-    }
-  />
-);
+const EmptyGive = ({ userType }) => {
+  const { giveRef } = useContext(FormContext);
+  return (
+    <InfoBlock
+      title={content[userType].title}
+      text={content[userType].text}
+      image={content[userType].image}
+      cta={
+        userType === USER_TYPE.CLIENT
+          ? {
+              text: 'Give',
+              action: () => openForm(giveRef),
+            }
+          : null
+      }
+    />
+  );
+};
 
 export default EmptyGive;

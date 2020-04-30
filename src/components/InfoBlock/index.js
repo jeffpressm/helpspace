@@ -7,26 +7,26 @@ import styles from './InfoBlock.module.scss';
 
 const cx = classNames.bind(styles);
 
-const InfoBlock = (props) => {
+const InfoBlock = ({ title, text, cta, link, image }) => {
   return (
     <ContentBox theme="none" className={cx('info')} isTop>
       <div className={cx('wrapper')}>
         <div className={cx('content')}>
-          <h3 className={cx('title')}>{props.title}</h3>
-          {props.text && <p className={cx('text')}>{props.text}</p>}
-          {props.cta && (
-            <button className={cx('button')} onClick={props.cta.action}>
-              {`${props.cta.text} help`}
+          <h3 className={cx('title')}>{title}</h3>
+          {text && <p className={cx('text')}>{text}</p>}
+          {cta && (
+            <button className={cx('button')} onClick={cta.action}>
+              {`${cta.text} help`}
             </button>
           )}
-          {props.link && (
-            <Link className={cx('link')} to={props.link.action}>
-              {props.link.text}
+          {link && (
+            <Link className={cx('link')} to={link.action}>
+              {link.text}
             </Link>
           )}
         </div>
         <div className={cx('image-wrapper')}>
-          <img className={cx('image')} src={props.image} alt="" />
+          <img className={cx('image')} src={image} alt="" />
         </div>
       </div>
     </ContentBox>

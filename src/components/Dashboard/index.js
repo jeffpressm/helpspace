@@ -2,7 +2,6 @@ import React, { useContext } from 'react';
 import { useParams } from 'react-router-dom';
 
 import { SpreadsheetContext } from 'utils/context/SpreadsheetContextProvider';
-import { FormContext } from 'utils/context/Form';
 import getUserInfo from 'utils/getUserInfo';
 import useSearchParams from 'utils/hooks/useSearchParams';
 
@@ -13,7 +12,6 @@ import EmptyGive from './Empty/EmptyGive';
 
 const Dashboard = () => {
   const { responses } = useContext(SpreadsheetContext);
-  const { getRef, giveRef } = useContext(FormContext);
   // type will either be 'give' or 'get'
   const { type } = useParams();
   // http://localhost:3000/dashboard/get?email=test@example.com&type=advisor
@@ -28,9 +26,9 @@ const Dashboard = () => {
   // If user has experResponses but no matches (we do not have a way to show matches yet) show "waiting" state on give (firgma screen #617)
 
   return type === HELP_TYPE.GET ? (
-    <EmptyGet useRef={getRef} userType={userType} />
+    <EmptyGet userType={userType} />
   ) : (
-    <EmptyGive useRef={giveRef} userType={userType} />
+    <EmptyGive userType={userType} />
   );
 };
 

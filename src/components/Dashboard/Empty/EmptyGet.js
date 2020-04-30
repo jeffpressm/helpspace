@@ -1,4 +1,5 @@
-import React from 'react';
+import React, { useContext } from 'react';
+import { FormContext } from 'utils/context/Form';
 
 import image from 'assets/illustrations/illustration 6.png';
 import InfoBlock from 'components/InfoBlock';
@@ -14,15 +15,16 @@ const content = {
   },
 };
 
-const EmptyGet = (props) => {
-  return props.userType === USER_TYPE.ADVISOR ? (
+const EmptyGet = ({ userType }) => {
+  const { getRef } = useContext(FormContext);
+  return userType === USER_TYPE.ADVISOR ? (
     <InfoBlock
-      title={content[props.userType].title}
-      text={content[props.userType].text}
-      image={content[props.userType].image}
+      title={content[userType].title}
+      text={content[userType].text}
+      image={content[userType].image}
       cta={{
         text: 'Get',
-        action: () => openForm(props.useRef),
+        action: () => openForm(getRef),
       }}
     />
   ) : (
