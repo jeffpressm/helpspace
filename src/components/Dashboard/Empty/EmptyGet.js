@@ -1,34 +1,27 @@
 import React, { useContext } from 'react';
-import { FormContext } from 'utils/context/Form';
 
 import image from 'assets/illustrations/illustration 6.png';
 import InfoBlock from 'components/InfoBlock';
+import { FormContext } from 'utils/context/Form';
+import { SpreadsheetContext } from 'utils/context/SpreadsheetContextProvider';
 import { openForm } from 'utils/context/Form';
-import { USER_TYPE } from 'lib/users';
+import { pivotTable } from 'utils/pivotTable';
 
-const content = {
-  advisor: {
-    title: 'Everyone could use a little help.',
-    text:
-      'Our community is all about doing good for each other. We want people who help others to also receive help when they need it.',
-    image: image,
-  },
-};
-
-const EmptyGet = ({ userType }) => {
+const EmptyGet = () => {
   const { getRef } = useContext(FormContext);
-  return userType === USER_TYPE.ADVISOR ? (
+  const { content } = useContext(SpreadsheetContext);
+  const DashboardContent = pivotTable(content['Dashboard']);
+
+  return (
     <InfoBlock
-      title={content[userType].title}
-      text={content[userType].text}
-      image={content[userType].image}
+      title={DashboardContent['Get CTA Heading']}
+      text={DashboardContent['Get CTA Body']}
+      image={image}
       cta={{
         text: 'Get',
         action: () => openForm(getRef),
       }}
     />
-  ) : (
-    <p>Regular Dashboard Placeholder...</p>
   );
 };
 
