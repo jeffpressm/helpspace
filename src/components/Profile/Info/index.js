@@ -11,9 +11,13 @@ import styles from './Info.module.scss';
 const cx = classNames.bind(styles);
 
 function getLinkedInName(url) {
-  const regex = /(?:(?:http(?:s)?:\/\/)?(?:www\.)?)?linkedin\.com\/in\/(.*)\//;
+  const regex = /(?:(?:http(?:s)?:\/\/)?(?:www\.)?)?linkedin\.com\/(?:in|company)\/(.*)\//;
 
-  return url.match(regex)[1];
+  if (url.match(regex)) {
+    return url.match(regex)[1];
+  }
+
+  return null;
 }
 
 const ProfileInfo = () => {
@@ -21,6 +25,8 @@ const ProfileInfo = () => {
   const query = useSearchParams();
   const email = query?.get('email');
   const { industry, linkedIn, location, role } = getUserInfo(responses, email);
+
+  const linkedInName = getLinkedInName(linkedIn);
 
   return (
     <dl className={cx('root')}>
@@ -34,7 +40,7 @@ const ProfileInfo = () => {
         <dt className={cx('title')}>Location</dt>
         <dd className={cx('body')}>{location}</dd>
       </div>
-      {linkedIn && (
+      {linkedInName && (
         <div className={cx('section')}>
           <dt className={cx('title')}>LinkedIn</dt>
           <dd className={cx('body')}>

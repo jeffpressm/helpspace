@@ -17,6 +17,11 @@ const cx = classNames.bind(styles);
 
 const getCategories = (responses) =>
   responses.reduce((acc, val) => {
+    if (val['Category']) {
+      acc.push(val['Category']);
+      return acc;
+    }
+
     const list = val['Categories'].split(', ');
     acc.push(...list);
     return acc;
