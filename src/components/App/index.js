@@ -13,6 +13,7 @@ import GlobalContainer from 'components/GlobalContainer';
 import Login from 'components/Login';
 import Home from 'components/Home';
 import HowTo from 'components/HowTo';
+import Profile from 'components/Profile';
 import User from 'components/User';
 import Listing from 'components/Listing';
 import Register from 'components/Register';
@@ -66,6 +67,9 @@ function App() {
                 </Route>
                 <Route path={`${RouteList.dashboard}/:type`}>
                   <Dashboard />
+                </Route>
+                <Route path={RouteList.profile}>
+                  <Profile />
                 </Route>
               </Switch>
             </GlobalContainer>

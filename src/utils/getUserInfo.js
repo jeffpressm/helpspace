@@ -20,6 +20,7 @@ const getUserInfo = (responses, email) => {
     email: userInfo['Email'],
     industry: userInfo['Industry'],
     role: userInfo['Role'],
+    linkedIn: userInfo['LinkedIn'],
     location: userInfo['Location'],
     image: userInfo['Image'],
     clientResponses,

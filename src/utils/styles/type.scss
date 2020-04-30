@@ -1,10 +1,10 @@
 @import './breakpoints';
 
 @mixin headline-1($weight: 800) {
-  font: $weight 50px/1 var(--font-headline);
+  font: $weight 48px/1 var(--font-headline);
 
   @media (min-width: $bp-medium) {
-    font-size: 100px;
+    font-size: 90px;
   }
 }
 

@@ -1,0 +1,54 @@
+@import 'utils/styles/breakpoints';
+@import 'utils/styles/mixins';
+@import 'utils/styles/type';
+
+.heading {
+  @include headline-3(500);
+}
+
+.challenges {
+  display: grid;
+  grid-gap: 10px;
+  grid-template-columns: repeat(2, 1fr);
+  margin-top: 20px;
+
+  @media (min-width: $bp-medium) {
+    grid-gap: 20px;
+    grid-template-columns: repeat(4, 1fr);
+    margin-top: 40px;
+  }
+}
+
+.challenges__item {
+  height: 190px;
+
+  @media (min-width: $bp-medium) {
+    height: 320px;
+  }
+}
+
+.challenge {
+  @include copy-1;
+  background-color: var(--color-white);
+  border-radius: 6px;
+  height: 100%;
+  padding: 16px;
+
+  @media (min-width: $bp-medium) {
+    padding: 25px;
+  }
+}
+
+.add-challenge {
+  @include headline-2;
+  @include reset-button;
+  align-items: center;
+  background-color: var(--color-red-2);
+  border-radius: 6px;
+  color: var(--color-white);
+  display: flex;
+  font-size: 40px;
+  height: 100%;
+  justify-content: center;
+  width: 100%;
+}

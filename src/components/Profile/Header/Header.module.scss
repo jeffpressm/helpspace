@@ -1,0 +1,32 @@
+@import 'utils/styles/breakpoints';
+@import 'utils/styles/type';
+
+.root {
+  display: flex;
+  flex-direction: column;
+
+  @media (min-width: $bp-medium) {
+    align-items: center;
+    flex-direction: row;
+  }
+}
+
+.heading {
+  @include headline-1;
+  width: min-content;
+}
+
+.avatar {
+  margin-bottom: 50px;
+  margin-left: auto;
+  margin-right: auto;
+  order: -1;
+  width: 220px;
+
+  @media (min-width: $bp-medium) {
+    margin-bottom: 0;
+    margin-right: unset;
+    order: unset;
+    width: 180px;
+  }
+}

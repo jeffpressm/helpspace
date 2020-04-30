@@ -1,0 +1,17 @@
+@import 'utils/styles/breakpoints';
+
+.info-container {
+  margin-top: 30px;
+
+  @media (min-width: $bp-medium) {
+    margin-top: 50px;
+  }
+}
+
+.section {
+  margin-top: 80px;
+
+  @media (min-width: $bp-medium) {
+    margin-top: 100px;
+  }
+}

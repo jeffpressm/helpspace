@@ -1,0 +1,43 @@
+@import 'utils/styles/breakpoints';
+@import 'utils/styles/type';
+
+.section {
+  @include copy-1;
+  border-bottom: 1px solid rgba(#111, 0.1);
+  display: flex;
+  padding: 15px 0;
+
+  @media (min-width: $bp-medium) {
+    padding: 30px 0;
+  }
+}
+
+.title {
+  flex: 0 0 95px;
+  opacity: 0.5;
+
+  @media (min-width: $bp-medium) {
+    flex-basis: 180px;
+  }
+}
+
+.body {
+  flex: 1 1 auto;
+}
+
+.link {
+  text-decoration: none;
+
+  &:hover,
+  &:focus {
+    text-decoration: underline;
+  }
+}
+
+.li-icon {
+  display: inline-block;
+  margin-right: 0.5em;
+  opacity: 0.8;
+  vertical-align: middle;
+  width: 18px;
+}
