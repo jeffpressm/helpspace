@@ -24,9 +24,9 @@ const ProfileExpertise = () => {
   const ProfileContent = pivotTable(content['Profile']);
   const query = useSearchParams();
   const email = query?.get('email');
-  const { expertResponses } = getUserInfo(responses, email);
+  const { advisorResponses } = getUserInfo(responses, email);
 
-  const challengeList = getChallenges(expertResponses);
+  const challengeList = getChallenges(advisorResponses);
 
   const title = challengeList.length
     ? ProfileContent['Advisor Challenge Title']

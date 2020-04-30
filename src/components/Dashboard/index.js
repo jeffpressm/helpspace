@@ -22,7 +22,7 @@ const Dashboard = () => {
   const user = getUserInfo(responses, email);
 
   // If user has no clientResponses show "empty" state on "get" (figma screen #665)
-  // If user has no expertResponses show "empty" state on "give" (figma screen #663)
+  // If user has no advisorResponses show "empty" state on "give" (figma screen #663)
   // If user has experResponses but no matches (we do not have a way to show matches yet) show "waiting" state on give (firgma screen #617)
 
   return type === HELP_TYPE.GET ? (

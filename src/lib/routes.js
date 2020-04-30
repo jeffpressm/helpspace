@@ -1,6 +1,5 @@
 export const RouteList = {
   home: '/',
-  advisor: '/advisor',
   faq: '/faq',
   login: '/login',
   client: '/client',

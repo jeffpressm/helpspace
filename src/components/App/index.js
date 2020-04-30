@@ -7,7 +7,6 @@ import {
 } from 'react-router-dom';
 
 import Dashboard from 'components/Dashboard';
-import Expert from 'components/Expert';
 import Faq from 'components/Faq';
 import GlobalContainer from 'components/GlobalContainer';
 import Login from 'components/Login';
@@ -36,9 +35,6 @@ function App() {
                 </Route>
                 <Route path={RouteList.client}>
                   <User />
-                </Route>
-                <Route path={RouteList.advisor}>
-                  <Expert />
                 </Route>
                 <Route path={RouteList.faq}>
                   <Faq />

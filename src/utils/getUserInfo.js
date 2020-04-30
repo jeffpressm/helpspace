@@ -7,12 +7,12 @@ const getUserInfo = (responses, email) => {
   const clientResponses = responses[responseSheets.client].filter(
     findResponses
   );
-  const expertResponses = responses[responseSheets.advisor].filter(
+  const advisorResponses = responses[responseSheets.advisor].filter(
     findResponses
   );
   const userInfo =
     clientResponses.find(findUserInfo) ||
-    expertResponses.find(findUserInfo) ||
+    advisorResponses.find(findUserInfo) ||
     {};
 
   return {
@@ -24,7 +24,7 @@ const getUserInfo = (responses, email) => {
     location: userInfo['Location'],
     image: userInfo['Image'],
     clientResponses,
-    expertResponses,
+    advisorResponses,
   };
 };
 

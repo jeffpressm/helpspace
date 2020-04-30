@@ -29,15 +29,15 @@ const ProfileSocial = () => {
   const ProfileContent = pivotTable(content['Profile']);
   const query = useSearchParams();
   const email = query?.get('email');
-  const { clientResponses, expertResponses } = getUserInfo(responses, email);
+  const { clientResponses, advisorResponses } = getUserInfo(responses, email);
 
   useEffect(() => {
-    const shareStringPrefix = expertResponses.length
+    const shareStringPrefix = advisorResponses.length
       ? ProfileContent['Advisor Share Copy']
       : ProfileContent['Client Share Copy'];
 
-    const shareResponses = expertResponses.length
-      ? expertResponses
+    const shareResponses = advisorResponses.length
+      ? advisorResponses
       : clientResponses;
 
     setShareString(
@@ -45,7 +45,7 @@ const ProfileSocial = () => {
         .slice(0, 3)
         .join(', ')}.`
     );
-  }, [clientResponses, expertResponses, ProfileContent]);
+  }, [clientResponses, advisorResponses, ProfileContent]);
 
   return (
     <>

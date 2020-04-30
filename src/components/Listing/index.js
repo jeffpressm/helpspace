@@ -3,7 +3,7 @@ import { UserContext } from '../../utils/context/UserContextProvider';
 import { Link } from 'react-router-dom';
 
 const Listing = () => {
-  const { name, clientResponses, expertResponses } = useContext(UserContext);
+  const { name, clientResponses, advisorResponses } = useContext(UserContext);
 
   return (
     <div>
@@ -18,7 +18,7 @@ const Listing = () => {
       </ul>
       <div>Here are all your expert responses:</div>
       <ul>
-        {expertResponses.map((response) => (
+        {advisorResponses.map((response) => (
           <li key={response['ID']}>
             <Link to={`/expert/${response['ID']}`}>
               {response['Challenges']}

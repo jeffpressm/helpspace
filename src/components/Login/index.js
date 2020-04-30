@@ -36,11 +36,7 @@ const Login = () => {
       return;
     }
 
-    if (userInfo.clientResponses[0]) {
-      history.push(`${RouteList.client}?email=${email}`);
-    } else {
-      history.push(`${RouteList.advisor}?email=${email}`);
-    }
+    history.push(`${RouteList.profile}?email=${email}`);
 
     localStorage.setItem('email', email);
     setUserData(userInfo);
