@@ -56,12 +56,17 @@
 .section {
   border-bottom: 1px solid var(--color-gray-3);
   display: flex;
+  flex-direction: column;
   justify-content: flex-end;
   padding-bottom: 40px;
   padding-top: 30px;
 
   &:last-of-type {
     border-bottom: 0;
+  }
+
+  @media (min-width: $bp-medium) {
+    flex-direction: row;
   }
 }
 
@@ -88,7 +93,12 @@
 }
 
 .guidelines-label {
+  margin-bottom: 30px;
   margin-right: auto;
+
+  @media (min-width: $bp-medium) {
+    margin-bottom: 0;
+  }
 }
 
 .body {

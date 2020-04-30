@@ -22,6 +22,7 @@ const HowTo = ({ onClose, as }) => {
   const advisorGuidelines = content['Guidelines: Advisor'];
   const query = useSearchParams();
   const userEmail = query?.get('email');
+  const storageEmail = window.localStorage.getItem('email');
 
   useEffect(() => {
     const newGuidelines =
@@ -52,7 +53,7 @@ const HowTo = ({ onClose, as }) => {
     if (onClose) {
       onClose();
     } else {
-      history.push(`${RouteList.profile}?email=${userEmail}`);
+      history.push(`${RouteList.profile}?email=${userEmail || storageEmail}`);
     }
   };
 
