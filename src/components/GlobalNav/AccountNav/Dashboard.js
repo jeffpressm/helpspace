@@ -9,7 +9,7 @@ import { SpreadsheetContext } from 'utils/context/SpreadsheetContextProvider';
 import getUserInfo from 'utils/getUserInfo';
 import useSearchParams from 'utils/hooks/useSearchParams';
 
-import styles from './DashboardNav.module.scss';
+import styles from './AccountNav.module.scss';
 
 const cx = classNames.bind(styles);
 
@@ -46,7 +46,7 @@ const DashboardNav = () => {
           </Link>
         </div>
         <div className={cx('user-link', 'avatar')}>
-          <Link to={RouteList.dashboard}>
+          <Link to={RouteList.profile}>
             <Avatar src={image} />
           </Link>
         </div>

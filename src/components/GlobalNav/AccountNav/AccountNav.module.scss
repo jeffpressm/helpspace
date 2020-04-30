@@ -13,6 +13,14 @@
 
   &--1 {
     margin-left: 7vw;
+
+    .root--profile & {
+      display: none;
+
+      @media (min-width: $bp-medium) {
+        display: block;
+      }
+    }
   }
 
   &--2 {
@@ -23,7 +31,9 @@
 .section-link {
   margin: 0 30px;
 
-  > a {
+  > a,
+  > button {
+    @include reset-button;
     @include headline-3;
     @include uiTransition(all);
     border-bottom: 2px solid transparent;
@@ -40,6 +50,10 @@
       border-bottom-color: currentColor;
       opacity: 1;
     }
+  }
+
+  .copy {
+    @include headline-3;
   }
 }
 

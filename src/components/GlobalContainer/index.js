@@ -4,7 +4,8 @@ import classNames from 'classnames/bind';
 
 import GlobalNav from 'components/GlobalNav';
 import ContentNav from 'components/GlobalNav/ContentNav';
-import DashboardNav from 'components/GlobalNav/DashboardNav';
+import DashboardNav from 'components/GlobalNav/AccountNav/Dashboard';
+import ProfileNav from 'components/GlobalNav/AccountNav/Profile';
 import HelpNav from 'components/GlobalNav/HelpNav';
 import { RouteList } from 'lib/routes';
 
@@ -23,11 +24,14 @@ function getNavTheme(pathname) {
 }
 
 function getPageNav(pathname) {
-  if (pathname.includes(RouteList.help)) {
-    return <HelpNav />;
-  }
   if (pathname.includes(RouteList.dashboard)) {
     return <DashboardNav />;
+  }
+  if (pathname.includes(RouteList.profile)) {
+    return <ProfileNav />;
+  }
+  if (pathname.includes(RouteList.help)) {
+    return <HelpNav />;
   }
   return <ContentNav />;
 }
@@ -35,6 +39,7 @@ function getPageNav(pathname) {
 function getPageTheme(pathname) {
   switch (pathname) {
     case RouteList.register:
+    case RouteList.profile:
       return 'red';
     default:
       return 'white';
