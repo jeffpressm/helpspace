@@ -3,14 +3,17 @@
 @import 'utils/styles/type';
 @import 'utils/styles/mixins';
 
-.link {
+.link,
+.button {
   background-color: var(--color-gray-3);
   border-radius: 6px;
   color: var(--color-white);
+  display: block;
   height: 57px;
   margin-top: 60px;
   padding: 16px 24px;
   text-align: center;
+  text-transform: capitalize;
   width: 126px;
 
   &:hover,
@@ -19,25 +22,44 @@
   }
 }
 
-.register {
+.link {
+  align-items: center;
+  display: flex;
+  justify-content: center;
+}
+
+.button {
+  @include copy-3;
+  cursor: pointer;
+  margin-top: 50px;
+}
+
+.info {
   display: flex;
   min-height: 100vh;
   padding-bottom: 0;
 }
 
-.register-wrapper {
+.wrapper {
   display: flex;
   flex-direction: column;
   height: 100%;
   justify-content: space-between;
 }
 
-.register-title {
+.title {
   @include headline-2-small;
-  margin-bottom: 60px;
 }
 
-.register-content {
+.title + .text {
+  margin-top: 20px;
+}
+
+.title + .link {
+  margin-top: 60px;
+}
+
+.content {
   flex-grow: 1;
   flex-shrink: 0;
   margin: 0 auto;

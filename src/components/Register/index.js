@@ -1,17 +1,12 @@
 import React, { useEffect, useContext } from 'react';
-import classNames from 'classnames/bind';
-import { useHistory, Link } from 'react-router-dom';
-import { RouteList } from 'lib/routes';
+import { useHistory } from 'react-router-dom';
 import { UserContext } from 'utils/context/UserContextProvider';
 import getUserInfo from 'utils/getUserInfo';
 import { SpreadsheetContext } from 'utils/context/SpreadsheetContextProvider';
 import useSearchParams from 'utils/hooks/useSearchParams';
-import ContentBox from 'components/layout/ContentBox';
+import { RouteList } from 'lib/routes';
+import InfoBlock from 'components/InfoBlock';
 import image from 'assets/illustrations/illustration 2.png';
-
-import styles from './Register.module.scss';
-
-const cx = classNames.bind(styles);
 
 const Register = () => {
   const history = useHistory();
@@ -35,22 +30,15 @@ const Register = () => {
   }, [userEmail, userType, history, setUserData, responses]);
 
   return (
-    <ContentBox theme="none" className={cx('register')} isTop>
-      <div className={cx('register-wrapper')}>
-        <div className={cx('register-content')}>
-          <h3 className={cx('register-title')}>
-            Thanks for signing up! You’ll receive an email from us once we find
-            a match.
-          </h3>
-          <Link className={cx('link')} to={`${RouteList.help}/${userType}`}>
-            Continue
-          </Link>
-        </div>
-        <div className={cx('image-wrapper')}>
-          <img className={cx('image')} src={image} alt="" />
-        </div>
-      </div>
-    </ContentBox>
+    <InfoBlock
+      title="Thanks for signing up! You’ll receive an email from us once we find
+    a match."
+      image={image}
+      link={{
+        text: 'Continue',
+        action: `${RouteList.help}?as=${userType}`,
+      }}
+    />
   );
 };
 

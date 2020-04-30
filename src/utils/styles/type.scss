@@ -43,3 +43,11 @@
 @mixin copy-2($weight: 400) {
   font: $weight 14px/1.6 var(--font-copy);
 }
+
+@mixin copy-3($weight: 500) {
+  font: $weight 14px/1.6 var(--font-copy);
+
+  @media (min-width: $bp-medium) {
+    font-size: 16px;
+  }
+}
