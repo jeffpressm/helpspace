@@ -1,5 +1,4 @@
-import React, { useEffect, useContext } from 'react';
-import { useHistory } from 'react-router-dom';
+import React, { useEffect, useContext, useState } from 'react';
 import { UserContext } from 'utils/context/UserContextProvider';
 import getUserInfo from 'utils/getUserInfo';
 import { SpreadsheetContext } from 'utils/context/SpreadsheetContextProvider';
@@ -9,22 +8,36 @@ import InfoBlock from 'components/InfoBlock';
 import image from 'assets/illustrations/illustration 2.png';
 
 const Register = () => {
-  const history = useHistory();
+  const [fetchAttempts, setFetchAttempts] = useState(0);
   const { email: existingEmail, setUserData } = useContext(UserContext);
-  const { responses } = useContext(SpreadsheetContext);
+  const {
+    responses,
+    fetch: { responses: fetchResponses },
+  } = useContext(SpreadsheetContext);
   const query = useSearchParams();
   const queryEmail = query?.get('email');
 
-  useEffect(() => {
-    // Typeform returns email as  _____ for existing user flow
-    const requestEmail = queryEmail === '_____' ? existingEmail : queryEmail;
+  // Typeform returns email as  _____ for existing user flow
+  const requestEmail = queryEmail === '_____' ? existingEmail : queryEmail;
+  const userInfo = getUserInfo(responses, requestEmail);
 
-    if (!existingEmail) {
-      window.localStorage.setItem('email', requestEmail);
-      const userInfo = getUserInfo(responses, requestEmail);
-      setUserData(userInfo);
+  if (userInfo.email) {
+    window.localStorage.setItem('email', userInfo.email);
+    setUserData(userInfo);
+  }
+
+  useEffect(() => {
+    if (userInfo.email || fetchAttempts >= 3) {
+      return;
     }
-  }, [existingEmail, queryEmail, history, setUserData, responses]);
+
+    const timer = setTimeout(() => {
+      setFetchAttempts((f) => f + 1);
+      fetchResponses();
+    }, 1000);
+
+    return () => clearTimeout(timer);
+  }, [fetchAttempts, fetchResponses, userInfo]);
 
   return (
     <InfoBlock

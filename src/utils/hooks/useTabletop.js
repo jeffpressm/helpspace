@@ -1,25 +1,37 @@
-import { useState, useEffect } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 import Tabletop from 'tabletop';
 
 function getSheetData(id) {
-  return Tabletop.init({
-    key: id,
+  return new Promise(function (resolve) {
+    const options = {
+      key: id,
+      callback: (data, tabletop) => resolve({ data, tabletop }),
+    };
+    Tabletop.init(options);
   });
 }
 
 function useTabletop(id) {
   const [entries, setEntries] = useState();
 
-  useEffect(() => {
-    getSheetData(id).then((data) => {
+  const fetch = useCallback(() => {
+    getSheetData(id).then(({ data }) => {
+      console.log('data fetched', data);
       const entries = {};
       Object.keys(data).forEach((k) => (entries[k] = data[k].elements));
 
       setEntries(entries);
     });
-  }, [id, setEntries]);
+  }, [id]);
 
-  return entries;
+  useEffect(() => {
+    if (!id) {
+      return;
+    }
+    fetch();
+  }, [id, fetch]);
+
+  return [entries, fetch];
 }
 
 export default useTabletop;
