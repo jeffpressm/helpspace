@@ -6,7 +6,7 @@ import { FormContext, openForm } from 'utils/context/Form';
 import { SpreadsheetContext } from 'utils/context/SpreadsheetContextProvider';
 import { pivotTable } from 'utils/pivotTable';
 
-const EmptyGive = ({ userType }) => {
+const EmptyGive = () => {
   const { giveRef } = useContext(FormContext);
   const { content } = useContext(SpreadsheetContext);
   const DashboardContent = pivotTable(content['Dashboard']);

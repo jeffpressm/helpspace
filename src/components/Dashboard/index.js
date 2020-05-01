@@ -13,6 +13,7 @@ import styles from './Dashboard.module.scss';
 import EmptyGet from './Empty/EmptyGet';
 import EmptyGive from './Empty/EmptyGive';
 import GetHelp from './Get';
+import GiveHelp from './Give';
 
 const cx = classNames.bind(styles);
 
@@ -48,7 +49,7 @@ const Dashboard = () => {
       if (!user.advisorResponses.length) {
         return <EmptyGive />;
       } else {
-        return <div>Give Dashboard</div>;
+        return <GiveHelp user={user} />;
       }
     }
   };
