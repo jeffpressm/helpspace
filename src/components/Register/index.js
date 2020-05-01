@@ -28,6 +28,7 @@ const Register = () => {
 
   return (
     <InfoBlock
+      theme="red"
       title="Thanks for signing up! You’ll receive an email from us once we find a match."
       image={image}
       link={{

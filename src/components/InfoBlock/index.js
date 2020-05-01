@@ -7,9 +7,9 @@ import styles from './InfoBlock.module.scss';
 
 const cx = classNames.bind(styles);
 
-const InfoBlock = ({ title, text, cta, link, image }) => {
+const InfoBlock = ({ theme, title, text, cta, link, image }) => {
   return (
-    <ContentBox theme="none" className={cx('info')} isTop>
+    <ContentBox theme={theme} className={cx('info')} isTop>
       <div className={cx('wrapper')}>
         <div className={cx('content')}>
           <h3 className={cx('title')}>{title}</h3>

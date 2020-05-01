@@ -3,10 +3,6 @@
 .root {
   min-height: 100vh;
   position: relative;
-
-  &.red {
-    background-color: var(--color-red-1);
-  }
 }
 
 .header {
@@ -15,4 +11,8 @@
   top: 0;
   width: 100%;
   z-index: 1;
+
+  &--dashboard {
+    border-bottom: 1px solid rgba(#111, 0.1);
+  }
 }

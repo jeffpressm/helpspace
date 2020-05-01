@@ -17,6 +17,7 @@ function getNavTheme(pathname) {
   switch (pathname) {
     case RouteList.home:
     case RouteList.profile:
+    case RouteList.register:
       return 'red';
     default:
       return 'white';
@@ -36,25 +37,18 @@ function getPageNav(pathname) {
   return <ContentNav />;
 }
 
-function getPageTheme(pathname) {
-  switch (pathname) {
-    case RouteList.register:
-    case RouteList.profile:
-      return 'red';
-    default:
-      return 'white';
-  }
-}
-
 const GlobalContainer = ({ children }) => {
   const location = useLocation();
   const theme = getNavTheme(location.pathname);
-  const page = getPageTheme(location.pathname);
   const pageNav = getPageNav(location.pathname);
 
   return (
-    <div className={cx('root', [page])}>
-      <header className={cx('header')}>
+    <div className={cx('root')}>
+      <header
+        className={cx('header', {
+          'header--dashboard': location.pathname.includes(RouteList.dashboard),
+        })}
+      >
         <GlobalNav theme={theme}>{pageNav}</GlobalNav>
       </header>
       <main>{children}</main>
