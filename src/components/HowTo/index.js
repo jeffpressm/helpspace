@@ -15,6 +15,7 @@ import styles from './HowTo.module.scss';
 const cx = classNames.bind(styles);
 
 const HowTo = ({ onClose }) => {
+  const seenHowTo = window.localStorage.getItem('seenHowTo');
   const history = useHistory();
   const { content } = useContext(SpreadsheetContext);
   const GuidelinesContent = content['Guidelines'];
@@ -62,7 +63,11 @@ const HowTo = ({ onClose }) => {
                 <div key={heading} className={cx('block')}>
                   <TwoUp
                     slot1={<h3 className={cx('heading')}>{heading}</h3>}
-                    slot2={<div className={cx('body')}>{body}</div>}
+                    slot2={
+                      <div className={cx('body')}>
+                        <Markdown source={body} />
+                      </div>
+                    }
                   />
                 </div>
               ))}
@@ -75,7 +80,11 @@ const HowTo = ({ onClose }) => {
                 <div key={heading} className={cx('block', 'hasBorder')}>
                   <TwoUp
                     slot1={<h3 className={cx('heading')}>{heading}</h3>}
-                    slot2={<div className={cx('body')}>{body}</div>}
+                    slot2={
+                      <div className={cx('body')}>
+                        <Markdown source={body} />
+                      </div>
+                    }
                   />
                 </div>
               ))}
@@ -99,9 +108,11 @@ const HowTo = ({ onClose }) => {
               </div>
             </div>
           </div>
-          <button onClick={handleContinue} className={cx('cta')}>
-            Accept and continue
-          </button>
+          {!seenHowTo && (
+            <button onClick={handleContinue} className={cx('cta')}>
+              Accept and continue
+            </button>
+          )}
         </div>
       </article>
     </ContentBox>

@@ -1,6 +1,9 @@
+@import 'utils/styles/breakpoints';
+@import 'utils/styles/mixins';
 @import 'utils/styles/type';
 
 .root {
+  align-items: center;
   display: flex;
   width: 100%;
 }
@@ -9,11 +12,20 @@
   &--1 {
     margin-left: auto;
   }
+
+  &--2 {
+    margin-left: 30px;
+  }
 }
 
 .copy {
   @include copy-2;
+  font-size: 12px;
   text-align: right;
+
+  @media (min-width: $bp-medium) {
+    font-size: 14px;
+  }
 
   > a {
     font-weight: bold;
@@ -23,5 +35,22 @@
     &:focus {
       text-decoration: underline;
     }
+  }
+}
+
+.close {
+  @include reset-button;
+}
+
+.close-icon {
+  font-size: 18px;
+  line-height: 1;
+}
+
+.close-text {
+  display: none;
+
+  @media (min-width: $bp-medium) {
+    display: unset;
   }
 }
