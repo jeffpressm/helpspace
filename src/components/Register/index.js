@@ -10,10 +10,7 @@ import image from 'assets/illustrations/illustration 2.png';
 
 const Register = () => {
   const history = useHistory();
-  const {
-    userData: { email: existingEmail },
-    setUserData,
-  } = useContext(UserContext);
+  const { email: existingEmail, setUserData } = useContext(UserContext);
   const { responses } = useContext(SpreadsheetContext);
   const query = useSearchParams();
   const queryEmail = query?.get('email');

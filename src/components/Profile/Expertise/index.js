@@ -3,8 +3,6 @@ import classNames from 'classnames/bind';
 
 import { FormContext, openForm } from 'utils/context/Form';
 import { SpreadsheetContext } from 'utils/context/SpreadsheetContextProvider';
-import getUserInfo from 'utils/getUserInfo';
-import useSearchParams from 'utils/hooks/useSearchParams';
 import { pivotTable } from 'utils/pivotTable';
 
 import styles from './Expertise.module.scss';
@@ -18,15 +16,12 @@ const getChallenges = (responses) =>
     return acc;
   }, []);
 
-const ProfileExpertise = () => {
+const ProfileExpertise = ({ user }) => {
   const { giveRef } = useContext(FormContext);
-  const { content, responses } = useContext(SpreadsheetContext);
+  const { content } = useContext(SpreadsheetContext);
   const ProfileContent = pivotTable(content['Profile']);
-  const query = useSearchParams();
-  const email = query?.get('email');
-  const { advisorResponses } = getUserInfo(responses, email);
 
-  const challengeList = getChallenges(advisorResponses);
+  const challengeList = getChallenges(user.advisorResponses);
 
   const title = challengeList.length
     ? ProfileContent['Advisor Challenge Title']

@@ -1,7 +1,11 @@
-import React from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import classNames from 'classnames/bind';
 
 import ContentBox from 'components/layout/ContentBox';
+import { SpreadsheetContext } from 'utils/context/SpreadsheetContextProvider';
+import { UserContext } from 'utils/context/UserContextProvider';
+import getUserInfo from 'utils/getUserInfo';
+import useSearchParams from 'utils/hooks/useSearchParams';
 
 import ProfileExpertise from './Expertise';
 import ProfileHeader from './Header';
@@ -12,20 +16,39 @@ import styles from './Profile.module.scss';
 const cx = classNames.bind(styles);
 
 const Profile = () => {
+  const [user, setUser] = useState();
+  const userData = useContext(UserContext);
+  const { responses } = useContext(SpreadsheetContext);
+  const query = useSearchParams();
+  const qEmail = query?.get('email');
+
+  useEffect(() => {
+    if (qEmail) {
+      setUser(getUserInfo(responses, qEmail));
+      return;
+    }
+
+    setUser(userData);
+  }, [qEmail, responses, setUser, userData]);
+
+  if (!user) {
+    return null;
+  }
+
   return (
     <ContentBox theme="red" isTop>
       <article className={cx('root')}>
         <header className={cx('header')}>
-          <ProfileHeader />
+          <ProfileHeader user={user} />
           <div className={cx('info-container')}>
-            <ProfileInfo />
+            <ProfileInfo user={user} />
           </div>
         </header>
         <section className={cx('section')}>
-          <ProfileExpertise />
+          <ProfileExpertise user={user} />
         </section>
         <section className={cx('section')}>
-          <ProfileSocial />
+          <ProfileSocial user={user} />
         </section>
       </article>
     </ContentBox>

@@ -7,8 +7,6 @@ import { ReactComponent as FacebookIcon } from 'assets/icons/facebook.svg';
 import { ReactComponent as LinkedInIcon } from 'assets/icons/linkedin.svg';
 import { ReactComponent as TwitterIcon } from 'assets/icons/twitter.svg';
 import { SpreadsheetContext } from 'utils/context/SpreadsheetContextProvider';
-import getUserInfo from 'utils/getUserInfo';
-import useSearchParams from 'utils/hooks/useSearchParams';
 import { pivotTable } from 'utils/pivotTable';
 
 import styles from './Social.module.scss';
@@ -27,30 +25,27 @@ const getCategories = (responses) =>
     return acc;
   }, []);
 
-const ProfileSocial = () => {
+const ProfileSocial = ({ user }) => {
   const [shareString, setShareString] = useState();
   const [isCopied, setCopied] = useClipboard(shareString);
-  const { content, responses } = useContext(SpreadsheetContext);
+  const { content } = useContext(SpreadsheetContext);
   const ProfileContent = pivotTable(content['Profile']);
-  const query = useSearchParams();
-  const email = query?.get('email');
-  const { clientResponses, advisorResponses } = getUserInfo(responses, email);
 
   useEffect(() => {
-    const shareStringPrefix = advisorResponses.length
+    const shareStringPrefix = user.advisorResponses.length
       ? ProfileContent['Advisor Share Copy']
       : ProfileContent['Client Share Copy'];
 
-    const shareResponses = advisorResponses.length
-      ? advisorResponses
-      : clientResponses;
+    const shareResponses = user.advisorResponses.length
+      ? user.advisorResponses
+      : user.clientResponses;
 
     setShareString(
       `${shareStringPrefix} ${getCategories(shareResponses)
         .slice(0, 3)
         .join(', ')}.`
     );
-  }, [clientResponses, advisorResponses, ProfileContent]);
+  }, [user, ProfileContent]);
 
   return (
     <>
