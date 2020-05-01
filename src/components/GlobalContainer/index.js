@@ -19,6 +19,8 @@ function getNavTheme(pathname) {
     case RouteList.profile:
     case RouteList.register:
       return 'red';
+    case RouteList.help:
+      return 'gray';
     default:
       return 'white';
   }

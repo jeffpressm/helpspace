@@ -19,11 +19,13 @@
   padding-bottom: var(--global-offset-small);
   padding-left: var(--global-offset-small);
   padding-right: calc(var(--global-offset-small) * 2);
+  padding-top: 80px;
 
   @media (min-width: $bp-medium) {
     display: flex;
     flex: 0 0 50%;
     min-width: 0;
+    padding-top: var(--global-offset-y);
 
     &:first-of-type {
       padding-left: var(--global-offset-small);
@@ -37,20 +39,14 @@
   }
 
   &:first-of-type {
-    padding-top: calc(var(--global-offset-y) + 80px);
-
     @media (min-width: $bp-medium) {
       padding-left: var(--global-offset-small);
-      padding-top: var(--global-offset-y);
     }
   }
 
   &:last-of-type {
-    padding-top: 80px;
-
     @media (min-width: $bp-medium) {
       padding-right: var(--global-offset-small);
-      padding-top: var(--global-offset-y);
     }
   }
 

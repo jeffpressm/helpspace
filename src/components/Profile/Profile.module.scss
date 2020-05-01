@@ -1,5 +1,9 @@
 @import 'utils/styles/breakpoints';
 
+.root {
+  margin-top: var(--global-offset-small);
+}
+
 .info-container {
   margin-top: 30px;
 

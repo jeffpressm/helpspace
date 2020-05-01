@@ -1,15 +1,27 @@
 @import 'utils/styles/breakpoints';
 
 .root {
-  --global-nav-y-offset: 45px;
   align-items: center;
   display: flex;
-  justify-content: space-between;
+  flex-wrap: wrap;
+  justify-content: flex-start;
   padding: 0 var(--global-offset-small);
   width: 100%;
 
-  @media (min-width: $bp-small) {
-    justify-content: start;
+  &.white {
+    background-color: var(--color-white);
+  }
+
+  &.gray {
+    background-color: var(--color-gray-1);
+  }
+
+  &.red {
+    background-color: var(--color-red-1);
+  }
+
+  @media (min-width: $bp-medium) {
+    background-color: transparent !important;
   }
 }
 
@@ -21,14 +33,4 @@
 
 .link-container {
   flex-grow: 1;
-
-  @media (min-width: $bp-small) {
-    &.standard {
-      margin-left: auto;
-    }
-
-    &.dashboard {
-      margin-left: 70px;
-    }
-  }
 }

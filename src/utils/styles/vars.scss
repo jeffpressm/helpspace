@@ -20,7 +20,8 @@
   --font-copy: 'Work Sans', var(--font-fallbacks);
 
   // Space
-  --global-offset-y: 110px;
+  --global-nav-y-offset: 45px;
+  --global-offset-y: 0;
   --global-offset-x: 12.5vw;
   --global-offset-small: 8vw;
   --global-content-width: 1080px;

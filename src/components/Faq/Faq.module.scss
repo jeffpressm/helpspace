@@ -4,6 +4,7 @@
 .hero-headline {
   @include headline-2;
   color: var(--text-dark);
+  margin-top: 10vh;
 }
 
 .hero-body {

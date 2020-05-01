@@ -24,11 +24,16 @@ const ProfileNav = () => {
   return (
     <div className={cx('root', 'root--profile')}>
       <div className={cx('section', 'section--1')}>
-        <div className={cx('section-link')}>
-          <span className={cx('copy')}>your profile</span>
+        <div className={cx('section-link-container')}>
+          <span className={cx('link-item')}>your profile</span>
         </div>
-        <div className={cx('section-link')}>
-          <button onClick={() => doLogout()}>log out</button>
+        <div className={cx('section-link-container')}>
+          <button
+            className={cx('link-item', 'link-item--button')}
+            onClick={() => doLogout()}
+          >
+            log out
+          </button>
         </div>
       </div>
       <div className={cx('section', 'section--2')}>

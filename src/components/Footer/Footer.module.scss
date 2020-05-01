@@ -34,7 +34,11 @@
 }
 
 .legal-container {
-  margin: var(--global-offset-y) auto var(--global-offset-small);
+  margin: 110px auto 0;
+
+  @media (min-width: $bp-medium) {
+    margin-top: 160px;
+  }
 }
 
 .legal {

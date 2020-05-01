@@ -13,6 +13,29 @@ import styles from './AccountNav.module.scss';
 
 const cx = classNames.bind(styles);
 
+export const SubNav = ({ className }) => (
+  <div className={cx('section', className)}>
+    <div className={cx('section-link-container')}>
+      <NavLink
+        to={`${RouteList.dashboard}/give`}
+        className={cx('link-item', 'link-item--a')}
+        activeClassName={cx('selected')}
+      >
+        give help
+      </NavLink>
+    </div>
+    <div className={cx('section-link-container')}>
+      <NavLink
+        to={`${RouteList.dashboard}/get`}
+        className={cx('link-item', 'link-item--a')}
+        activeClassName={cx('selected')}
+      >
+        get help
+      </NavLink>
+    </div>
+  </div>
+);
+
 const DashboardNav = () => {
   const { responses } = useContext(SpreadsheetContext);
   const query = useSearchParams();
@@ -20,38 +43,23 @@ const DashboardNav = () => {
   const { image } = getUserInfo(responses, email);
 
   return (
-    <div className={cx('root')}>
-      <div className={cx('section', 'section--1')}>
-        <div className={cx('section-link')}>
-          <NavLink
-            to={`${RouteList.dashboard}/give`}
-            activeClassName={cx('selected')}
-          >
-            give help
-          </NavLink>
-        </div>
-        <div className={cx('section-link')}>
-          <NavLink
-            to={`${RouteList.dashboard}/get`}
-            activeClassName={cx('selected')}
-          >
-            get help
-          </NavLink>
+    <>
+      <div className={cx('root', 'root--dashboard')}>
+        <SubNav className={cx('section--1')} />
+        <div className={cx('section', 'section--2')}>
+          <div className={cx('user-link', 'help')}>
+            <Link to={RouteList.help}>
+              <HelpIcon />
+            </Link>
+          </div>
+          <div className={cx('user-link', 'avatar')}>
+            <Link to={RouteList.profile}>
+              <Avatar src={image} />
+            </Link>
+          </div>
         </div>
       </div>
-      <div className={cx('section', 'section--2')}>
-        <div className={cx('user-link', 'help')}>
-          <Link to={RouteList.help}>
-            <HelpIcon />
-          </Link>
-        </div>
-        <div className={cx('user-link', 'avatar')}>
-          <Link to={RouteList.profile}>
-            <Avatar src={image} />
-          </Link>
-        </div>
-      </div>
-    </div>
+    </>
   );
 };
 

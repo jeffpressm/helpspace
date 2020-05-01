@@ -14,7 +14,8 @@
   &--1 {
     margin-left: 7vw;
 
-    .root--profile & {
+    .root--profile &,
+    .root--dashboard & {
       display: none;
 
       @media (min-width: $bp-medium) {
@@ -28,18 +29,20 @@
   }
 }
 
-.section-link {
+.section-link-container {
   margin: 0 30px;
+}
 
-  > a,
-  > button {
-    @include reset-button;
-    @include headline-3;
-    @include uiTransition(all);
+.link-item {
+  @include headline-3;
+  @include uiTransition(all);
+  display: block;
+
+  &--a,
+  &--button {
     border-bottom: 2px solid transparent;
-    display: block;
     opacity: 0.5;
-    padding: var(--global-nav-y-offset) 0;
+    padding: 20px 0;
 
     &:hover,
     &:focus {
@@ -50,10 +53,15 @@
       border-bottom-color: currentColor;
       opacity: 1;
     }
+
+    @media (min-width: $bp-medium) {
+      padding: var(--global-nav-y-offset) 0;
+    }
   }
 
-  .copy {
+  &--button {
     @include headline-3;
+    @include reset-button;
   }
 }
 

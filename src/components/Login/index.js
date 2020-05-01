@@ -36,10 +36,10 @@ const Login = () => {
       return;
     }
 
-    history.push(`${RouteList.profile}?email=${email}`);
-
     localStorage.setItem('email', email);
     setUserData(userInfo);
+
+    history.push(RouteList.profile);
   };
 
   return (
