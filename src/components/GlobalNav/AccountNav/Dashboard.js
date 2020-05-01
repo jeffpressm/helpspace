@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { NavLink, Link } from 'react-router-dom';
 import classNames from 'classnames/bind';
 
@@ -6,6 +6,8 @@ import { ReactComponent as HelpIcon } from 'assets/icons/help.svg';
 import Avatar from 'components/Avatar';
 import { RouteList } from 'lib/routes';
 import { SpreadsheetContext } from 'utils/context/SpreadsheetContextProvider';
+import { UserContext } from 'utils/context/UserContextProvider';
+
 import getUserInfo from 'utils/getUserInfo';
 import useSearchParams from 'utils/hooks/useSearchParams';
 
@@ -37,10 +39,20 @@ export const SubNav = ({ className }) => (
 );
 
 const DashboardNav = () => {
+  const [user, setUser] = useState();
+  const userData = useContext(UserContext);
   const { responses } = useContext(SpreadsheetContext);
   const query = useSearchParams();
-  const email = query?.get('email');
-  const { image } = getUserInfo(responses, email);
+  const qEmail = query?.get('email');
+
+  useEffect(() => {
+    if (qEmail) {
+      setUser(getUserInfo(responses, qEmail));
+      return;
+    }
+
+    setUser(userData);
+  }, [qEmail, responses, setUser, userData]);
 
   return (
     <>
@@ -54,7 +66,7 @@ const DashboardNav = () => {
           </div>
           <div className={cx('user-link', 'avatar')}>
             <Link to={RouteList.profile}>
-              <Avatar src={image} />
+              <Avatar src={user?.image} />
             </Link>
           </div>
         </div>

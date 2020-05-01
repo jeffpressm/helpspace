@@ -2,7 +2,6 @@ export const RouteList = {
   home: '/',
   faq: '/faq',
   login: '/login',
-  client: '/client',
   register: '/register',
   listing: '/listing',
   help: '/help',

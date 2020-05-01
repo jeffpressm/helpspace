@@ -1,0 +1,78 @@
+@import 'utils/styles/animations';
+@import 'utils/styles/breakpoints';
+@import 'utils/styles/type';
+@import 'utils/styles/mixins';
+
+.nav {
+  border-bottom: 1px solid rgba(#111, 0.1);
+  margin-top: -20px;
+
+  @media (min-width: $bp-medium) {
+    display: none;
+  }
+}
+
+// Get Help
+.root {
+  margin-top: 10vh;
+}
+
+.add-request {
+  @include headline-2-small;
+  @include reset-button;
+  align-items: center;
+  background-color: var(--color-gray-1);
+  border-radius: 6px;
+  color: var(--text-dark);
+  display: flex;
+  font-size: 40px;
+  height: 150px;
+  justify-content: center;
+  width: 120px;
+}
+
+.requests-container {
+  margin-top: var(--global-offset-small);
+}
+
+.request {
+  & + & {
+    margin-top: var(--global-offset-small);
+  }
+}
+
+.title {
+  @include headline-2-small;
+}
+
+.detail {
+  margin-top: var(--global-offset-small);
+}
+
+.footer {
+  @include copy-2;
+  align-items: center;
+  display: flex;
+  flex-direction: row;
+  margin-top: calc(var(--global-offset-small) * 0.66);
+}
+
+.avatars {
+  display: flex;
+}
+
+.avatar-item {
+  display: block;
+  position: relative;
+  width: 40px;
+
+  &:not(:first-child) {
+    margin-left: -10px;
+    z-index: 1;
+  }
+}
+
+.footer-copy {
+  color: rgba(#111, 0.8);
+  margin-left: 1.2em;
+}

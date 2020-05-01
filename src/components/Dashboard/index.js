@@ -1,40 +1,51 @@
-import React, { useContext } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import classNames from 'classnames/bind';
 
 import { SubNav } from 'components/GlobalNav/AccountNav/Dashboard';
 import { HELP_TYPE } from 'lib/help';
 import { SpreadsheetContext } from 'utils/context/SpreadsheetContextProvider';
+import { UserContext } from 'utils/context/UserContextProvider';
 import getUserInfo from 'utils/getUserInfo';
 import useSearchParams from 'utils/hooks/useSearchParams';
-import { pivotTable } from 'utils/pivotTable';
 
 import styles from './Dashboard.module.scss';
 import EmptyGet from './Empty/EmptyGet';
 import EmptyGive from './Empty/EmptyGive';
+import GetHelp from './Get';
 
 const cx = classNames.bind(styles);
 
 const Dashboard = () => {
-  const { content, responses } = useContext(SpreadsheetContext);
-  const DashboardContent = pivotTable(content['Dashboard']);
-  // type will either be 'give' or 'get'
-  const { type } = useParams();
-  // http://localhost:3000/dashboard/get?email=test@example.com
+  const [user, setUser] = useState();
+  const userData = useContext(UserContext);
+  const { responses } = useContext(SpreadsheetContext);
   const query = useSearchParams();
-  const email = query?.get('email');
+  const qEmail = query?.get('email');
+  const { type } = useParams();
 
-  const { clientResponses, advisorResponses } = getUserInfo(responses, email);
+  useEffect(() => {
+    if (qEmail) {
+      setUser(getUserInfo(responses, qEmail));
+      return;
+    }
+
+    setUser(userData);
+  }, [qEmail, responses, setUser, userData]);
+
+  if (!user) {
+    return null;
+  }
 
   const getPageBody = () => {
     if (type === HELP_TYPE.GET) {
-      if (!clientResponses.length) {
+      if (!user.clientResponses.length) {
         return <EmptyGet />;
       } else {
-        return <div>Get Dashboard</div>;
+        return <GetHelp user={user} />;
       }
     } else if (type === HELP_TYPE.GIVE) {
-      if (!advisorResponses.length) {
+      if (!user.advisorResponses.length) {
         return <EmptyGive />;
       } else {
         return <div>Give Dashboard</div>;

@@ -13,7 +13,6 @@ import Login from 'components/Login';
 import Home from 'components/Home';
 import HowTo from 'components/HowTo';
 import Profile from 'components/Profile';
-import User from 'components/User';
 import Listing from 'components/Listing';
 import Register from 'components/Register';
 import { RouteList } from 'lib/routes';
@@ -31,9 +30,6 @@ function App() {
               <Switch>
                 <Route exact path={RouteList.home}>
                   <Home />
-                </Route>
-                <Route path={RouteList.client}>
-                  <User />
                 </Route>
                 <Route path={RouteList.faq}>
                   <Faq />
