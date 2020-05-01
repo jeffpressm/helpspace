@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from 'react';
+import React, { useContext } from 'react';
 import classNames from 'classnames/bind';
 
 import { useHistory } from 'react-router-dom';
@@ -14,36 +14,26 @@ import styles from './HowTo.module.scss';
 
 const cx = classNames.bind(styles);
 
-const HowTo = ({ onClose, as }) => {
+const HowTo = ({ onClose }) => {
   const history = useHistory();
-  const [guidelinesContent, setGuidelinesContent] = useState();
   const { content } = useContext(SpreadsheetContext);
-  const clientGuidelines = content['Guidelines: Client'];
-  const advisorGuidelines = content['Guidelines: Advisor'];
+  const GuidelinesContent = content['Guidelines'];
   const query = useSearchParams();
-  const userEmail = query?.get('email');
-  const storageEmail = window.localStorage.getItem('email');
+  const queryEmail = query?.get('email');
 
-  useEffect(() => {
-    const newGuidelines =
-      as === 'client' ? clientGuidelines : advisorGuidelines;
-
-    setGuidelinesContent(newGuidelines);
-  }, [as, advisorGuidelines, clientGuidelines]);
-
-  if (!guidelinesContent) {
+  if (!GuidelinesContent) {
     return null;
   }
 
-  const subContents = guidelinesContent.filter((entry) => {
+  const subContents = GuidelinesContent.filter((entry) => {
     return entry['Section'] === 'Sub-section';
   });
 
-  const guidelines = guidelinesContent.filter((entry) => {
+  const guidelines = GuidelinesContent.filter((entry) => {
     return entry['Section'] === 'Guidelines';
   });
 
-  const important = guidelinesContent.filter((entry) => {
+  const important = GuidelinesContent.filter((entry) => {
     return entry['Section'] === 'Important';
   });
 
@@ -53,7 +43,11 @@ const HowTo = ({ onClose, as }) => {
     if (onClose) {
       onClose();
     } else {
-      history.push(`${RouteList.profile}?email=${userEmail || storageEmail}`);
+      let nextRoute = RouteList.profile;
+      if (queryEmail) {
+        nextRoute += `?email=${queryEmail}`;
+      }
+      history.push(nextRoute);
     }
   };
 
