@@ -30,6 +30,7 @@
 
 .button {
   @include copy-3;
+  @include reset-button;
   cursor: pointer;
   margin-top: 50px;
 }
