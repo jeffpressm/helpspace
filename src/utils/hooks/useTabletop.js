@@ -16,7 +16,6 @@ function useTabletop(id) {
 
   const fetch = useCallback(() => {
     getSheetData(id).then(({ data }) => {
-      console.log('data fetched', data);
       const entries = {};
       Object.keys(data).forEach((k) => (entries[k] = data[k].elements));
 
