@@ -1,4 +1,4 @@
-import React, { Fragment } from 'react';
+import React from 'react';
 import classNames from 'classnames/bind';
 
 import { ReactComponent as GoogleSheetIcon } from 'assets/icons/google-sheet.svg';
@@ -9,7 +9,7 @@ import styles from './Dashboard.module.scss';
 const cx = classNames.bind(styles);
 
 const Matches = ({ client, user }) => (
-  <Fragment>
+  <div className={cx('match-container')}>
     <h3 className={cx('match-title')}>{client['Challenge']}</h3>
     <div className={cx('match-box')}>
       <div className={cx('info-wrapper')}>
@@ -40,7 +40,7 @@ const Matches = ({ client, user }) => (
       <span className={cx('view-project-link-text')}>View project</span>
       <DashboardArrowIcon />
     </a>
-  </Fragment>
+  </div>
 );
 
 export default Matches;
