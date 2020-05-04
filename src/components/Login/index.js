@@ -46,7 +46,9 @@ const Login = () => {
     localStorage.setItem('email', email);
     setUserData(userInfo);
 
-    history.push(RouteList.dashboard);
+    // We are intentionally reloading the page here
+    // so the Typeform components update
+    window.location = RouteList.dashboard;
   };
 
   return (
