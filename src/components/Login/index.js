@@ -16,7 +16,11 @@ const cx = classNames.bind(styles);
 
 const Login = () => {
   const { setUserData } = useContext(UserContext);
-  const { content, responses } = useContext(SpreadsheetContext);
+  const {
+    content,
+    responses,
+    fetch: { responses: fetchResponses },
+  } = useContext(SpreadsheetContext);
   const LoginContent = pivotTable(content['Login']);
   const history = useHistory();
   const [email, setEmail] = useState();
@@ -26,8 +30,11 @@ const Login = () => {
     setEmail(e.target.value);
   };
 
-  const handleSubmit = (e) => {
+  // ALWAYS re-fetch data on submission
+  const handleSubmit = async (e) => {
     e.preventDefault();
+
+    await fetchResponses();
 
     const userInfo = getUserInfo(responses, email);
 

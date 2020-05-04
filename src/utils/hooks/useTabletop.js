@@ -15,11 +15,14 @@ function useTabletop(id) {
   const [entries, setEntries] = useState();
 
   const fetch = useCallback(() => {
-    getSheetData(id).then(({ data }) => {
-      const entries = {};
-      Object.keys(data).forEach((k) => (entries[k] = data[k].elements));
+    return new Promise(function (resolve) {
+      getSheetData(id).then(({ data }) => {
+        const entries = {};
+        Object.keys(data).forEach((k) => (entries[k] = data[k].elements));
 
-      setEntries(entries);
+        setEntries(entries);
+        resolve();
+      });
     });
   }, [id]);
 
