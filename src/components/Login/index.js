@@ -39,7 +39,7 @@ const Login = () => {
     localStorage.setItem('email', email);
     setUserData(userInfo);
 
-    history.push(RouteList.profile);
+    history.push(RouteList.dashboard);
   };
 
   return (
