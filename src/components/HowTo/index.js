@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import classNames from 'classnames/bind';
 
 import { useHistory } from 'react-router-dom';
@@ -14,13 +14,22 @@ import styles from './HowTo.module.scss';
 
 const cx = classNames.bind(styles);
 
-const HowTo = ({ onClose }) => {
+const HowTo = () => {
+  const [nextRoute, setNextRoute] = useState();
   const seenHowTo = window.localStorage.getItem('seenHowTo');
   const history = useHistory();
   const { content } = useContext(SpreadsheetContext);
   const GuidelinesContent = content['Guidelines'];
   const query = useSearchParams();
-  const queryEmail = query?.get('email');
+  const queryNext = query?.get('next');
+
+  useEffect(() => {
+    if (queryNext) {
+      setNextRoute(`${RouteList.dashboard}/${queryNext}`);
+      return;
+    }
+    setNextRoute(RouteList.dashboard);
+  }, [queryNext, seenHowTo, setNextRoute]);
 
   if (!GuidelinesContent) {
     return null;
@@ -40,16 +49,7 @@ const HowTo = ({ onClose }) => {
 
   const handleContinue = () => {
     window.localStorage.setItem('seenHowTo', true);
-
-    if (onClose) {
-      onClose();
-    } else {
-      let nextRoute = RouteList.profile;
-      if (queryEmail) {
-        nextRoute += `?email=${queryEmail}`;
-      }
-      history.push(nextRoute);
-    }
+    history.push(nextRoute);
   };
 
   return (

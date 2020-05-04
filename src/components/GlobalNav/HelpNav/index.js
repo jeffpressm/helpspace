@@ -1,6 +1,9 @@
-import React from 'react';
+import React, { useCallback } from 'react';
 import { useHistory } from 'react-router-dom';
 import classNames from 'classnames/bind';
+
+import { RouteList } from 'lib/routes';
+import useSearchParams from 'utils/hooks/useSearchParams';
 
 import styles from './HelpNav.module.scss';
 
@@ -9,6 +12,18 @@ const cx = classNames.bind(styles);
 const HelpNav = () => {
   const seenHowTo = window.localStorage.getItem('seenHowTo');
   const history = useHistory();
+  const query = useSearchParams();
+  const queryNext = query?.get('next');
+
+  const handleClose = useCallback(() => {
+    debugger;
+    if (queryNext) {
+      history.push(`${RouteList.dashboard}/${queryNext}`);
+      return;
+    }
+    history.goBack();
+  }, [history, queryNext]);
+
   return (
     <div className={cx('root')}>
       <div className={cx('section', 'section--1')}>
@@ -27,7 +42,7 @@ const HelpNav = () => {
 
       {seenHowTo && (
         <div className={cx('section', 'section--2')}>
-          <button className={cx('close')} onClick={() => history.goBack()}>
+          <button className={cx('close')} onClick={() => handleClose()}>
             <span className={cx('close-icon')}>×</span>{' '}
             <span className={cx('close-text')}>Close</span>
           </button>

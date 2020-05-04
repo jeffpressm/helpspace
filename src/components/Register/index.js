@@ -49,7 +49,7 @@ const Register = () => {
     const timer = setTimeout(() => {
       setFetchAttempts((f) => f + 1);
       fetchResponses();
-    }, 1000);
+    }, 3000);
 
     return () => clearTimeout(timer);
   }, [fetchAttempts, fetchResponses, queryId, setUserData, responses]);
@@ -61,7 +61,7 @@ const Register = () => {
       image={image}
       link={{
         text: 'Continue',
-        action: `${RouteList.dashboard}/${UserToRoute[responseType]}`,
+        action: `${RouteList.help}?next=${UserToRoute[responseType]}`,
       }}
     />
   );
