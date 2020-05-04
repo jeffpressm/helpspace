@@ -3,11 +3,12 @@ import { UserContext } from 'utils/context/UserContextProvider';
 import getUserInfo from 'utils/getUserInfo';
 import { SpreadsheetContext } from 'utils/context/SpreadsheetContextProvider';
 import useSearchParams from 'utils/hooks/useSearchParams';
-import { RouteList } from 'lib/routes';
+import { RouteList, UserToRoute } from 'lib/routes';
 import InfoBlock from 'components/InfoBlock';
 import image from 'assets/illustrations/illustration 2.png';
 
 const Register = () => {
+  const [responseType, setResponseType] = useState();
   const [fetchAttempts, setFetchAttempts] = useState(0);
   const { email: existingEmail, setUserData } = useContext(UserContext);
   const {
@@ -16,18 +17,40 @@ const Register = () => {
   } = useContext(SpreadsheetContext);
   const query = useSearchParams();
   const queryEmail = query?.get('email');
+  const queryId = query?.get('id');
+  const storedEmail = window.localStorage.getItem('email');
 
   // Typeform returns email as  _____ for existing user flow
   const requestEmail = queryEmail === '_____' ? existingEmail : queryEmail;
   const userInfo = getUserInfo(responses, requestEmail);
 
-  if (userInfo.email) {
+  useEffect(() => {
+    if (userInfo.email === storedEmail) {
+      return;
+    }
     window.localStorage.setItem('email', userInfo.email);
     setUserData(userInfo);
-  }
+  }, [setUserData, storedEmail, userInfo]);
 
   useEffect(() => {
-    if (userInfo.email || fetchAttempts >= 3) {
+    const newClientResponse = responses['Client'].find(
+      (response) => response['ID'] === queryId
+    );
+    const newAdvisorResponse = responses['Advisor'].find(
+      (response) => response['ID'] === queryId
+    );
+
+    if (newClientResponse) {
+      setResponseType('client');
+      return;
+    }
+
+    if (newAdvisorResponse) {
+      setResponseType('advisor');
+      return;
+    }
+
+    if (fetchAttempts >= 3) {
       return;
     }
 
@@ -37,7 +60,7 @@ const Register = () => {
     }, 1000);
 
     return () => clearTimeout(timer);
-  }, [fetchAttempts, fetchResponses, userInfo]);
+  }, [fetchAttempts, fetchResponses, userInfo, responses, queryId]);
 
   return (
     <InfoBlock
@@ -46,7 +69,7 @@ const Register = () => {
       image={image}
       link={{
         text: 'Continue',
-        action: RouteList.help,
+        action: `${RouteList.dashboard}/${UserToRoute[responseType]}`,
       }}
     />
   );

@@ -8,3 +8,8 @@ export const RouteList = {
   dashboard: '/dashboard',
   profile: '/profile',
 };
+
+export const UserToRoute = {
+  advisor: 'give',
+  client: 'get',
+};
