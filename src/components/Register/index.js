@@ -3,13 +3,12 @@ import { UserContext } from 'utils/context/UserContextProvider';
 import getUserInfo from 'utils/getUserInfo';
 import { SpreadsheetContext } from 'utils/context/SpreadsheetContextProvider';
 import useSearchParams from 'utils/hooks/useSearchParams';
-import { RouteList, UserToRoute } from 'lib/routes';
+import { RouteList } from 'lib/routes';
 import InfoBlock from 'components/InfoBlock';
 import image from 'assets/illustrations/illustration 2.png';
 import { pivotTable } from 'utils/pivotTable';
 
 const Register = () => {
-  const [responseType, setResponseType] = useState();
   const [fetchAttempts, setFetchAttempts] = useState(0);
   const { setUserData } = useContext(UserContext);
   const {
@@ -31,7 +30,6 @@ const Register = () => {
     );
 
     if (newClientResponse) {
-      setResponseType('client');
       const userInfo = getUserInfo(responses, newClientResponse['Email']);
       window.localStorage.setItem('email', userInfo.email);
       setUserData(userInfo);
@@ -39,7 +37,6 @@ const Register = () => {
     }
 
     if (newAdvisorResponse) {
-      setResponseType('advisor');
       const userInfo = getUserInfo(responses, newAdvisorResponse['Email']);
       window.localStorage.setItem('email', userInfo.email);
       setUserData(userInfo);
@@ -65,7 +62,7 @@ const Register = () => {
       image={image}
       link={{
         text: RegisterContent['CTA'],
-        action: `${RouteList.help}?next=${UserToRoute[responseType]}`,
+        action: `${RouteList.login}`,
       }}
     />
   );

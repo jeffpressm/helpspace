@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from 'react';
+import React, { useContext } from 'react';
 import classNames from 'classnames/bind';
 
 import { useHistory } from 'react-router-dom';
@@ -15,21 +15,14 @@ import styles from './HowTo.module.scss';
 const cx = classNames.bind(styles);
 
 const HowTo = () => {
-  const [nextRoute, setNextRoute] = useState();
   const seenHowTo = window.localStorage.getItem('seenHowTo');
   const history = useHistory();
   const { content } = useContext(SpreadsheetContext);
   const GuidelinesContent = content['Guidelines'];
   const query = useSearchParams();
-  const queryNext = query?.get('next');
+  const queryFrom = query?.get('from');
 
-  useEffect(() => {
-    if (queryNext) {
-      setNextRoute(`${RouteList.dashboard}/${queryNext}`);
-      return;
-    }
-    setNextRoute(RouteList.dashboard);
-  }, [queryNext, seenHowTo, setNextRoute]);
+  const nextRoute = queryFrom || RouteList.dashboard;
 
   if (!GuidelinesContent) {
     return null;

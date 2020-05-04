@@ -1,12 +1,8 @@
 import React from 'react';
-import {
-  BrowserRouter as Router,
-  Redirect,
-  Route,
-  Switch,
-} from 'react-router-dom';
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 
 import Dashboard from 'components/Dashboard';
+import DashboardRoot from 'components/Dashboard/Root';
 import Faq from 'components/Faq';
 import GlobalContainer from 'components/GlobalContainer';
 import Login from 'components/Login';
@@ -46,9 +42,11 @@ function App() {
                 <Route path={RouteList.help}>
                   <HowTo />
                 </Route>
-                <Route exact path={RouteList.dashboard}>
-                  <Redirect to={`${RouteList.dashboard}/give`} />
-                </Route>
+                <Route
+                  exact
+                  path={RouteList.dashboard}
+                  component={DashboardRoot}
+                ></Route>
                 <Route path={`${RouteList.dashboard}/:type`}>
                   <Dashboard />
                 </Route>

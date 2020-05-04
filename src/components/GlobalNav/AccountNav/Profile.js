@@ -38,7 +38,12 @@ const ProfileNav = () => {
       </div>
       <div className={cx('section', 'section--2')}>
         <div className={cx('user-link', 'help')}>
-          <Link to={RouteList.help}>
+          <Link
+            to={{
+              pathname: RouteList.help,
+              search: `?from=${RouteList.profile}`,
+            }}
+          >
             <HelpIcon />
           </Link>
         </div>

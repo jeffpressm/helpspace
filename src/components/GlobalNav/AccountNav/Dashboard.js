@@ -60,7 +60,12 @@ const DashboardNav = () => {
         <SubNav className={cx('section--1')} />
         <div className={cx('section', 'section--2')}>
           <div className={cx('user-link', 'help')}>
-            <Link to={RouteList.help}>
+            <Link
+              to={{
+                pathname: RouteList.help,
+                search: `?from=${RouteList.dashboard}`,
+              }}
+            >
               <HelpIcon />
             </Link>
           </div>
