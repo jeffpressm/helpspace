@@ -6,6 +6,7 @@ import useSearchParams from 'utils/hooks/useSearchParams';
 import { RouteList, UserToRoute } from 'lib/routes';
 import InfoBlock from 'components/InfoBlock';
 import image from 'assets/illustrations/illustration 2.png';
+import { pivotTable } from 'utils/pivotTable';
 
 const Register = () => {
   const [responseType, setResponseType] = useState();
@@ -17,6 +18,9 @@ const Register = () => {
   } = useContext(SpreadsheetContext);
   const query = useSearchParams();
   const queryId = query?.get('id');
+
+  const { content } = useContext(SpreadsheetContext);
+  const RegisterContent = pivotTable(content['Register']);
 
   useEffect(() => {
     const newClientResponse = responses['Client'].find(
@@ -57,10 +61,10 @@ const Register = () => {
   return (
     <InfoBlock
       theme="red"
-      title="Thanks for signing up! You’ll receive an email from us once we find a match."
+      title={RegisterContent['Heading']}
       image={image}
       link={{
-        text: 'Continue',
+        text: RegisterContent['CTA'],
         action: `${RouteList.help}?next=${UserToRoute[responseType]}`,
       }}
     />
