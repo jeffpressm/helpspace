@@ -1,13 +1,9 @@
 import React from 'react';
-import classNames from 'classnames/bind';
 
-import styles from './Dashboard.module.scss';
 import NoMatch from './Empty/NoMatch';
+import Matches from './Matches';
 
-const cx = classNames.bind(styles);
-
-const GiveHelp = () => {
-  return <NoMatch />;
-};
+const GiveHelp = ({ user }) =>
+  user.matchedClients.length > 0 ? <Matches user={user} /> : <NoMatch />;
 
 export default GiveHelp;
