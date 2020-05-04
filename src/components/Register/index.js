@@ -10,27 +10,13 @@ import image from 'assets/illustrations/illustration 2.png';
 const Register = () => {
   const [responseType, setResponseType] = useState();
   const [fetchAttempts, setFetchAttempts] = useState(0);
-  const { email: existingEmail, setUserData } = useContext(UserContext);
+  const { setUserData } = useContext(UserContext);
   const {
     responses,
     fetch: { responses: fetchResponses },
   } = useContext(SpreadsheetContext);
   const query = useSearchParams();
-  const queryEmail = query?.get('email');
   const queryId = query?.get('id');
-  const storedEmail = window.localStorage.getItem('email');
-
-  // Typeform returns email as  _____ for existing user flow
-  const requestEmail = queryEmail === '_____' ? existingEmail : queryEmail;
-  const userInfo = getUserInfo(responses, requestEmail);
-
-  useEffect(() => {
-    if (userInfo.email === storedEmail) {
-      return;
-    }
-    window.localStorage.setItem('email', userInfo.email);
-    setUserData(userInfo);
-  }, [setUserData, storedEmail, userInfo]);
 
   useEffect(() => {
     const newClientResponse = responses['Client'].find(
@@ -42,11 +28,17 @@ const Register = () => {
 
     if (newClientResponse) {
       setResponseType('client');
+      const userInfo = getUserInfo(responses, newClientResponse['Email']);
+      window.localStorage.setItem('email', userInfo.email);
+      setUserData(userInfo);
       return;
     }
 
     if (newAdvisorResponse) {
       setResponseType('advisor');
+      const userInfo = getUserInfo(responses, newAdvisorResponse['Email']);
+      window.localStorage.setItem('email', userInfo.email);
+      setUserData(userInfo);
       return;
     }
 
@@ -60,7 +52,7 @@ const Register = () => {
     }, 1000);
 
     return () => clearTimeout(timer);
-  }, [fetchAttempts, fetchResponses, userInfo, responses, queryId]);
+  }, [fetchAttempts, fetchResponses, queryId, setUserData, responses]);
 
   return (
     <InfoBlock
