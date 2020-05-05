@@ -1,7 +1,6 @@
 import React, { useState, useContext } from 'react';
 import classNames from 'classnames/bind';
 import styles from './Login.module.scss';
-import { useHistory } from 'react-router-dom';
 
 import ContentBox from 'components/layout/ContentBox';
 import EmailForm from 'components/form/EmailForm';
@@ -22,7 +21,6 @@ const Login = () => {
     fetch: { responses: fetchResponses },
   } = useContext(SpreadsheetContext);
   const LoginContent = pivotTable(content['Login']);
-  const history = useHistory();
   const [email, setEmail] = useState();
   const [error, setError] = useState();
 
