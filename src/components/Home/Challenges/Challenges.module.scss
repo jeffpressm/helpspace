@@ -16,6 +16,10 @@
   margin-top: var(--global-offset-small);
   overflow-x: auto;
   width: 100%;
+
+  @media (max-width: $bp-small) {
+    padding-bottom: 10px;
+  }
 }
 
 .toc-item {
