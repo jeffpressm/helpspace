@@ -23,6 +23,15 @@ Helpspace was built in a very short timeline and utilizes 3rd-party tools whenev
 - [Google Drive](http://drive.google.com) & [Docs](http://docs.google.com), to provide a shared work environment for "clients" and "advisors".
 - [Zapier](https://zapier.com/app/dashboard), to automate workflow tasks.
 
+## Jargon
+
+- **Client**: A user that requests help.
+- **Advisor**: A user that offers help.
+- **Challenge**: A category of problem.
+- **Request**: A client's specific problem.
+
+All together: A client makes a request for help with a problem. They are matched with an advisor who has expertise related to the challenge presented in the client's problem. The two people work together in a shared Google Doc to complete the request.
+
 ## 👩‍💻 Development Workflow
 
 Builds are triggered on Netlify whenever updates are made to the [`dev`](https://dev--helpspace.netlify.app/), [`qa`](https://qa--helpspace.netlify.app/), or [`master`](https://helpspace.netlify.app/) branches. `master` is the production site.
@@ -31,7 +40,7 @@ Builds are triggered on Netlify whenever updates are made to the [`dev`](https:/
 
 ### 🤖 The Automated Part
 
-1. A user fills out "get help" or "give help" form.
+1. A user fills out an embedded "get help" or "give help" form.
 1. A Zapier "zap" is triggered whenever a new form is submitted.
 1. The user's data is added to a ["Client"](https://docs.google.com/spreadsheets/d/1hqERQuL9Q5WGttew0v5JqxizXzBRrMoe7ID6jioT-cc/edit#gid=0) or ["Advisor"](https://docs.google.com/spreadsheets/d/1hqERQuL9Q5WGttew0v5JqxizXzBRrMoe7ID6jioT-cc/edit#gid=272579147) spreadsheet, depending on which role they chose.
 1. If the user is a "client", the zap creates a Google Drive folder and copies a document to it, edited with information specific to the client. They are sent an email with links to their dashboard and the google drive folder.
@@ -39,7 +48,7 @@ Builds are triggered on Netlify whenever updates are made to the [`dev`](https:/
 
 ### ✋ The Manual Part
 
-To match a client request with an advisor, a human:
+To match a request with an advisor, a human:
 
 1. Adds an entry to the ["Match"](https://docs.google.com/spreadsheets/d/1hqERQuL9Q5WGttew0v5JqxizXzBRrMoe7ID6jioT-cc/edit#gid=1370515805) spreadsheet.
 2. Contacts the selected advisor to tell them that they've been matched, and to share the Google Drive link so that the client and advisor can work together.
@@ -61,6 +70,8 @@ Requests: https://docs.google.com/spreadsheets/d/1SMus2rG-kjfy2SXASC-V8trxB4BFF7
 API documentation: https://developer.typeform.com/
 
 React Component: https://github.com/alexgarces/react-typeform-embed/
+
+**Note:** Several hidden fields are applied to the form. `responseId` is the unique identifier for the response. If a user is "logged in", their email address is added as a hidden field and they skip the informational questions at the beginning of the form.
 
 ### 📧 HTML Emails
 
