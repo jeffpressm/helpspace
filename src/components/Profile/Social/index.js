@@ -57,7 +57,7 @@ const ProfileSocial = ({ user }) => {
             className={cx('share__button')}
             href={`https://www.linkedin.com/shareArticle?mini=true&title=Helpspace&summary=${encodeURIComponent(
               shareString
-            )}&url=${encodeURIComponent(window.location.href)}`}
+            )}&url=${encodeURIComponent('https://helpspace.co')}`}
             target="_blank"
             rel="noopener noreferrer"
           >
@@ -71,7 +71,7 @@ const ProfileSocial = ({ user }) => {
           <a
             className={cx('share__button')}
             href={`https://twitter.com/intent/tweet?url=${encodeURIComponent(
-              window.location.href
+              'https://helpspace.co'
             )}&text=${encodeURIComponent(shareString)}`}
             target="_blank"
             rel="noopener noreferrer"
@@ -86,7 +86,7 @@ const ProfileSocial = ({ user }) => {
           <a
             className={cx('share__button')}
             href={`https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(
-              window.location.href
+              'https://helpspace.co'
             )}`}
             target="_blank"
             rel="noopener noreferrer"
