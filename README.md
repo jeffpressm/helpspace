@@ -14,12 +14,12 @@ https://docs.google.com/document/d/1i2FpHiYT3TvHkVLeaatvwwZlYP7UHTu915CwV8JcCMc/
 
 ## ❓ About the Project
 
-Helpspace was built in a very short development cycles and utilizes 3rd-party tools whenever possible. The major components are:
+Helpspace was built in a very short timeline and utilizes 3rd-party tools whenever possible. THe app should be considered somewhere between an "alpha" and "MVP" state. The major components are:
 
 - [Create React App](https://create-react-app.dev/), for the UI.
 - [Netlify](https://netlify.com), for hosting and deployments.
 - [Typeform](https://www.typeform.com/), to collect information about users who need help, or want to give it.
-- [Google Sheets](http://sheets.google.com/), to store repsonses and act as a CMS.
+- [Google Sheets](http://sheets.google.com/), to store responses and act as a CMS.
 - [Google Drive](http://drive.google.com) & [Docs](http://docs.google.com), to provide a shared work environment for "clients" and "advisors".
 - [Zapier](https://zapier.com/app/dashboard), to automate workflow tasks.
 
