@@ -30,38 +30,41 @@
 }
 
 .section-link-container {
-  margin: 0 30px;
+  flex: 1 1 50%;
+  text-align: center;
+
+  @media (min-width: $bp-medium) {
+    flex: unset;
+    margin: 0 30px;
+  }
 }
 
 .link-item {
   @include headline-3;
   @include uiTransition(all);
+  border-bottom: 2px solid transparent;
   display: block;
+  opacity: 0.5;
+  padding: 20px 0;
 
-  &--a,
-  &--button {
-    border-bottom: 2px solid transparent;
-    opacity: 0.5;
-    padding: 20px 0;
+  &:hover,
+  &:focus {
+    opacity: 1;
+  }
 
-    &:hover,
-    &:focus {
-      opacity: 1;
-    }
-
-    &.selected {
-      border-bottom-color: currentColor;
-      opacity: 1;
-    }
-
-    @media (min-width: $bp-medium) {
-      padding: var(--global-nav-y-offset) 0;
-    }
+  @media (min-width: $bp-medium) {
+    padding: var(--global-nav-y-offset) 0;
   }
 
   &--button {
     @include headline-3;
     @include reset-button;
+    width: 100%;
+  }
+
+  &.selected {
+    border-bottom-color: currentColor;
+    opacity: 1;
   }
 }
 

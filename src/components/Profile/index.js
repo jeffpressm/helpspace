@@ -1,6 +1,7 @@
 import React, { useContext, useEffect, useState } from 'react';
 import classNames from 'classnames/bind';
 
+import { SubNav } from 'components/GlobalNav/AccountNav/Profile';
 import ContentBox from 'components/layout/ContentBox';
 import { SpreadsheetContext } from 'utils/context/SpreadsheetContextProvider';
 import { UserContext } from 'utils/context/UserContextProvider';
@@ -37,6 +38,9 @@ const Profile = () => {
 
   return (
     <ContentBox theme="red" isTop>
+      <nav className={cx('nav')}>
+        <SubNav />
+      </nav>
       <article className={cx('root')}>
         <header className={cx('header')}>
           <ProfileHeader user={user} />

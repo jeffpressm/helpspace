@@ -1,5 +1,14 @@
 @import 'utils/styles/breakpoints';
 
+.nav {
+  border-bottom: 1px solid rgba(#111, 0.1);
+  margin: -20px calc(var(--global-offset-small) * -1) 0;
+
+  @media (min-width: $bp-medium) {
+    display: none;
+  }
+}
+
 .root {
   margin-top: var(--global-offset-small);
 }
