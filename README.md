@@ -86,3 +86,27 @@ Official Lottie Docs: http://airbnb.io/lottie/
 React Component: https://github.com/crello/react-lottie/blob/master/src/components/Lottie/index.tsx
 
 **Note:** The React component used is a fork of `react-lottie`. The original project has been abandoned and the fork has critical updates required to make it run properly.
+
+## Authoring Guidelines
+
+When users sign up for helpspace, their responses are recoded in the [Client](https://docs.google.com/spreadsheets/d/1hqERQuL9Q5WGttew0v5JqxizXzBRrMoe7ID6jioT-cc/edit#gid=0) or [Advisor](https://docs.google.com/spreadsheets/d/1hqERQuL9Q5WGttew0v5JqxizXzBRrMoe7ID6jioT-cc/edit#gid=272579147) spreadsheet, depending of if they need help or are offering help, respectively.
+
+Authors are encouraged to avoid directly editing the Client & Advisor spreadsheets. If that is unavoidable, please respect these rules:
+
+1. The column headings (the first row) should not be changed.
+1. The first response (the seconed row) should contain "test data", not a real user's data.
+1. There should be no empty rows within the responses.
+
+The first two rules are to ensure that Zapier can properly read & test the spreadsheet. The last rule avoids an issue with the library that is used to read the data and present it on the website.
+
+### Matching Advisors with Clients
+
+To match an advisor with a client's request, create a new row in the [Match](https://docs.google.com/spreadsheets/d/1hqERQuL9Q5WGttew0v5JqxizXzBRrMoe7ID6jioT-cc/edit#gid=1370515805) spreadsheet.
+
+Each row has three pieces of required data:
+
+1. `Client Response ID`: This is the unique ID of a client's help request. (Clients can have more than one help request.) This value should be copied from the first column (labeled `ID`) of the row in the Client spreadsheet.
+1. `Advisor Email`: This is the email address of the Advisor who will be assigned to this request. This value should be copied from the second column (labeled `Email`) of the row in the Advisor spreadsheet.
+1. `Status`: This column should be set to either `In progress` or `Complete`. This represents the state of the request.
+
+Once a match is made in this spreadsheet, both clients and advisors will see the match in their dashboard. However, they are _not_ automatically notified that a match has been made; You must do this manually.
