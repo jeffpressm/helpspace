@@ -1,6 +1,6 @@
 import React from 'react';
 
-import Match from './Match';
+import Match from './Match/Match';
 import ContentBox from 'components/layout/ContentBox';
 
 const Matches = ({ user }) => (

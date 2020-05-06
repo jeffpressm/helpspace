@@ -18,9 +18,13 @@ const getUserInfo = (responses, email) => {
   );
 
   const matchedClients = matchedResponses.map((response) => {
-    return responses[responseSheets.client].find(
+    const client = responses[responseSheets.client].find(
       (client) => client.ID === response['Client Response ID']
     );
+    return {
+      ...client,
+      Status: response['Status'],
+    };
   });
 
   const userInfo =
