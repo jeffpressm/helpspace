@@ -14,7 +14,7 @@ https://docs.google.com/document/d/1i2FpHiYT3TvHkVLeaatvwwZlYP7UHTu915CwV8JcCMc/
 
 ## ❓ About the Project
 
-Helpspace was built in a very short timeline and utilizes 3rd-party tools whenever possible. THe app should be considered somewhere between an "alpha" and "MVP" state. The major components are:
+Helpspace was built in a very short timeline and utilizes 3rd-party tools whenever possible. The app should be considered somewhere between an "alpha" and "MVP" state. The major components are:
 
 - [Create React App](https://create-react-app.dev/), for the UI.
 - [Netlify](https://netlify.com), for hosting and deployments.
@@ -89,6 +89,10 @@ React Component: https://github.com/crello/react-lottie/blob/master/src/componen
 
 ## Authoring Guidelines
 
+### Spreadsheets
+
+#### Responses
+
 When users sign up for helpspace, their responses are recoded in the [Client](https://docs.google.com/spreadsheets/d/1hqERQuL9Q5WGttew0v5JqxizXzBRrMoe7ID6jioT-cc/edit#gid=0) or [Advisor](https://docs.google.com/spreadsheets/d/1hqERQuL9Q5WGttew0v5JqxizXzBRrMoe7ID6jioT-cc/edit#gid=272579147) spreadsheet, depending of if they need help or are offering help, respectively.
 
 Authors are encouraged to avoid directly editing the Client & Advisor spreadsheets. If that is unavoidable, please respect these rules:
@@ -99,7 +103,7 @@ Authors are encouraged to avoid directly editing the Client & Advisor spreadshee
 
 The first two rules are to ensure that Zapier can properly read & test the spreadsheet. The last rule avoids an issue with the library that is used to read the data and present it on the website.
 
-### Matching Advisors with Clients
+#### Matching Advisors with Clients
 
 To match an advisor with a client's request, create a new row in the [Match](https://docs.google.com/spreadsheets/d/1hqERQuL9Q5WGttew0v5JqxizXzBRrMoe7ID6jioT-cc/edit#gid=1370515805) spreadsheet.
 
@@ -110,3 +114,51 @@ Each row has three pieces of required data:
 1. `Status`: This column should be set to either `In progress` or `Complete`. This represents the state of the request.
 
 Once a match is made in this spreadsheet, both clients and advisors will see the match in their dashboard. However, they are _not_ automatically notified that a match has been made; You must do this manually.
+
+#### Updating Site Content
+
+Much of the content on the site is populated by data in the [CMS](https://docs.google.com/spreadsheets/d/14FemeT2IWZg81smTfh1YOE6rXL_paepQoMVfikNBcEM/) spreadsheet. This data is requested by each user at load time. This means that changes will be instantly available after they are made (though a user will have to reload the site to see them.)
+
+Some of the data can be formatted with Markdown. Where possible, sections that support Markdown have been indicated in the spreadsheet. In general, sections of prose can be formatted, while headlines, CTAs, and other "one-line" content cannot.
+
+If you are unfamiliar with Markdown syntax, please refer to the [Markdown Guide](https://www.markdownguide.org/).
+
+### Forms
+
+There are two Typeform forms: one for advisors and one for clients. Typeform provides a WYSIWYG editor for easy updating.
+
+The forms make use of ["logic jumps"](https://help.typeform.com/hc/en-us/articles/360029116392-What-is-Logic-Jump-), which allows the user to skip questions based on their answers. Before you alter the form, please become familiar with how those work.
+
+#### How Typeform integrates with helpspace
+
+- A series of "hidden fields" are added to the forms. These allow thew user to skip entering personal info if they're already users of the site. Additionally, a unique token is applied to the form that is used to identify the particular request to get or give help.
+- In the Settings tab of each form, the `Redirect on completion` option is enabled. This allows us to send the user back to the helpspace website once their registration is completed.
+
+#### Updating questions
+
+Adding, editing, or deleting categories, or options within a category is a fairly straightforward process in Typeform, but requires updates in Zapier to properly inject the updated responses in the spreasheets. See the Zapier section for more info.
+
+### Zapier
+
+Zapier manages the business logic of helpspace. Whenever a user completes a form, a workflow (or a "zap", as Zapier insists on calling it) is executed. Due to the coupled nature of this workflow tool, it is quite brittle and updates should be made with extreme caution.
+
+The specifics of each zap depend on the type of user, but the general workflow is:
+
+- Receive data from Typeform
+- Add a row to the relevant spreadsheet
+- Create a new folder in helpspace's Google Drive (client only)
+- Copy a Google Doc from a template, and insert user data (client only)
+- Email the user
+
+#### Updating form fields
+
+If the typeform is updated, zapier must be instructed on how to use the new data.
+
+1. In the **New Entry in Typeform** section, choose **Find Data**. Select an entry and scan the response to ensure that the new data has been picked up by Zapier.
+1. In the **Create Spreadsheet Row in Google Sheets** section, choose **Customize Spreadsheet Row**. Update the cells that relate to the changes you made. Note that the `Categories` and `Challenges` cells contain an amalgamation of data. Each `Field` has a separate question for each cell, as well as the possibility of an "Other" entry. (This is used if the user writes in their own answer, instead of selecting from the pre-determined options.) While this looks confusing from Zapier, remember that a user can only select _one_ field, so only one of these many entries will be inserted into the response spreadsheet.
+
+#### Updating emails
+
+The HTML emails sent to users must be manually pasted into Zapier. For convienience and sanity, copies of these emails are stored in the `/public/emails` directory of the [GitHub repo](https://github.com/workco/guild).
+
+These files can be opened in any browser. (In Chrome, click `File > Open File...` and select the html file.) It is highly recommended that changes be made in a text editor and tested in a browser before they are pasted into the Zapier form field.
