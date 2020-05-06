@@ -1,4 +1,5 @@
 import { responseSheets } from 'lib/sheets';
+import { matchStatusType } from 'lib/status';
 
 const getUserInfo = (responses, email) => {
   const findResponses = (response) => response['Email'] === email;
@@ -6,9 +7,26 @@ const getUserInfo = (responses, email) => {
   const findMatchedResponses = (response) =>
     response['Advisor Email'] === email;
 
-  const clientResponses = responses[responseSheets.client].filter(
-    findResponses
-  );
+  const clientResponses = responses[responseSheets.client]
+    .filter(findResponses)
+    .map((client) => {
+      const match = responses[responseSheets.match].find(
+        (mat) => mat['Client Response ID'] === client.ID
+      );
+      const advisor =
+        match &&
+        responses[responseSheets.advisor].find(
+          (adv) => adv['Email'] === match['Advisor Email']
+        );
+      return {
+        ...client,
+        advisor,
+        Status:
+          (match && (match.Status || matchStatusType.inProgress)) ||
+          matchStatusType.waiting,
+      };
+    });
+
   const advisorResponses = responses[responseSheets.advisor].filter(
     findResponses
   );
@@ -23,7 +41,7 @@ const getUserInfo = (responses, email) => {
     );
     return {
       ...client,
-      Status: response['Status'],
+      Status: response['Status'] || matchStatusType.inProgress,
     };
   });
 

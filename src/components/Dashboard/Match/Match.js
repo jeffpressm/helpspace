@@ -15,21 +15,24 @@ const cx = classNames.bind(styles);
 
 const Match = ({ client, user }) => {
   const matchStatusComplete = client['Status'] === matchStatusType.complete;
+  const matchStatusInProgress = client['Status'] === matchStatusType.inProgress;
   return (
     <div className={cx('match-container')}>
       <h3 className={cx('match-title')}>
-        {matchStatusComplete ? (
-          <span>{`You helped ${client['Name']} manage her lease during the COVID-19 crisis`}</span>
-        ) : (
-          client['Challenge']
+        {matchStatusComplete && (
+          <span>
+            {client.advisor
+              ? `${client.advisor['Name']} helped you manage your lease during the COVID-19 crisis`
+              : `You helped ${client['Name']} manage her lease during the COVID-19 crisis`}
+          </span>
         )}
+        {matchStatusInProgress && <span>{client['Challenge']}</span>}
       </h3>
       <div className={cx('match-box')}>
-        {matchStatusComplete ? (
-          <Complete client={client} user={user} />
-        ) : (
-          <InProgress client={client} user={user} />
+        {matchStatusComplete && (
+          <Complete isClient={client.advisor} client={client} user={user} />
         )}
+        {matchStatusInProgress && <InProgress client={client} user={user} />}
       </div>
       <a
         className={cx('view-project-link')}

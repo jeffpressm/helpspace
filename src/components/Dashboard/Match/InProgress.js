@@ -16,7 +16,9 @@ const InProgress = ({ client, user }) => {
     <>
       <div className={cx('info-wrapper')}>
         <h4 className={cx('info-wrapper-title')}>
-          You’re helping {client['Name']}
+          {client.advisor
+            ? `Schedule an introductory call with ${client.advisor['Name']}`
+            : `You’re helping ${client['Name']}`}
         </h4>
         <p className={cx('info-wrapper-text')}>
           {DashboardContent['Matched Body']}
@@ -27,7 +29,7 @@ const InProgress = ({ client, user }) => {
         <img
           alt=""
           className={cx('client-image', 'match-image')}
-          src={client['Image']}
+          src={client.advisor ? client.advisor['Image'] : client['Image']}
         />
       </div>
     </>

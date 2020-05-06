@@ -1,4 +1,5 @@
 export const matchStatusType = {
-  inprogress: 'In progress',
+  inProgress: 'In progress',
   complete: 'Complete',
+  waiting: 'Waiting',
 };
