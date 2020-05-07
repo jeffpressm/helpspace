@@ -59,12 +59,18 @@
   @include headline-2-small;
 }
 
-.title + .text {
-  margin-top: 20px;
+.text {
+  @include copy-1;
+
+  .title + & {
+    margin-top: 20px;
+  }
 }
 
-.title + .link {
-  margin-top: 60px;
+.link {
+  .title + & {
+    margin-top: 60px;
+  }
 }
 
 .content {

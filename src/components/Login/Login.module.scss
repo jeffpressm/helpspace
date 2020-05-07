@@ -8,23 +8,19 @@
 .headline {
   @include headline-2;
   margin-top: 10vh;
-
-  @media (min-width: $bp-medium) {
-    max-width: 100%;
-  }
 }
 
 .body {
   @include copy-2;
   margin-top: 30px;
-
-  @media (min-width: $bp-medium) {
-    max-width: 100%;
-  }
 }
 
 .form-container {
   margin-top: 10vh;
+
+  @media (min-width: $bp-medium) {
+    max-width: 420px;
+  }
 }
 
 .error {
