@@ -5,7 +5,6 @@
   @media (min-width: $bp-medium) {
     display: grid;
     grid-gap: 60px 120px;
-    grid-template-columns: repeat(2, 1fr);
     grid-template-rows: 1fr 2fr;
   }
 }
@@ -28,7 +27,7 @@
 }
 
 .about-us {
-  @include headline-3(800);
+  @include headline-2-small;
 }
 
 .about-you {
@@ -37,7 +36,7 @@
   }
 
   &__heading {
-    @include headline-3(800);
+    @include headline-2-small;
   }
 
   &__body {
