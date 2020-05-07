@@ -53,27 +53,34 @@ const Footer = () => {
         }
       />
       <div className={cx('legal-container')}>
-        <ul className={cx('legal')}>
-          <li>&copy; 2020 all rights reserved</li>
-          <li>
-            <a
-              href={FooterContent['Privacy Policy']}
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              Privacy Policy
-            </a>
-          </li>
-          <li>
-            <a
-              href={FooterContent['User Agreement']}
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              User Agreement
-            </a>
-          </li>
-        </ul>
+        <ThreeUp
+          className={cx('footer-links')}
+          slot1={null}
+          slot2={
+            <ul className={cx('legal')}>
+              <li>&copy; 2020 all rights reserved</li>
+              <li>
+                <a
+                  href={FooterContent['Privacy Policy']}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  Privacy Policy
+                </a>
+              </li>
+              <li>
+                <a
+                  href={FooterContent['User Agreement']}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  User Agreement
+                </a>
+              </li>
+            </ul>
+          }
+          slot3={null}
+        />
       </div>
     </footer>
   );
