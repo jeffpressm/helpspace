@@ -9,15 +9,11 @@ const ContentBox = ({
   theme = 'white',
   isTop = false,
   className,
-  children,
-  widerContainer,
+  childClassName,
+  children
 }) => (
   <div className={cx('root', [theme], { top: isTop }, className)}>
-    <div
-      className={cx('content-container', { widerContainer: widerContainer })}
-    >
-      {children}
-    </div>
+    <div className={cx('content-container', childClassName)}>{children}</div>
   </div>
 );
 

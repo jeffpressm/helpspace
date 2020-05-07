@@ -28,3 +28,9 @@
     margin-top: 100px;
   }
 }
+
+.content-box-profile {
+  @media (min-width: $bp-medium) {
+    padding-left: calc(180px + var(--global-offset-small) + 7vw);
+  }
+}

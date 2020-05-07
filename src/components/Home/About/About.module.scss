@@ -55,3 +55,13 @@
   color: var(--color-gray-2);
   margin-top: 60px;
 }
+
+.about-content-box {
+  @media (min-width: $bp-medium) {
+    padding-bottom: 140px;
+  }
+}
+
+.about-content-box-child {
+  max-width: var(--global-content-width-bigger);
+}

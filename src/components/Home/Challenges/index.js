@@ -52,7 +52,11 @@ const Challenges = () => {
   }
 
   return (
-    <ContentBox widerContainer className={cx('challenges-content-box')} theme="gray">
+    <ContentBox
+      className={cx('challenges-content-box')}
+      childClassName={cx('challenges-content-box-child')}
+      theme="gray"
+    >
       <article>
         <h2 className={cx('headline')}>{ChallengesContent.title}</h2>
         <nav>

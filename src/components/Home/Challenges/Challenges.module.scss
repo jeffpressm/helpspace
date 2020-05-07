@@ -95,3 +95,13 @@
   margin-left: 0.5em;
   width: 0.66em;
 }
+
+.challenges-content-box {
+  @media (min-width: $bp-medium) {
+    padding-top: 140px;
+  }
+}
+
+.challenges-content-box-child {
+  max-width: var(--global-content-width-bigger);
+}

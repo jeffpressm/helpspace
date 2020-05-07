@@ -37,7 +37,7 @@ const Profile = () => {
   }
 
   return (
-    <ContentBox theme="red" isTop>
+    <ContentBox className={cx('content-box-profile')} theme="red" isTop>
       <nav className={cx('nav')}>
         <SubNav />
       </nav>
