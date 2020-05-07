@@ -24,7 +24,8 @@
   --global-offset-y: 0;
   --global-offset-x: 12.5vw;
   --global-offset-small: 8vw;
-  --global-content-width: 1080px;
+  --global-content-width: 720px;
+  --global-content-width-bigger: 1080px;
   --logo-width: 125px;
 
   @media (min-width: $bp-medium) {

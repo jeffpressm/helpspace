@@ -17,7 +17,7 @@ const About = () => {
   const AboutContent = pivotTable(content['Home: About']);
 
   return (
-    <ContentBox className={cx('about-content-box')}>
+    <ContentBox widerContainer className={cx('about-content-box')}>
       <article className={cx('root')}>
         <section className={cx('section--1')}>
           <div className={cx('about-us')}>

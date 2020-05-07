@@ -31,3 +31,7 @@
   margin: 0 auto;
   max-width: var(--global-content-width);
 }
+
+.widerContainer {
+  max-width: var(--global-content-width-bigger);
+}
