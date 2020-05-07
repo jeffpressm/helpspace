@@ -23,6 +23,7 @@ const Faq = () => {
       <article>
         <ContentBox isTop>
           <TwoUp
+            className={cx('faq-upper-section')}
             slot1={
               <div>
                 <h1 className={cx('hero-headline')}>
@@ -56,6 +57,7 @@ const Faq = () => {
                   return (
                     <div key={question} className={cx('faq-item')}>
                       <TwoUp
+                        className={cx('faq-under-section')}
                         slot1={
                           <h3 className={cx('faq-headline')}>{question}</h3>
                         }
