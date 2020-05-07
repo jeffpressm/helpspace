@@ -9,6 +9,12 @@
   }
 }
 
+.about-content-box {
+  @media (min-width: $bp-medium) {
+    padding-bottom: 140px;
+  }
+}
+
 .section {
   &--1 {
     grid-column-start: 1;
@@ -45,6 +51,7 @@
 }
 
 .footer {
-  @include copy-2;
+  @include copy-1;
+  color: var(--color-gray-2);
   margin-top: 60px;
 }
