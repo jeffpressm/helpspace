@@ -13,30 +13,31 @@ import styles from '../Dashboard.module.scss';
 
 const cx = classNames.bind(styles);
 
-const Match = ({ client, user }) => {
-  const matchStatusComplete = client['Status'] === matchStatusType.complete;
-  const matchStatusInProgress = client['Status'] === matchStatusType.inProgress;
+const Match = ({ match, user }) => {
+  const isComplete = match['Status'] === matchStatusType.complete;
+  const isInProgress = match['Status'] === matchStatusType.inProgress;
+
   return (
     <div className={cx('match-container')}>
       <h3 className={cx('match-title')}>
-        {matchStatusComplete && (
+        {isComplete && (
           <span>
-            {client.advisor
-              ? `${client.advisor['Name']} helped you manage your lease during the COVID-19 crisis`
-              : `You helped ${client['Name']} manage her lease during the COVID-19 crisis`}
+            {match.advisor
+              ? `${match.advisor['Name']} helped you with: ${match['Challenge']}`
+              : `You helped ${match['Name']}: ${match['Challenge']}`}
           </span>
         )}
-        {matchStatusInProgress && <span>{client['Challenge']}</span>}
+        {isInProgress && <span>{match['Challenge']}</span>}
       </h3>
       <div className={cx('match-box')}>
-        {matchStatusComplete && (
-          <Complete isClient={client.advisor} client={client} user={user} />
+        {isComplete && (
+          <Complete isClient={match.advisor} match={match} user={user} />
         )}
-        {matchStatusInProgress && <InProgress client={client} user={user} />}
+        {isInProgress && <InProgress match={match} user={user} />}
       </div>
       <a
         className={cx('view-project-link')}
-        href={client['Doc Url']}
+        href={match['Doc Url']}
         target="_blank"
         rel="noopener noreferrer"
       >

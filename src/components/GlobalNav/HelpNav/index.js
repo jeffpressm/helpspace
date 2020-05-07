@@ -16,7 +16,6 @@ const HelpNav = () => {
   const queryNext = query?.get('next');
 
   const handleClose = useCallback(() => {
-    debugger;
     if (queryNext) {
       history.push(`${RouteList.dashboard}/${queryNext}`);
       return;

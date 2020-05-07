@@ -27,26 +27,15 @@ const GetHelp = ({ user }) => {
           </button>
         </div>
         <div className={cx('requests-container')}>
-          {user.clientResponses.map((client, clientIndex) => {
-            const matchStatusWaiting =
-              client['Status'] === matchStatusType.waiting;
+          {user.clientResponses.map((response) => {
+            const notMatched = response['Status'] === matchStatusType.waiting;
 
-            if (matchStatusWaiting) {
+            if (notMatched) {
               return (
-                <Waiting
-                  key={`match-client-$get-${client.ID}-${clientIndex}`}
-                  client={client}
-                  user={user}
-                />
+                <Waiting key={response.ID} response={response} user={user} />
               );
             }
-            return (
-              <Match
-                key={`match-client-$get-${client.ID}-${clientIndex}`}
-                user={user}
-                client={client}
-              />
-            );
+            return <Match key={response.ID} user={user} match={response} />;
           })}
         </div>
       </article>

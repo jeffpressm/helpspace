@@ -1,6 +1,7 @@
 import React, { useContext } from 'react';
 import classNames from 'classnames/bind';
 
+import Avatar from 'components/Avatar';
 import { SpreadsheetContext } from 'utils/context/SpreadsheetContextProvider';
 import { pivotTable } from 'utils/pivotTable';
 
@@ -8,7 +9,7 @@ import styles from '../Dashboard.module.scss';
 
 const cx = classNames.bind(styles);
 
-const InProgress = ({ client, user }) => {
+const InProgress = ({ match, user }) => {
   const { content } = useContext(SpreadsheetContext);
   const DashboardContent = pivotTable(content['Dashboard']);
 
@@ -16,21 +17,23 @@ const InProgress = ({ client, user }) => {
     <>
       <div className={cx('info-wrapper')}>
         <h4 className={cx('info-wrapper-title')}>
-          {client.advisor
-            ? `Schedule an introductory call with ${client.advisor['Name']}`
-            : `You’re helping ${client['Name']}`}
+          {match.advisor
+            ? `You've been matched with ${match.advisor['Name']}`
+            : `You’re helping ${match['Name']}`}
         </h4>
         <p className={cx('info-wrapper-text')}>
           {DashboardContent['Matched Body']}
         </p>
       </div>
       <div className={cx('image-wrapper')}>
-        <img alt="" className={cx('match-image')} src={user.image} />
-        <img
-          alt=""
-          className={cx('client-image', 'match-image')}
-          src={client.advisor ? client.advisor['Image'] : client['Image']}
-        />
+        <div className={cx('match-image')}>
+          <Avatar src={user.image} />
+        </div>
+        <div className={cx('match-image')}>
+          <Avatar
+            src={match.advisor ? match.advisor['Image'] : match['Image']}
+          />
+        </div>
       </div>
     </>
   );

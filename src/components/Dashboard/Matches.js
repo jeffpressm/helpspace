@@ -5,12 +5,8 @@ import ContentBox from 'components/layout/ContentBox';
 
 const Matches = ({ user }) => (
   <ContentBox isTop>
-    {user.matchedClients.map((client, clientIndex) => (
-      <Match
-        key={`match-client-${client.ID}-${clientIndex}`}
-        user={user}
-        client={client}
-      />
+    {user.matches.map((match, i) => (
+      <Match key={match.ID} user={user} match={match} />
     ))}
   </ContentBox>
 );

@@ -35,7 +35,7 @@ const getUserInfo = (responses, email) => {
     findMatchedResponses
   );
 
-  const matchedClients = matchedResponses.map((response) => {
+  const matches = matchedResponses.map((response) => {
     const client = responses[responseSheets.client].find(
       (client) => client.ID === response['Client Response ID']
     );
@@ -60,7 +60,7 @@ const getUserInfo = (responses, email) => {
     image: userInfo['Image'],
     clientResponses,
     advisorResponses,
-    matchedClients,
+    matches,
   };
 };
 

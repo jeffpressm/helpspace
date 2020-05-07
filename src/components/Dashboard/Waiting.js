@@ -9,13 +9,13 @@ import styles from './Dashboard.module.scss';
 
 const cx = classNames.bind(styles);
 
-const Waiting = ({ client, user }) => {
+const Waiting = ({ response, user }) => {
   return (
-    <section key={client['Doc Url']} className={cx('request')}>
-      <h2 className={cx('title')}>{client['Challenge']}</h2>
+    <section key={response['Doc Url']} className={cx('request')}>
+      <h2 className={cx('title')}>{response['Challenge']}</h2>
       <div className={cx('detail')}>
         <Tile
-          href={client['Doc Url']}
+          href={response['Doc Url']}
           label="Start here: Introduction and background"
         />
       </div>

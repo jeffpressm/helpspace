@@ -123,31 +123,23 @@
 
 .image-wrapper {
   display: flex;
-  height: 70px;
   margin-top: 20px;
-  position: relative;
-  width: 120px;
 
   @media (min-width: $bp-medium) {
-    height: 100px;
     margin-top: 0;
-    width: 170px;
-  }
-
-  > .match-image {
-    border-radius: 50%;
-    width: 70px;
-
-    @media (min-width: $bp-medium) {
-      width: 100px;
-    }
   }
 }
 
-.client-image {
-  height: 100%;
-  position: absolute;
-  right: 0;
+.match-image {
+  width: 70px;
+
+  @media (min-width: $bp-medium) {
+    width: 100px;
+  }
+
+  & + & {
+    margin-left: -30px;
+  }
 }
 
 .view-project-link {
@@ -177,6 +169,11 @@
 .complete-side-image-wrapper {
   flex-grow: 1;
   flex-shrink: 0;
+  width: 70px;
+
+  @media (min-width: $bp-medium) {
+    width: 120px;
+  }
 }
 
 .complete-illustration-wrapper {
@@ -185,15 +182,4 @@
   flex-shrink: 1;
   justify-content: center;
   width: 100%;
-}
-
-.complete-icon {
-  border-radius: 50%;
-  height: 70px;
-  width: 70px;
-
-  @media (min-width: $bp-medium) {
-    height: 120px;
-    width: 120px;
-  }
 }
