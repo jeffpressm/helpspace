@@ -11,7 +11,7 @@ const cx = classNames.bind(styles);
 
 const Waiting = ({ response, user }) => {
   return (
-    <section key={response['Doc Url']} className={cx('request')}>
+    <div>
       <h2 className={cx('title')}>{response['Challenge']}</h2>
       <div className={cx('detail')}>
         <Tile
@@ -30,7 +30,7 @@ const Waiting = ({ response, user }) => {
         </ul>
         <span className={cx('footer-copy')}>Waiting to be matched</span>
       </div>
-    </section>
+    </div>
   );
 };
 

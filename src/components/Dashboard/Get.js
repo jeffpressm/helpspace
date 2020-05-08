@@ -29,10 +29,16 @@ const GetHelp = ({ user }) => {
 
             if (notMatched) {
               return (
-                <Waiting key={response.ID} response={response} user={user} />
+                <section key={response.ID} className={cx('request')}>
+                  <Waiting response={response} user={user} />
+                </section>
               );
             }
-            return <Match key={response.ID} user={user} match={response} />;
+            return (
+              <section key={response.ID} className={cx('request')}>
+                <Match user={user} match={response} />
+              </section>
+            );
           })}
         </div>
       </article>
