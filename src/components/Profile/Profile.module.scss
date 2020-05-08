@@ -34,3 +34,7 @@
     padding-left: calc(180px + var(--global-offset-small) + 7vw);
   }
 }
+
+.content-box-profile-child {
+  max-width: var(--global-content-width-bigger);
+}

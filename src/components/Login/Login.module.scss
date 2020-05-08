@@ -1,10 +1,6 @@
 @import 'utils/styles/breakpoints';
 @import 'utils/styles/type';
 
-.root {
-  min-height: 100vh;
-}
-
 .headline {
   @include headline-2;
   margin-top: 10vh;

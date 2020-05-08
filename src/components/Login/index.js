@@ -50,7 +50,7 @@ const Login = () => {
   };
 
   return (
-    <ContentBox isTop className={cx('root')}>
+    <ContentBox isTop>
       <h1 className={cx('headline')}>{LoginContent['Headline']}</h1>
       <div className={cx('body')}>
         <Markdown source={LoginContent['Body']} />

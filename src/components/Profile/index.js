@@ -37,7 +37,12 @@ const Profile = () => {
   }
 
   return (
-    <ContentBox className={cx('content-box-profile')} theme="red" isTop>
+    <ContentBox
+      className={cx('content-box-profile')}
+      childClassName={cx('content-box-profile-child')}
+      theme="red"
+      isTop
+    >
       <nav className={cx('nav')}>
         <SubNav />
       </nav>
