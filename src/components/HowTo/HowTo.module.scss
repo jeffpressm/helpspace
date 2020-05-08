@@ -67,11 +67,13 @@
 
   @media (min-width: $bp-medium) {
     flex-direction: row;
+    padding-bottom: 100px;
   }
 }
 
 .block {
-  max-width: 720px;
+  flex: 0 1 800px;
+  margin-left: auto;
 
   & + & {
     margin-top: var(--global-offset-small);
@@ -102,6 +104,7 @@
 
   @media (min-width: $bp-medium) {
     margin-bottom: 0;
+    margin-right: 120px;
   }
 }
 
@@ -133,5 +136,21 @@
   &:hover,
   &:focus {
     background-color: var(--color-red-2);
+  }
+}
+
+.how-to-content-box-child {
+  max-width: var(--global-content-width-bigger);
+}
+
+.how-two-up {
+  @media (min-width: $bp-medium) {
+    grid-template-columns: 0.8fr 1fr;
+  }
+}
+
+.section-right {
+  @media (min-width: $bp-medium) {
+    padding-left: 242px;
   }
 }

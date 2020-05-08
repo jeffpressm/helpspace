@@ -46,15 +46,20 @@ const HowTo = () => {
   };
 
   return (
-    <ContentBox theme="gray" isTop>
+    <ContentBox
+      childClassName={cx('how-to-content-box-child')}
+      theme="gray"
+      isTop
+    >
       <article className={cx('root')}>
         <div className={cx('inner')}>
           <h1 className={cx('title')}>Here's how helpspace works</h1>
-          <div className={cx('section')}>
+          <div className={cx('section', 'section-right')}>
             <div>
               {subContents.map(({ Heading: heading, Body: body }) => (
                 <div key={heading} className={cx('block')}>
                   <TwoUp
+                    className={cx('how-two-up')}
                     slot1={<h3 className={cx('heading')}>{heading}</h3>}
                     slot2={
                       <div className={cx('body')}>
@@ -72,6 +77,7 @@ const HowTo = () => {
               {guidelines.map(({ Heading: heading, Body: body }) => (
                 <div key={heading} className={cx('block', 'hasBorder')}>
                   <TwoUp
+                    className={cx('how-two-up')}
                     slot1={<h3 className={cx('heading')}>{heading}</h3>}
                     slot2={
                       <div className={cx('body')}>
@@ -83,12 +89,13 @@ const HowTo = () => {
               ))}
             </div>
           </div>
-          <div className={cx('section')}>
+          <div className={cx('section', 'section-right')}>
             <div>
               <div className={cx('block')}>
                 {important.map(({ Heading: heading, Body: body }) => (
-                  <div key={heading} className={cx('block')}>
+                  <div key={heading}>
                     <TwoUp
+                      className={cx('how-two-up')}
                       slot1={<h3 className={cx('heading')}>{heading}</h3>}
                       slot2={
                         <div className={cx('body')}>

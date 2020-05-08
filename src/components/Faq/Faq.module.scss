@@ -88,6 +88,10 @@
 
 .faq-under-section {
   @media (min-width: $bp-medium) {
-    grid-template-columns: 300px 420px;
+    grid-template-columns: 0.8fr 1fr;
   }
+}
+
+.faq-content-box-child {
+  max-width: var(--global-content-width-bigger);
 }

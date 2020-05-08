@@ -21,7 +21,7 @@ const Faq = () => {
   return (
     <>
       <article>
-        <ContentBox isTop>
+        <ContentBox childClassName={cx('faq-content-box-child')} isTop>
           <TwoUp
             className={cx('faq-upper-section')}
             slot1={
@@ -41,7 +41,7 @@ const Faq = () => {
             }
           />
         </ContentBox>
-        <ContentBox>
+        <ContentBox childClassName={cx('faq-content-box-child')}>
           <div className={cx('faq-container')}>
             <div className={cx('faq-header')}>
               <h3>FAQs</h3>
