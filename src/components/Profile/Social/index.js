@@ -6,6 +6,7 @@ import { ReactComponent as CopyIcon } from 'assets/icons/copy.svg';
 import { ReactComponent as FacebookIcon } from 'assets/icons/facebook.svg';
 import { ReactComponent as LinkedInIcon } from 'assets/icons/linkedin.svg';
 import { ReactComponent as TwitterIcon } from 'assets/icons/twitter.svg';
+import ExternalLink from 'components/ExternalLink';
 import { SpreadsheetContext } from 'utils/context/SpreadsheetContextProvider';
 import { pivotTable } from 'utils/pivotTable';
 
@@ -53,49 +54,43 @@ const ProfileSocial = ({ user }) => {
       <p className={cx('quote')}>{shareString}</p>
       <ul className={cx('share')}>
         <li className={cx('share__item')}>
-          <a
+          <ExternalLink
             className={cx('share__button')}
             href={`https://www.linkedin.com/shareArticle?mini=true&title=Helpspace&summary=${encodeURIComponent(
               shareString
             )}&url=${encodeURIComponent('https://helpspace.co')}`}
-            target="_blank"
-            rel="noopener noreferrer"
           >
             <div className={cx('share__icon')}>
               <LinkedInIcon />
             </div>
             <span className={cx('share__label')}>LinkedIn</span>
-          </a>
+          </ExternalLink>
         </li>
         <li className={cx('share__item')}>
-          <a
+          <ExternalLink
             className={cx('share__button')}
             href={`https://twitter.com/intent/tweet?url=${encodeURIComponent(
               'https://helpspace.co'
             )}&text=${encodeURIComponent(shareString)}`}
-            target="_blank"
-            rel="noopener noreferrer"
           >
             <div className={cx('share__icon')}>
               <TwitterIcon />
             </div>
             <span className={cx('share__label')}>Twitter</span>
-          </a>
+          </ExternalLink>
         </li>
         <li className={cx('share__item')}>
-          <a
+          <ExternalLink
             className={cx('share__button')}
             href={`https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(
               'https://helpspace.co'
             )}`}
-            target="_blank"
-            rel="noopener noreferrer"
           >
             <div className={cx('share__icon')}>
               <FacebookIcon />
             </div>
             <span className={cx('share__label')}>Facebook</span>
-          </a>
+          </ExternalLink>
         </li>
         <li className={cx('share__item')}>
           <button className={cx('share__button')} onClick={setCopied}>

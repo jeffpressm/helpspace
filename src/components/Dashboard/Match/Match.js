@@ -5,6 +5,7 @@ import { matchStatusType } from 'lib/status';
 
 import { ReactComponent as GoogleSheetIcon } from 'assets/icons/google-sheet.svg';
 import { ReactComponent as DashboardArrowIcon } from 'assets/icons/dashboard-arrow.svg';
+import ExternalLink from 'components/ExternalLink';
 
 import InProgress from './InProgress';
 import Complete from './Complete';
@@ -35,16 +36,11 @@ const Match = ({ match, user }) => {
         )}
         {isInProgress && <InProgress match={match} user={user} />}
       </div>
-      <a
-        className={cx('view-project-link')}
-        href={match['Doc Url']}
-        target="_blank"
-        rel="noopener noreferrer"
-      >
+      <ExternalLink className={cx('view-project-link')} href={match['Doc Url']}>
         <GoogleSheetIcon />
         <span className={cx('view-project-link-text')}>View project</span>
         <DashboardArrowIcon />
-      </a>
+      </ExternalLink>
     </div>
   );
 };

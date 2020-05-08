@@ -7,6 +7,7 @@ import { ReactComponent as InstagramIcon } from 'assets/icons/instagram.svg';
 import { ReactComponent as LinkedInIcon } from 'assets/icons/linkedin.svg';
 
 import { ReactComponent as TwitterIcon } from 'assets/icons/twitter.svg';
+import ExternalLink from 'components/ExternalLink';
 
 import styles from './SocialLockup.module.scss';
 
@@ -17,50 +18,30 @@ const SocialLockup = ({ email, linkedin, instagram, twitter }) => {
     <ul className={cx('root')}>
       {email && (
         <li className={cx('item')}>
-          <a
-            className={cx('link')}
-            href={email}
-            target="_blank"
-            rel="noopener noreferrer"
-          >
+          <ExternalLink className={cx('link')} href={email}>
             <AtIcon className={cx('icon')} />
-          </a>
+          </ExternalLink>
         </li>
       )}
       {linkedin && (
         <li className={cx('item')}>
-          <a
-            className={cx('link')}
-            href={linkedin}
-            target="_blank"
-            rel="noopener noreferrer"
-          >
+          <ExternalLink className={cx('link')} href={linkedin}>
             <LinkedInIcon className={cx('icon')} />
-          </a>
+          </ExternalLink>
         </li>
       )}
       {instagram && (
         <li className={cx('item')}>
-          <a
-            className={cx('link')}
-            href={instagram}
-            target="_blank"
-            rel="noopener noreferrer"
-          >
+          <ExternalLink className={cx('link')} href={instagram}>
             <InstagramIcon className={cx('icon')} />
-          </a>
+          </ExternalLink>
         </li>
       )}
       {twitter && (
         <li className={cx('item')}>
-          <a
-            className={cx('link')}
-            href={twitter}
-            target="_blank"
-            rel="noopener noreferrer"
-          >
+          <ExternalLink className={cx('link')} href={twitter}>
             <TwitterIcon className={cx('icon')} />
-          </a>
+          </ExternalLink>
         </li>
       )}
     </ul>

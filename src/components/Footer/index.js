@@ -6,6 +6,7 @@ import { ReactComponent as Logo } from 'assets/logo.svg';
 import { pivotTable } from 'utils/pivotTable';
 import { SpreadsheetContext } from 'utils/context/SpreadsheetContextProvider';
 
+import ExternalLink from 'components/ExternalLink';
 import MailChimpForm from 'components/form/MailChimpForm';
 import SocialLockup from './SocialLockup';
 
@@ -60,22 +61,14 @@ const Footer = () => {
             <ul className={cx('legal')}>
               <li>&copy; 2020 all rights reserved</li>
               <li>
-                <a
-                  href={FooterContent['Privacy Policy']}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
+                <ExternalLink href={FooterContent['Privacy Policy']}>
                   Privacy Policy
-                </a>
+                </ExternalLink>
               </li>
               <li>
-                <a
-                  href={FooterContent['User Agreement']}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
+                <ExternalLink href={FooterContent['User Agreement']}>
                   User Agreement
-                </a>
+                </ExternalLink>
               </li>
             </ul>
           }

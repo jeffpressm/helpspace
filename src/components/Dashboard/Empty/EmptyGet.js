@@ -4,11 +4,10 @@ import image from 'assets/illustrations/illustration 6.png';
 import InfoBlock from 'components/InfoBlock';
 import { FormContext } from 'utils/context/Form';
 import { SpreadsheetContext } from 'utils/context/SpreadsheetContextProvider';
-import { openForm } from 'utils/context/Form';
 import { pivotTable } from 'utils/pivotTable';
 
 const EmptyGet = () => {
-  const { getRef } = useContext(FormContext);
+  const { openForm } = useContext(FormContext);
   const { content } = useContext(SpreadsheetContext);
   const DashboardContent = pivotTable(content['Dashboard']);
 
@@ -19,7 +18,7 @@ const EmptyGet = () => {
       image={image}
       cta={{
         text: 'Get',
-        action: () => openForm(getRef),
+        action: () => openForm('get'),
       }}
     />
   );

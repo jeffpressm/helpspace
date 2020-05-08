@@ -1,7 +1,7 @@
 import React, { useContext } from 'react';
 import classNames from 'classnames/bind';
 
-import { FormContext, openForm } from 'utils/context/Form';
+import { FormContext } from 'utils/context/Form';
 import { SpreadsheetContext } from 'utils/context/SpreadsheetContextProvider';
 import { pivotTable } from 'utils/pivotTable';
 
@@ -17,7 +17,7 @@ const getChallenges = (responses) =>
   }, []);
 
 const ProfileExpertise = ({ user }) => {
-  const { giveRef } = useContext(FormContext);
+  const { openForm } = useContext(FormContext);
   const { content } = useContext(SpreadsheetContext);
   const ProfileContent = pivotTable(content['Profile']);
 
@@ -39,7 +39,7 @@ const ProfileExpertise = ({ user }) => {
         <li className={cx('challenges__item')}>
           <button
             className={cx('add-challenge')}
-            onClick={() => openForm(giveRef)}
+            onClick={() => openForm('give')}
           >
             +
           </button>
