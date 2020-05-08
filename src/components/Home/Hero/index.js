@@ -4,7 +4,7 @@ import classNames from 'classnames/bind';
 
 import { ReactComponent as ArrowIcon } from 'assets/icons/arrow.svg';
 import Markdown from 'components/Markdown';
-import { FormContext, openForm } from 'utils/context/Form';
+import { FormContext } from 'utils/context/Form';
 import { SpreadsheetContext } from 'utils/context/SpreadsheetContextProvider';
 import { pivotTable } from 'utils/pivotTable';
 
@@ -38,7 +38,7 @@ const Hero = () => {
     animationReducer,
     initialAnimationState
   );
-  const { getRef, giveRef } = useContext(FormContext);
+  const { openForm } = useContext(FormContext);
   const { content } = useContext(SpreadsheetContext);
   const HeroContent = pivotTable(content['Home: Hero']);
 
@@ -71,7 +71,7 @@ const Hero = () => {
         <section className={cx('section', 'get')}>
           <div
             className={cx('link')}
-            onClick={() => openForm(getRef)}
+            onClick={() => openForm('get')}
             onMouseEnter={(e) => {
               handleMouseEvent('get');
             }}
@@ -90,7 +90,7 @@ const Hero = () => {
         <section className={cx('section', 'give')}>
           <div
             className={cx('link')}
-            onClick={() => openForm(giveRef)}
+            onClick={() => openForm('give')}
             onMouseEnter={() => handleMouseEvent('give')}
           >
             <div className={cx('content-container')}>

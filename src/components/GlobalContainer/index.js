@@ -8,6 +8,7 @@ import DashboardNav from 'components/GlobalNav/AccountNav/Dashboard';
 import ProfileNav from 'components/GlobalNav/AccountNav/Profile';
 import HelpNav from 'components/GlobalNav/HelpNav';
 import { RouteList } from 'lib/routes';
+import { usePageView } from 'utils/hooks/usePageView';
 
 import styles from './GlobalContainer.module.scss';
 
@@ -40,6 +41,7 @@ function getPageNav(pathname) {
 }
 
 const GlobalContainer = ({ children }) => {
+  usePageView();
   const location = useLocation();
   const theme = getNavTheme(location.pathname);
   const pageNav = getPageNav(location.pathname);

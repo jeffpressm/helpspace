@@ -2,7 +2,7 @@ import React, { useContext } from 'react';
 import classNames from 'classnames/bind';
 
 import { ReactComponent as ArrowIcon } from 'assets/icons/arrow.svg';
-import { FormContext, openForm } from 'utils/context/Form';
+import { FormContext } from 'utils/context/Form';
 import useIllustration from 'utils/hooks/useIllustration';
 
 import styles from './Card.module.scss';
@@ -10,7 +10,7 @@ import styles from './Card.module.scss';
 const cx = classNames.bind(styles);
 
 const Card = ({ title }) => {
-  const { getRef, giveRef } = useContext(FormContext);
+  const { openForm } = useContext(FormContext);
   const illustration = useIllustration();
 
   return (
@@ -21,7 +21,7 @@ const Card = ({ title }) => {
       <div className={cx('challenge-section', 'challenge-section--ctas')}>
         <ul className={cx('challenge-ctas')}>
           <li className={cx('challenge-cta')}>
-            <button onClick={() => openForm(getRef)}>
+            <button onClick={() => openForm('get')}>
               Get help
               <span className={cx('arrow')}>
                 <ArrowIcon />
@@ -29,7 +29,7 @@ const Card = ({ title }) => {
             </button>
           </li>
           <li className={cx('challenge-cta')}>
-            <button onClick={() => openForm(giveRef)}>
+            <button onClick={() => openForm('give')}>
               Give help
               <span className={cx('arrow')}>
                 <ArrowIcon />

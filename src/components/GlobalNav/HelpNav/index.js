@@ -2,6 +2,7 @@ import React, { useCallback } from 'react';
 import { useHistory } from 'react-router-dom';
 import classNames from 'classnames/bind';
 
+import ExternalLink from 'components/ExternalLink';
 import { RouteList } from 'lib/routes';
 import useSearchParams from 'utils/hooks/useSearchParams';
 
@@ -28,14 +29,12 @@ const HelpNav = () => {
       <div className={cx('section', 'section--1')}>
         <div className={cx('copy')}>
           For help at any time,{' '}
-          <a
+          <ExternalLink
             className={cx('support__link')}
             href="mailto:support@helpspace.co"
-            target="_blank"
-            rel="noopener noreferrer"
           >
             support@helpspace.co
-          </a>
+          </ExternalLink>
         </div>
       </div>
 

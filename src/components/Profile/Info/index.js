@@ -2,6 +2,7 @@ import React from 'react';
 import classNames from 'classnames/bind';
 
 import { ReactComponent as LinkedInIcon } from 'assets/icons/linkedin.svg';
+import ExternalLink from 'components/ExternalLink';
 
 import styles from './Info.module.scss';
 
@@ -36,12 +37,12 @@ const ProfileInfo = ({ user }) => {
         <div className={cx('section')}>
           <dt className={cx('title')}>LinkedIn</dt>
           <dd className={cx('body')}>
-            <a className={cx('link')} href={user.linkedIn}>
+            <ExternalLink className={cx('link')} href={user.linkedIn}>
               <span className={cx('li-icon')}>
                 <LinkedInIcon />
               </span>
               {getLinkedInName(user.linkedIn)}
-            </a>
+            </ExternalLink>
           </dd>
         </div>
       )}

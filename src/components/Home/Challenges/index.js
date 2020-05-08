@@ -3,7 +3,7 @@ import classNames from 'classnames/bind';
 
 import { ReactComponent as ArrowIcon } from 'assets/icons/arrow.svg';
 import ContentBox from 'components/layout/ContentBox';
-import { FormContext, openForm } from 'utils/context/Form';
+import { FormContext } from 'utils/context/Form';
 import { SpreadsheetContext } from 'utils/context/SpreadsheetContextProvider';
 
 import Card from './Card';
@@ -33,7 +33,7 @@ function formatContent(raw) {
 const Challenges = () => {
   const [activeSection, setActiveSection] = useState();
   const [ChallengesContent, setChallengesContent] = useState();
-  const { getRef, giveRef } = useContext(FormContext);
+  const { openForm } = useContext(FormContext);
   const { content } = useContext(SpreadsheetContext);
 
   useEffect(() => {
@@ -95,7 +95,7 @@ const Challenges = () => {
         <footer className={cx('cta-container')}>
           <ul className={cx('ctas')}>
             <li className={cx('cta')}>
-              <button onClick={() => openForm(getRef)}>
+              <button onClick={() => openForm('get')}>
                 Get help
                 <span className={cx('arrow')}>
                   <ArrowIcon />
@@ -103,7 +103,7 @@ const Challenges = () => {
               </button>
             </li>
             <li className={cx('cta')}>
-              <button onClick={() => openForm(giveRef)}>
+              <button onClick={() => openForm('give')}>
                 Give help
                 <span className={cx('arrow')}>
                   <ArrowIcon />

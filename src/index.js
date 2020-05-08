@@ -1,10 +1,15 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import ReactGA from 'react-ga';
 
 import App from 'components/App';
 
 import './index.scss';
 import * as serviceWorker from './serviceWorker';
+
+ReactGA.initialize('UA-165739132-1', {
+  debug: process.env.NODE_ENV !== 'production',
+});
 
 ReactDOM.render(
   <React.StrictMode>
