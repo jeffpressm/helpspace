@@ -56,9 +56,14 @@
   margin-top: 60px;
 }
 
+.footer-link {
+  font-weight: 600;
+}
+
 .about-content-box {
   @media (min-width: $bp-medium) {
-    padding-bottom: 140px;
+    padding-bottom: 160px;
+    padding-top: 160px;
   }
 }
 

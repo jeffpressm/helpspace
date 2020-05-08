@@ -44,7 +44,10 @@ const About = () => {
               <Markdown source={AboutContent['Advisor Body']} />
             </div>
             <div className={cx('footer')}>
-              You can learn more in the <Link to={RouteList.faq}>FAQ</Link>
+              You can learn more in the{' '}
+              <Link className={cx('footer-link')} to={RouteList.faq}>
+                FAQ
+              </Link>
             </div>
           </div>
         </section>
