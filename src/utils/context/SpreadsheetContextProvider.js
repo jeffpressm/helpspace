@@ -1,6 +1,15 @@
 import React, { createContext, useState, useEffect } from 'react';
 import useTabletop from '../hooks/useTabletop';
 
+const RESPONSE_URL = {
+  CLIENT:
+    'https://docs.google.com/spreadsheets/d/1hqERQuL9Q5WGttew0v5JqxizXzBRrMoe7ID6jioT-cc/edit#gid=0?output=csv',
+  ADVISOR:
+    'https://docs.google.com/spreadsheets/d/1hqERQuL9Q5WGttew0v5JqxizXzBRrMoe7ID6jioT-cc/edit#gid=272579147?output=csv',
+  MATCH:
+    'https://docs.google.com/spreadsheets/d/1hqERQuL9Q5WGttew0v5JqxizXzBRrMoe7ID6jioT-cc/edit#gid=1370515805?output=csv',
+};
+
 export const SpreadsheetContext = createContext({
   responses: {},
   content: {},
