@@ -1,10 +1,11 @@
-import React, { useContext } from 'react';
+import React from 'react';
 import { Link } from 'react-router-dom';
 import classNames from 'classnames/bind';
 
 import { ReactComponent as Logo } from 'assets/logo.svg';
+import { CMS_URL } from 'lib/sheets';
 import { pivotTable } from 'utils/pivotTable';
-import { SpreadsheetContext } from 'utils/context/SpreadsheetContextProvider';
+import useSpreadsheet from 'utils/hooks/useSpreadsheet';
 
 import ExternalLink from 'components/ExternalLink';
 import MailChimpForm from 'components/form/MailChimpForm';
@@ -16,10 +17,8 @@ import styles from './Footer.module.scss';
 const cx = classNames.bind(styles);
 
 const Footer = () => {
-  const { content } = useContext(SpreadsheetContext);
-  const { Footer } = content;
-
-  const FooterContent = pivotTable(Footer);
+  const [content] = useSpreadsheet(CMS_URL['Footer']);
+  const FooterContent = pivotTable(content);
 
   return (
     <footer className={cx('root')}>

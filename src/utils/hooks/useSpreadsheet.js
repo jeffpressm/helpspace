@@ -3,7 +3,7 @@ import Papa from 'papaparse';
 
 function PapaCanYouParseMe(url) {
   return new Promise(function (resolve) {
-    Papa.parse(`${url}?output=csv`, {
+    Papa.parse(url, {
       download: true,
       header: true,
       complete: resolve,
@@ -13,14 +13,14 @@ function PapaCanYouParseMe(url) {
 
 const cachedSheets = {};
 
-function useTabletop(url) {
+function useSpreadsheet(url) {
   const [data, setData] = useState();
 
   const fetch = useCallback(() => {
     return new Promise(function (resolve) {
       PapaCanYouParseMe(url).then(({ data }) => {
         setData(data);
-        cachedSheets.url = data;
+        cachedSheets[url] = data;
         resolve();
       });
     });
@@ -31,13 +31,12 @@ function useTabletop(url) {
       setData(cachedSheets[url]);
       return;
     }
-    if (!url) {
-      return;
-    }
+    // Set truthy value so multiple requests don't initiate multiple queries
+    cachedSheets[url] = [];
     fetch();
   }, [url, fetch]);
 
   return [data, fetch];
 }
 
-export default useTabletop;
+export default useSpreadsheet;

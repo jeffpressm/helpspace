@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React from 'react';
 import classNames from 'classnames/bind';
 
 import { useHistory } from 'react-router-dom';
@@ -7,7 +7,8 @@ import ContentBox from 'components/layout/ContentBox';
 import Markdown from 'components/Markdown';
 import TwoUp from 'components/TwoUp';
 import { RouteList } from 'lib/routes';
-import { SpreadsheetContext } from 'utils/context/SpreadsheetContextProvider';
+import { CMS_URL } from 'lib/sheets';
+import useSpreadsheet from 'utils/hooks/useSpreadsheet';
 import useSearchParams from 'utils/hooks/useSearchParams';
 
 import styles from './HowTo.module.scss';
@@ -17,26 +18,25 @@ const cx = classNames.bind(styles);
 const HowTo = () => {
   const seenHowTo = window.localStorage.getItem('seenHowTo');
   const history = useHistory();
-  const { content } = useContext(SpreadsheetContext);
-  const GuidelinesContent = content['Guidelines'];
+  const [content] = useSpreadsheet(CMS_URL['Guidelines']);
   const query = useSearchParams();
   const queryFrom = query?.get('from');
 
   const nextRoute = queryFrom || RouteList.dashboard;
 
-  if (!GuidelinesContent) {
+  if (!content) {
     return null;
   }
 
-  const subContents = GuidelinesContent.filter((entry) => {
+  const subContents = content.filter((entry) => {
     return entry['Section'] === 'Sub-section';
   });
 
-  const guidelines = GuidelinesContent.filter((entry) => {
+  const guidelines = content.filter((entry) => {
     return entry['Section'] === 'Guidelines';
   });
 
-  const important = GuidelinesContent.filter((entry) => {
+  const important = content.filter((entry) => {
     return entry['Section'] === 'Important';
   });
 

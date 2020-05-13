@@ -1,39 +1,29 @@
-export const responseSheets = {
-  client: 'Client',
-  advisor: 'Advisor',
-  match: 'Match',
+const RESPONSE_ID =
+  '2PACX-1vSKkxXElvnYWtW1JsPERDNik0_HHWX04vmYt8pyEIwbGD0iqATK8vzh_9ccnhwjjhwieAZKXAp_J7pL';
+
+const CMS_ID =
+  '2PACX-1vSmtOPXSXSc7pLmuJ34CbNEE9vi9yOOYc4TD2T4lUaSNiA2PlyrntywhvlymNUvdrASDQKBBeO8IGj1';
+
+function getUrl(id, gid) {
+  return `https://docs.google.com/spreadsheets/d/e/${id}/pub?output=csv&id=${id}&gid=${gid}`;
+}
+
+export const RESPONSE_URL = {
+  Client: getUrl(RESPONSE_ID, '0'),
+  Advisor: getUrl(RESPONSE_ID, '272579147'),
+  Match: getUrl(RESPONSE_ID, '1370515805'),
 };
 
-export const RESPONSE = {
-  Client:
-    'https://docs.google.com/spreadsheets/d/1hqERQuL9Q5WGttew0v5JqxizXzBRrMoe7ID6jioT-cc/edit#gid=0',
-  Advisor:
-    'https://docs.google.com/spreadsheets/d/1hqERQuL9Q5WGttew0v5JqxizXzBRrMoe7ID6jioT-cc/edit#gid=272579147',
-  Match:
-    'https://docs.google.com/spreadsheets/d/1hqERQuL9Q5WGttew0v5JqxizXzBRrMoe7ID6jioT-cc/edit#gid=1370515805',
-};
-
-export const CMS = {
-  'Home: Hero':
-    'https://docs.google.com/spreadsheets/d/14FemeT2IWZg81smTfh1YOE6rXL_paepQoMVfikNBcEM/edit#gid=1735742374',
-  'Home: About':
-    'https://docs.google.com/spreadsheets/d/14FemeT2IWZg81smTfh1YOE6rXL_paepQoMVfikNBcEM/edit#gid=821774933',
-  'Home: Challenges':
-    'https://docs.google.com/spreadsheets/d/14FemeT2IWZg81smTfh1YOE6rXL_paepQoMVfikNBcEM/edit#gid=455527675',
-  'FAQ: Hero':
-    'https://docs.google.com/spreadsheets/d/14FemeT2IWZg81smTfh1YOE6rXL_paepQoMVfikNBcEM/edit#gid=1610729600',
-  'FAQ: Items':
-    'https://docs.google.com/spreadsheets/d/14FemeT2IWZg81smTfh1YOE6rXL_paepQoMVfikNBcEM/edit#gid=1757938589',
-  Register:
-    'https://docs.google.com/spreadsheets/d/14FemeT2IWZg81smTfh1YOE6rXL_paepQoMVfikNBcEM/edit#gid=1601522059',
-  Guidelines:
-    'https://docs.google.com/spreadsheets/d/14FemeT2IWZg81smTfh1YOE6rXL_paepQoMVfikNBcEM/edit#gid=372460091',
-  Profile:
-    'https://docs.google.com/spreadsheets/d/14FemeT2IWZg81smTfh1YOE6rXL_paepQoMVfikNBcEM/edit#gid=1287419052',
-  Dashboard:
-    'https://docs.google.com/spreadsheets/d/14FemeT2IWZg81smTfh1YOE6rXL_paepQoMVfikNBcEM/edit#gid=1193942118',
-  Login:
-    'https://docs.google.com/spreadsheets/d/14FemeT2IWZg81smTfh1YOE6rXL_paepQoMVfikNBcEM/edit#gid=953777399',
-  Footer:
-    'https://docs.google.com/spreadsheets/d/14FemeT2IWZg81smTfh1YOE6rXL_paepQoMVfikNBcEM/edit#gid=1233724588',
+export const CMS_URL = {
+  'Home: Hero': getUrl(CMS_ID, '1735742374'),
+  'Home: About': getUrl(CMS_ID, '821774933'),
+  'Home: Challenges': getUrl(CMS_ID, '455527675'),
+  'FAQ: Hero': getUrl(CMS_ID, '1610729600'),
+  'FAQ: Items': getUrl(CMS_ID, '1757938589'),
+  Register: getUrl(CMS_ID, '1601522059'),
+  Guidelines: getUrl(CMS_ID, '372460091'),
+  Profile: getUrl(CMS_ID, '1287419052'),
+  Dashboard: getUrl(CMS_ID, '1193942118'),
+  Login: getUrl(CMS_ID, '953777399'),
+  Footer: getUrl(CMS_ID, '1233724588'),
 };

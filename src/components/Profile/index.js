@@ -1,12 +1,10 @@
-import React, { useContext, useEffect, useState } from 'react';
+import React from 'react';
 import classNames from 'classnames/bind';
 
 import { SubNav } from 'components/GlobalNav/AccountNav/Profile';
 import ContentBox from 'components/layout/ContentBox';
-import { SpreadsheetContext } from 'utils/context/SpreadsheetContextProvider';
-import { UserContext } from 'utils/context/UserContextProvider';
-import getUserInfo from 'utils/getUserInfo';
 import useSearchParams from 'utils/hooks/useSearchParams';
+import useUser from 'utils/hooks/useUser';
 
 import ProfileExpertise from './Expertise';
 import ProfileHeader from './Header';
@@ -17,20 +15,10 @@ import styles from './Profile.module.scss';
 const cx = classNames.bind(styles);
 
 const Profile = () => {
-  const [user, setUser] = useState();
-  const userData = useContext(UserContext);
-  const { responses } = useContext(SpreadsheetContext);
   const query = useSearchParams();
   const qEmail = query?.get('email');
-
-  useEffect(() => {
-    if (qEmail) {
-      setUser(getUserInfo(responses, qEmail));
-      return;
-    }
-
-    setUser(userData);
-  }, [qEmail, responses, setUser, userData]);
+  const sEmail = window.localStorage.getItem('email');
+  const [user] = useUser(qEmail || sEmail);
 
   if (!user) {
     return null;

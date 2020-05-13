@@ -1,11 +1,12 @@
-import React, { useContext } from 'react';
+import React from 'react';
 import { Link } from 'react-router-dom';
 import classNames from 'classnames/bind';
 
 import ContentBox from 'components/layout/ContentBox';
 import Markdown from 'components/Markdown';
 import { RouteList } from 'lib/routes';
-import { SpreadsheetContext } from 'utils/context/SpreadsheetContextProvider';
+import { CMS_URL } from 'lib/sheets';
+import useSpreadsheet from 'utils/hooks/useSpreadsheet';
 import { pivotTable } from 'utils/pivotTable';
 
 import styles from './About.module.scss';
@@ -13,8 +14,8 @@ import styles from './About.module.scss';
 const cx = classNames.bind(styles);
 
 const About = () => {
-  const { content } = useContext(SpreadsheetContext);
-  const AboutContent = pivotTable(content['Home: About']);
+  const [content] = useSpreadsheet(CMS_URL['Home: About']);
+  const AboutContent = pivotTable(content);
 
   return (
     <ContentBox

@@ -1,15 +1,12 @@
-import React, { useContext, useEffect, useState } from 'react';
+import React from 'react';
 import { NavLink, Link } from 'react-router-dom';
 import classNames from 'classnames/bind';
 
 import { ReactComponent as HelpIcon } from 'assets/icons/help.svg';
 import Avatar from 'components/Avatar';
 import { RouteList } from 'lib/routes';
-import { SpreadsheetContext } from 'utils/context/SpreadsheetContextProvider';
-import { UserContext } from 'utils/context/UserContextProvider';
-
-import getUserInfo from 'utils/getUserInfo';
 import useSearchParams from 'utils/hooks/useSearchParams';
+import useUser from 'utils/hooks/useUser';
 
 import styles from './AccountNav.module.scss';
 
@@ -39,20 +36,10 @@ export const SubNav = ({ className }) => (
 );
 
 const DashboardNav = () => {
-  const [user, setUser] = useState();
-  const userData = useContext(UserContext);
-  const { responses } = useContext(SpreadsheetContext);
   const query = useSearchParams();
   const qEmail = query?.get('email');
-
-  useEffect(() => {
-    if (qEmail) {
-      setUser(getUserInfo(responses, qEmail));
-      return;
-    }
-
-    setUser(userData);
-  }, [qEmail, responses, setUser, userData]);
+  const sEmail = window.localStorage.getItem('email');
+  const [user] = useUser(qEmail || sEmail);
 
   return (
     <>

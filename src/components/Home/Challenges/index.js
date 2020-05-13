@@ -3,8 +3,9 @@ import classNames from 'classnames/bind';
 
 import { ReactComponent as ArrowIcon } from 'assets/icons/arrow.svg';
 import ContentBox from 'components/layout/ContentBox';
+import { CMS_URL } from 'lib/sheets';
+import useSpreadsheet from 'utils/hooks/useSpreadsheet';
 import { FormContext } from 'utils/context/Form';
-import { SpreadsheetContext } from 'utils/context/SpreadsheetContextProvider';
 
 import Card from './Card';
 import styles from './Challenges.module.scss';
@@ -34,10 +35,13 @@ const Challenges = () => {
   const [activeSection, setActiveSection] = useState();
   const [ChallengesContent, setChallengesContent] = useState();
   const { openForm } = useContext(FormContext);
-  const { content } = useContext(SpreadsheetContext);
+  const [content] = useSpreadsheet(CMS_URL['Home: Challenges']);
 
   useEffect(() => {
-    setChallengesContent(formatContent(content['Home: Challenges']));
+    if (!content) {
+      return;
+    }
+    setChallengesContent(formatContent(content));
   }, [setChallengesContent, content]);
 
   useEffect(() => {
