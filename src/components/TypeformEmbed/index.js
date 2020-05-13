@@ -1,16 +1,18 @@
-import React, { useContext } from 'react';
+import React from 'react';
 import { ReactTypeformEmbed } from 'react-typeform-embed';
 
-import { UserContext } from 'utils/context/UserContextProvider';
+import useUser from 'utils/hooks/useUser';
 import { generateUuid } from 'utils/strings';
 
 const TypeformEmbed = React.forwardRef(({ formUrl }, ref) => {
-  const { name, email } = useContext(UserContext);
+  const sEmail = window.localStorage.getItem('email');
+  const [user] = useUser(sEmail);
   const id = generateUuid();
 
+  // TODO Typeform iFrame doesn't update if user logs in during session
   const params = {
     responseId: id,
-    ...(name && { name, existing: 'true', email }),
+    ...(user?.name && { name: user.name, existing: 'true', email: user.email }),
   };
 
   const paramString = new URLSearchParams(params);

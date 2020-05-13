@@ -3,13 +3,14 @@ import React, { useContext } from 'react';
 import image from 'assets/illustrations/illustration 8.png';
 import InfoBlock from 'components/InfoBlock';
 import { FormContext } from 'utils/context/Form';
-import { SpreadsheetContext } from 'utils/context/SpreadsheetContextProvider';
+import { CMS_URL } from 'lib/sheets';
+import useSpreadsheet from 'utils/hooks/useSpreadsheet';
 import { pivotTable } from 'utils/pivotTable';
 
 const EmptyGive = () => {
   const { openForm } = useContext(FormContext);
-  const { content } = useContext(SpreadsheetContext);
-  const DashboardContent = pivotTable(content['Dashboard']);
+  const [content] = useSpreadsheet(CMS_URL['Dashboard']);
+  const DashboardContent = pivotTable(content);
 
   return (
     <InfoBlock

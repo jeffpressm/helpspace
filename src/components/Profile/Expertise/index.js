@@ -2,7 +2,8 @@ import React, { useContext } from 'react';
 import classNames from 'classnames/bind';
 
 import { FormContext } from 'utils/context/Form';
-import { SpreadsheetContext } from 'utils/context/SpreadsheetContextProvider';
+import { CMS_URL } from 'lib/sheets';
+import useSpreadsheet from 'utils/hooks/useSpreadsheet';
 import { pivotTable } from 'utils/pivotTable';
 
 import styles from './Expertise.module.scss';
@@ -18,8 +19,8 @@ const getChallenges = (responses) =>
 
 const ProfileExpertise = ({ user }) => {
   const { openForm } = useContext(FormContext);
-  const { content } = useContext(SpreadsheetContext);
-  const ProfileContent = pivotTable(content['Profile']);
+  const [content] = useSpreadsheet(CMS_URL['Profile']);
+  const ProfileContent = pivotTable(content);
 
   const challengeList = getChallenges(user.advisorResponses);
 

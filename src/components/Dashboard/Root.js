@@ -1,15 +1,16 @@
-import React, { useContext } from 'react';
+import React from 'react';
 import { Redirect } from 'react-router-dom';
 
 import { RouteList, UserToRoute } from 'lib/routes';
 
-import { UserContext } from 'utils/context/UserContextProvider';
+import useUser from 'utils/hooks/useUser';
 
 const Root = () => {
-  const userData = useContext(UserContext);
+  const sEmail = window.localStorage.getItem('email');
+  const [user] = useUser(sEmail);
   const seenHowTo = window.localStorage.getItem('seenHowTo');
 
-  const next = userData?.advisorResponses?.length
+  const next = user?.advisorResponses?.length
     ? UserToRoute['advisor']
     : UserToRoute['client'];
 
