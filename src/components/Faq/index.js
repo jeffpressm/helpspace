@@ -1,10 +1,11 @@
-import React, { useContext } from 'react';
+import React from 'react';
 import classNames from 'classnames/bind';
 
 import ContentBox from 'components/layout/ContentBox';
 import Footer from 'components/Footer';
 import Markdown from 'components/Markdown';
-import { SpreadsheetContext } from 'utils/context/SpreadsheetContextProvider';
+import { CMS_URL } from 'lib/sheets';
+import useSpreadsheet from 'utils/hooks/useSpreadsheet';
 import { pivotTable } from 'utils/pivotTable';
 
 import TwoUp from 'components/TwoUp';
@@ -14,9 +15,9 @@ import styles from './Faq.module.scss';
 const cx = classNames.bind(styles);
 
 const Faq = () => {
-  const { content } = useContext(SpreadsheetContext);
-  const { 'FAQ: Items': FaqItemsContent } = content;
-  const FaqHeroContent = pivotTable(content['FAQ: Hero']);
+  const [content] = useSpreadsheet(CMS_URL['FAQ: Hero']);
+  const FaqHeroContent = pivotTable(content);
+  const [FaqItemsContent = []] = useSpreadsheet(CMS_URL['FAQ: Items']);
 
   return (
     <>

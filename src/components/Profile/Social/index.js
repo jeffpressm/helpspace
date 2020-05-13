@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import classNames from 'classnames/bind';
 import useClipboard from 'react-use-clipboard';
 
@@ -7,7 +7,8 @@ import { ReactComponent as FacebookIcon } from 'assets/icons/facebook.svg';
 import { ReactComponent as LinkedInIcon } from 'assets/icons/linkedin.svg';
 import { ReactComponent as TwitterIcon } from 'assets/icons/twitter.svg';
 import ExternalLink from 'components/ExternalLink';
-import { SpreadsheetContext } from 'utils/context/SpreadsheetContextProvider';
+import { CMS_URL } from 'lib/sheets';
+import useSpreadsheet from 'utils/hooks/useSpreadsheet';
 import { pivotTable } from 'utils/pivotTable';
 
 import styles from './Social.module.scss';
@@ -29,8 +30,8 @@ const getCategories = (responses) =>
 const ProfileSocial = ({ user }) => {
   const [shareString, setShareString] = useState();
   const [isCopied, setCopied] = useClipboard(shareString);
-  const { content } = useContext(SpreadsheetContext);
-  const ProfileContent = pivotTable(content['Profile']);
+  const [content] = useSpreadsheet(CMS_URL['Profile']);
+  const ProfileContent = pivotTable(content);
 
   useEffect(() => {
     const shareStringPrefix = user.advisorResponses.length

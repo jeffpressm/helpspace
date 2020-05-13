@@ -5,8 +5,10 @@ import classNames from 'classnames/bind';
 import { ReactComponent as ArrowIcon } from 'assets/icons/arrow.svg';
 import Markdown from 'components/Markdown';
 import { FormContext } from 'utils/context/Form';
-import { SpreadsheetContext } from 'utils/context/SpreadsheetContextProvider';
 import { pivotTable } from 'utils/pivotTable';
+
+import { CMS_URL } from 'lib/sheets';
+import useSpreadsheet from 'utils/hooks/useSpreadsheet';
 
 import animationDataFull from './Animation/lib/Hero_Elbowbump_12fps.json';
 import animationDataGet from './Animation/lib/Hero_Elbowbump_Hover_L_12fps.json';
@@ -39,8 +41,8 @@ const Hero = () => {
     initialAnimationState
   );
   const { openForm } = useContext(FormContext);
-  const { content } = useContext(SpreadsheetContext);
-  const HeroContent = pivotTable(content['Home: Hero']);
+  const [content] = useSpreadsheet(CMS_URL['Home: Hero']);
+  const HeroContent = pivotTable(content);
 
   const handleMouseEvent = (name) => {
     aDispatch({

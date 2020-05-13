@@ -1,8 +1,9 @@
-import React, { useContext } from 'react';
+import React from 'react';
 import classNames from 'classnames/bind';
 
 import Avatar from 'components/Avatar';
-import { SpreadsheetContext } from 'utils/context/SpreadsheetContextProvider';
+import { CMS_URL } from 'lib/sheets';
+import useSpreadsheet from 'utils/hooks/useSpreadsheet';
 import { pivotTable } from 'utils/pivotTable';
 
 import styles from '../Dashboard.module.scss';
@@ -10,8 +11,8 @@ import styles from '../Dashboard.module.scss';
 const cx = classNames.bind(styles);
 
 const InProgress = ({ match, user }) => {
-  const { content } = useContext(SpreadsheetContext);
-  const DashboardContent = pivotTable(content['Dashboard']);
+  const [content] = useSpreadsheet(CMS_URL['Dashboard']);
+  const DashboardContent = pivotTable(content);
 
   return (
     <>
