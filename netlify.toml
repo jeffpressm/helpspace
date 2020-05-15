@@ -1,8 +1,6 @@
 [build.environment]
   REACT_APP_CLIENT_TYPEFORM_URL = "https://helpspace.typeform.com/to/NnvP7S"
   REACT_APP_ADVISOR_TYPEFORM_URL = "https://helpspace.typeform.com/to/SFmAoj"
-  REACT_APP_RESPONSES_SPREADSHEET_ID = "1hqERQuL9Q5WGttew0v5JqxizXzBRrMoe7ID6jioT-cc"
-  REACT_APP_CMS_SPREADSHEET_ID = "14FemeT2IWZg81smTfh1YOE6rXL_paepQoMVfikNBcEM"
 
 [[redirects]]
   from = "/*"
