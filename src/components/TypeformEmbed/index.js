@@ -9,7 +9,7 @@ const TypeformEmbed = React.forwardRef(({ formUrl }, ref) => {
   const [user] = useUser(sEmail);
   const id = generateUuid();
 
-  // TODO Typeform iFrame doesn't update if user logs in during session
+  // TODO Typeform iFrame doesn't update if any of these values change
   const params = {
     responseId: id,
     ...(user?.name && { name: user.name, existing: 'true', email: user.email }),
