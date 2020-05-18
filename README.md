@@ -63,13 +63,15 @@ CMS: https://docs.google.com/spreadsheets/d/1So9VgfoQaC-399EW9Nic6ueI1Ta4sqdHdQ4
 
 Requests: https://docs.google.com/spreadsheets/d/1SMus2rG-kjfy2SXASC-V8trxB4BFF7ITx-QvaoBOags/
 
+Parsing library: [Papaparse](https://www.papaparse.com/)
+
 **Note:** The first entry of the "Client" and "Advisor" spreadsheets should be reserved for "test" data. Zapier uses these rows to collect data and run tests.
 
 ### 📋 Typeform
 
 API documentation: https://developer.typeform.com/
 
-React Component: https://github.com/alexgarces/react-typeform-embed/
+React Component: [react-typeform-embed](https://github.com/alexgarces/react-typeform-embed/)
 
 **Note:** Several hidden fields are applied to the form. `responseId` is the unique identifier for the response. If a user is "logged in", their email address is added as a hidden field and they skip the informational questions at the beginning of the form.
 
@@ -83,13 +85,15 @@ It is highly recommended that the source of truth for the templates be what's in
 
 Official Lottie Docs: http://airbnb.io/lottie/
 
-React Component: https://github.com/crello/react-lottie/blob/master/src/components/Lottie/index.tsx
+React Component: [Lottie](https://github.com/crello/react-lottie/blob/master/src/components/Lottie/index.tsx)
 
-**Note:** The React component used is a fork of `react-lottie`. The original project has been abandoned and the fork has critical updates required to make it run properly.
+**Note:** The React component used is a fork of `react-lottie`. The original project is outdated and the fork has critical updates required to make the component run properly.
 
 ## Authoring Guidelines
 
 ### Spreadsheets
+
+Spreadsheets **must be public** in order to be fetched by the app. You can make a spreadsheet public by choosing `File > Publish to the web` in the Google Sheet toolbar. Any option should work, but as a convention we have published the `Entire Document` as a `Web page`.
 
 #### Responses
 
