@@ -17,23 +17,20 @@ function useSpreadsheet(url) {
   const [data, setData] = useState();
 
   const fetch = useCallback(() => {
-    return new Promise(function (resolve) {
-      PapaCanYouParseMe(url).then(({ data }) => {
-        setData(data);
-        cachedSheets[url] = data;
-        resolve();
-      });
+    cachedSheets[url] = PapaCanYouParseMe(url);
+    cachedSheets[url].then(({ data }) => {
+      setData(data);
     });
   }, [url]);
 
   useEffect(() => {
-    if (cachedSheets[url]) {
-      setData(cachedSheets[url]);
-      return;
+    if (!cachedSheets[url]) {
+      cachedSheets[url] = PapaCanYouParseMe(url);
     }
-    // Set truthy value so multiple requests don't initiate multiple queries
-    cachedSheets[url] = [];
-    fetch();
+
+    cachedSheets[url].then(({ data }) => {
+      setData(data);
+    });
   }, [url, fetch]);
 
   return [data, fetch];
