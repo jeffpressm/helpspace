@@ -10,7 +10,7 @@ import styles from './Expertise.module.scss';
 
 const cx = classNames.bind(styles);
 
-const getChallenges = (responses) =>
+const getChallenges = (responses = []) =>
   responses.reduce((acc, val) => {
     const list = val['Challenges'].split(', ');
     acc.push(...list);
@@ -22,7 +22,7 @@ const ProfileExpertise = ({ user }) => {
   const [content] = useSpreadsheet(CMS_URL['Profile']);
   const ProfileContent = pivotTable(content);
 
-  const challengeList = getChallenges(user.advisorResponses);
+  const challengeList = getChallenges(user?.advisorResponses);
 
   const title = challengeList.length
     ? ProfileContent['Advisor Challenge Title']
