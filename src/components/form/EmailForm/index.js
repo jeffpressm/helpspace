@@ -25,7 +25,6 @@ const EmailForm = ({ formProps, inputProps, children }) => {
         </button>
       </label>
       {children}
-      {/*<div className={cx('error')}>Please enter a valid email address</div>*/}
     </form>
   );
 };

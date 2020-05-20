@@ -1,9 +1,9 @@
-import React, { useCallback, useState } from 'react';
+import React, { useState } from 'react';
 import classNames from 'classnames/bind';
 import styles from './Login.module.scss';
 
 import ContentBox from 'components/layout/ContentBox';
-import EmailForm from 'components/form/EmailForm';
+import LoginForm from 'components/form/LoginForm';
 import Markdown from 'components/Markdown';
 import { RouteList } from 'lib/routes';
 import { CMS_URL, RESPONSE_URL } from 'lib/sheets';
@@ -19,29 +19,27 @@ const Login = () => {
   const [ClientResponses, fetchClient] = useSpreadsheet(RESPONSE_URL['Client']);
   const [content] = useSpreadsheet(CMS_URL['Login']);
   const LoginContent = pivotTable(content);
-  const [email, setEmail] = useState();
+
   const [error, setError] = useState();
-
-  const handleEmailChange = (e) => {
-    setEmail(e.target.value);
-  };
-
-  const findResponses = useCallback((response) => response['Email'] === email, [
-    email,
-  ]);
 
   // ALWAYS re-fetch data on submission
   const handleSubmit = async (e) => {
     e.preventDefault();
 
+    const email = e.target.email.value;
+    // const password = e.target.password.value;
+
+    // TODO update this area to authenticate with Netlify Identity
     await fetchAdvisor();
     await fetchClient();
+
+    const findResponses = (response) => response['Email'] === email;
 
     const isAdvisor = !!AdvisorResponses.find(findResponses);
     const isClient = !!ClientResponses.find(findResponses);
 
     if (!isAdvisor && !isClient) {
-      setError('This user does not exist');
+      setError('Invalid email or password');
       return;
     }
 
@@ -59,15 +57,14 @@ const Login = () => {
         <Markdown source={LoginContent['Body']} />
       </div>
       <div className={cx('form-container')}>
-        <EmailForm
+        <LoginForm
           formProps={{
-            onChange: handleEmailChange,
             onSubmit: handleSubmit,
           }}
-          inputProps={{ id: 'login' }}
-        />
+        >
+          {error && <p className={cx('error')}>{error}</p>}
+        </LoginForm>
       </div>
-      {error && <p className={cx('error')}>{error}</p>}
     </ContentBox>
   );
 };

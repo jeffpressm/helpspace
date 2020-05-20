@@ -23,15 +23,12 @@
     color: var(--text-dark);
     outline: none;
   }
+
+  & + & {
+    margin-top: 20px;
+  }
 }
 
-.submit {
-  @include reset-button;
-  fill: currentColor;
-  margin-left: 10px;
-  width: 16px;
-
-  .touched:invalid & {
-    fill: var(--text-red);
-  }
+.container {
+  margin-top: 20px;
 }

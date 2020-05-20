@@ -1,0 +1,15 @@
+@import 'utils/styles/animations';
+@import 'utils/styles/breakpoints';
+@import 'utils/styles/type';
+@import 'utils/styles/mixins';
+
+.root {
+  @include reset-button;
+  @include copy-3;
+  background-color: var(--color-gray-3);
+  border-radius: 6px;
+  color: var(--color-white);
+  padding: 16px 24px;
+  text-align: center;
+  white-space: nowrap;
+}
