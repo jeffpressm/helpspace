@@ -15,7 +15,7 @@ import styles from './Social.module.scss';
 
 const cx = classNames.bind(styles);
 
-const getCategories = (responses) =>
+const getCategories = (responses = []) =>
   responses.reduce((acc, val) => {
     if (val['Category']) {
       acc.push(val['Category']);
@@ -34,13 +34,13 @@ const ProfileSocial = ({ user }) => {
   const ProfileContent = pivotTable(content);
 
   useEffect(() => {
-    const shareStringPrefix = user.advisorResponses.length
+    const shareStringPrefix = user?.advisorResponses?.length
       ? ProfileContent['Advisor Share Copy']
       : ProfileContent['Client Share Copy'];
 
-    const shareResponses = user.advisorResponses.length
-      ? user.advisorResponses
-      : user.clientResponses;
+    const shareResponses = user?.advisorResponses?.length
+      ? user?.advisorResponses
+      : user?.clientResponses;
 
     setShareString(
       `${shareStringPrefix} ${getCategories(shareResponses)

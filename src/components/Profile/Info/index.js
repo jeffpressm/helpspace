@@ -9,6 +9,10 @@ import styles from './Info.module.scss';
 const cx = classNames.bind(styles);
 
 function getLinkedInName(url) {
+  if (!url) {
+    return null;
+  }
+
   const regex = /(?:(?:http(?:s)?:\/\/)?(?:www\.)?)?linkedin\.com\/(?:in|company)\/(.*)\//;
 
   if (url.match(regex)) {
@@ -19,29 +23,29 @@ function getLinkedInName(url) {
 }
 
 const ProfileInfo = ({ user }) => {
-  const linkedInName = getLinkedInName(user.linkedIn);
+  const linkedInName = getLinkedInName(user?.linkedIn);
 
   return (
     <dl className={cx('root')}>
       <div className={cx('section')}>
         <dt className={cx('title')}>About</dt>
         <dd className={cx('body')}>
-          {user.role}, {user.industry}
+          {user?.role}, {user?.industry}
         </dd>
       </div>
       <div className={cx('section')}>
         <dt className={cx('title')}>Location</dt>
-        <dd className={cx('body')}>{user.location}</dd>
+        <dd className={cx('body')}>{user?.location}</dd>
       </div>
       {linkedInName && (
         <div className={cx('section')}>
           <dt className={cx('title')}>LinkedIn</dt>
           <dd className={cx('body')}>
-            <ExternalLink className={cx('link')} href={user.linkedIn}>
+            <ExternalLink className={cx('link')} href={user?.linkedIn}>
               <span className={cx('li-icon')}>
                 <LinkedInIcon />
               </span>
-              {getLinkedInName(user.linkedIn)}
+              {linkedInName}
             </ExternalLink>
           </dd>
         </div>
